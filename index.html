@@ -290,7 +290,7 @@ function t(k){return I18N[CL]?.[k]||I18N.ja[k]||k}
 function rn(rk){return I18N[CL].regions[rk]||rk}
 function wn(wk){return I18N[CL].wlNames[wk]||wk}
 function psub(n){return CL!=='ja'&&PN[n]?PN[n][CL]||'':''}
-function imgPath(pref,wl,ch){return `worldkings_output/${pref}_${wl}/images/chapter_${ch}.png`}
+function imgPath(pref,wl,ch){return encodeURI(`worldkings_output/${pref}_${wl}/images/chapter_${String(ch).padStart(2,'0')}.png`)}
 
 // All prefectures flat
 function allPrefs(){const a=[];for(const rk of REGIONS_ORDER){for(const p of RD[rk]){a.push({...p,region:rk})}}return a}
@@ -321,7 +321,7 @@ else showView('v-home');
 function storyCard(pref,wl,wlName,showPref=true){
 const img=imgPath(pref,wl,2);
 const sub=psub(pref);
-return `<div class="card" onclick="window.open('worldkings_output/${pref}_${wl}/index.html','_blank')">
+return `<div class="card" onclick="window.open(encodeURI('worldkings_output/${pref}_${wl}/index.html'),'_blank')">
 <img class="card-img" src="${img}" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'" loading="lazy">
 <div class="card-fallback" style="display:none;background:${WL_GRAD[wl]}">${pref.charAt(0)}</div>
 <div class="card-overlay">
