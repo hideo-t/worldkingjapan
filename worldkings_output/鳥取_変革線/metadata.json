@@ -1,0 +1,27 @@
+{
+  "prefecture": "鳥取",
+  "kingdom": "トットリア・デザート",
+  "world_line": "変革線",
+  "world_line_value": "過革",
+  "king": {
+    "name": "トットリア・デザート",
+    "title": "孤砂王",
+    "personality": "孤独耐性高い。直線的。",
+    "emotion": "自立"
+  },
+  "fairy": {
+    "name": "デザリア",
+    "attribute": "砂",
+    "personality": "孤高",
+    "role": "乾燥波緩和"
+  },
+  "special_fairy": {
+    "name": "サキュリア",
+    "attribute": "砂丘",
+    "personality": "孤高",
+    "role": "乾燥波制御"
+  },
+  "llm_provider": "deepseek",
+  "chapters_count": 5,
+  "images_count": 5
+}

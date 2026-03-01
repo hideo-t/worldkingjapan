@@ -76,7 +76,7 @@ console = Console() if HAS_RICH else SimpleConsole()
 
 # ─── Config ───────────────────────────────────────────────────
 SD_URL = os.getenv("SD_WEBUI_URL", "http://localhost:7860")
-OUTPUT_BASE = Path("./worldkings_output")
+OUTPUT_BASE = Path("./worldkings_output").resolve()
 
 
 # ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
@@ -686,18 +686,47 @@ def build_sd_prompt(
     return positive, negative
 
 
-def generate_image(positive: str, negative: str, output_path: Path, sd_config: SDConfig) -> bool:
-    """Call SD WebUI API to generate image"""
+def generate_image(
+    positive: str, negative: str, output_path: Path,
+    sd_config: SDConfig, has_fairy: bool = False
+) -> bool:
+    """Call SD WebUI API to generate image.
+    If has_fairy=True: portrait orientation + ADetailer for face quality."""
+
+    # Fairy chapters: portrait (512x768), landscape otherwise (768x512)
+    w = 512 if has_fairy else sd_config.width
+    h = 768 if has_fairy else sd_config.height
+
     payload = {
         "prompt": positive,
         "negative_prompt": negative,
         "steps": sd_config.steps,
         "cfg_scale": sd_config.cfg_scale,
-        "width": sd_config.width,
-        "height": sd_config.height,
+        "width": w,
+        "height": h,
         "sampler_name": sd_config.sampler,
         "seed": -1,
     }
+
+    # Add ADetailer if available (auto-detect)
+    if has_fairy and _has_adetailer(sd_config):
+        payload["alwayson_scripts"] = {
+            "ADetailer": {
+                "args": [
+                    True,   # enabled
+                    False,  # skip img2img
+                    {
+                        "ad_model": "face_yolov8n.pt",
+                        "ad_prompt": positive,
+                        "ad_negative_prompt": negative,
+                        "ad_denoising_strength": 0.35,
+                        "ad_inpaint_only_masked": True,
+                        "ad_inpaint_only_masked_padding": 64,
+                    }
+                ]
+            }
+        }
+        console.print(f"    [dim]🔍 ADetailer ON（顔修復）[/]")
 
     try:
         r = requests.post(f"{sd_config.url}/sdapi/v1/txt2img", json=payload, timeout=300)
@@ -710,6 +739,19 @@ def generate_image(positive: str, negative: str, output_path: Path, sd_config: S
     except Exception as e:
         console.print(f"  [red]❌ 画像生成失敗: {e}[/]")
         return False
+
+
+def _has_adetailer(sd_config: SDConfig) -> bool:
+    """Check if ADetailer extension is available"""
+    try:
+        r = requests.get(f"{sd_config.url}/sdapi/v1/scripts", timeout=5)
+        if r.status_code == 200:
+            scripts = r.json()
+            all_scripts = scripts.get("txt2img", [])
+            return any("adetailer" in s.lower() for s in all_scripts)
+    except Exception:
+        pass
+    return False
 
 
 def check_sd(sd_config: SDConfig) -> bool:
@@ -839,11 +881,12 @@ def build_html_reader(
   }}
 
   .chapter-img {{
-    width: 100%;
-    max-height: 400px;
-    object-fit: cover;
+    max-width: 100%;
+    max-height: 500px;
+    object-fit: contain;
+    display: block;
+    margin: 0 auto 2rem auto;
     border-radius: 8px;
-    margin-bottom: 2rem;
     box-shadow: 0 4px 24px rgba(0,0,0,0.5);
   }}
 
@@ -901,6 +944,87 @@ def build_html_reader(
 
 
 # ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+#  EMAIL NOTIFICATION
+# ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+def send_gmail(
+    output_dir: Path, pref_name: str, wl_key: str,
+    chapters: list[str], image_files: list[str]
+) -> bool:
+    """Send generated novel via Gmail with HTML + images attached."""
+    import smtplib
+    from email.mime.multipart import MIMEMultipart
+    from email.mime.text import MIMEText
+    from email.mime.image import MIMEImage
+
+    gmail_user = os.getenv("GMAIL_ADDRESS", "")
+    gmail_pass = os.getenv("GMAIL_APP_PASSWORD", "")
+    gmail_to = os.getenv("GMAIL_TO", gmail_user)  # default: send to self
+
+    if not gmail_user or not gmail_pass:
+        console.print("[yellow]⚠ Gmail未設定、メール送信をスキップ[/]")
+        console.print("  $env:GMAIL_ADDRESS = \"your@gmail.com\"")
+        console.print("  $env:GMAIL_APP_PASSWORD = \"xxxx xxxx xxxx xxxx\"")
+        console.print("  （Googleアカウント → セキュリティ → アプリパスワードで発行）")
+        return False
+
+    try:
+        msg = MIMEMultipart("related")
+        msg["Subject"] = f"世界王 {pref_name}〈{wl_key}〉生成完了"
+        msg["From"] = gmail_user
+        msg["To"] = gmail_to
+
+        # Build email body — chapters + inline images
+        body_parts = []
+        body_parts.append(f"<h1>世界王 ── {pref_name}〈{wl_key}〉</h1>")
+        body_parts.append(f"<p>全{len(chapters)}章 生成完了</p><hr>")
+
+        for i, text in enumerate(chapters):
+            # Inline image
+            if i < len(image_files) and image_files[i]:
+                body_parts.append(f'<img src="cid:chapter_{i+1}" style="max-width:100%;height:auto;border-radius:8px;margin:16px 0;">')
+
+            # Chapter text
+            paragraphs = "".join(
+                f"<p style='text-indent:1em;line-height:1.8;'>{line}</p>"
+                for line in text.split("\n") if line.strip()
+            )
+            body_parts.append(paragraphs)
+            body_parts.append("<hr>")
+
+        body_parts.append("<p style='color:#888;'>世界王 NovelForge パイプラインより自動送信</p>")
+
+        html_body = MIMEText(
+            f"<html><body style='font-family:serif;max-width:600px;margin:0 auto;padding:16px;background:#1a1a2e;color:#e0e0e0;'>{''.join(body_parts)}</body></html>",
+            "html", "utf-8"
+        )
+        msg.attach(html_body)
+
+        # Attach images inline
+        for i, img_name in enumerate(image_files):
+            if img_name:
+                img_path = output_dir / "images" / img_name
+                if img_path.exists():
+                    with open(img_path, "rb") as f:
+                        img = MIMEImage(f.read(), name=img_name)
+                        img.add_header("Content-ID", f"<chapter_{i+1}>")
+                        img.add_header("Content-Disposition", "inline", filename=img_name)
+                        msg.attach(img)
+
+        # Send
+        with smtplib.SMTP_SSL("smtp.gmail.com", 465, timeout=30) as server:
+            server.login(gmail_user, gmail_pass)
+            server.send_message(msg)
+
+        console.print(f"  [green]✅ Gmail送信完了 → {gmail_to}[/]")
+        return True
+
+    except Exception as e:
+        console.print(f"  [red]❌ Gmail送信失敗: {e}[/]")
+        return False
+
+
+# ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 #  GIT PUSH
 # ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
@@ -924,50 +1048,52 @@ def git_push(output_dir: Path, pref_name: str, wl_key: str) -> bool:
         return False
 
     try:
+        original_cwd = os.getcwd()
         os.chdir(repo_root)
 
         # Stage the output directory
         rel_path = output_dir.resolve().relative_to(repo_root)
         subprocess.run(["git", "add", str(rel_path)], capture_output=True, check=True)
 
-        # Commit
-        msg = f"世界王: {pref_name} {wl_key}"
+        # Commit (use ASCII message to avoid cp932 issues on Windows)
+        pref_ascii = rel_path.parts[-1] if rel_path.parts else pref_name
+        msg = f"worldkings: {pref_ascii}"
         result = subprocess.run(
             ["git", "commit", "-m", msg],
-            capture_output=True, text=True
+            capture_output=True, text=True, encoding="utf-8", errors="replace"
         )
         if result.returncode == 0:
-            console.print(f"  [green]✅ コミット: {msg}[/]")
+            console.print(f"  [green]✅ コミット完了[/]")
         else:
-            if "nothing to commit" in result.stdout:
+            if "nothing to commit" in (result.stdout or ""):
                 console.print(f"  [yellow]⚠ 変更なし（既にコミット済み）[/]")
             else:
-                console.print(f"  [yellow]⚠ コミット: {result.stderr.strip()}[/]")
+                console.print(f"  [yellow]⚠ コミット: {(result.stderr or '').strip()}[/]")
 
-        # Push
+        # Detect current branch
+        branch_result = subprocess.run(
+            ["git", "branch", "--show-current"],
+            capture_output=True, text=True, encoding="utf-8", errors="replace"
+        )
+        branch = (branch_result.stdout or "").strip() or "main"
+
+        # Push (use default remote)
         result = subprocess.run(
-            ["git", "push"],
-            capture_output=True, text=True
+            ["git", "push", "origin", branch],
+            capture_output=True, text=True, encoding="utf-8", errors="replace"
         )
         if result.returncode == 0:
             console.print(f"  [green]✅ プッシュ完了[/]")
             return True
         else:
-            # Try with force
-            result = subprocess.run(
-                ["git", "push", "-f", "origin", "main"],
-                capture_output=True, text=True
-            )
-            if result.returncode == 0:
-                console.print(f"  [green]✅ プッシュ完了（force）[/]")
-                return True
-            else:
-                console.print(f"  [red]❌ プッシュ失敗: {result.stderr.strip()}[/]")
-                return False
+            console.print(f"  [red]❌ プッシュ失敗: {(result.stderr or '').strip()}[/]")
+            return False
 
     except Exception as e:
         console.print(f"  [red]❌ Git操作失敗: {e}[/]")
         return False
+    finally:
+        os.chdir(original_cwd)
 
 
 # ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
@@ -981,6 +1107,7 @@ def run_pipeline(
     sd_config: SDConfig,
     skip_images: bool = False,
     skip_push: bool = False,
+    send_email: bool = False,
 ):
     """Run the full pipeline for one prefecture + world line"""
 
@@ -1093,14 +1220,17 @@ def run_pipeline(
             # Generate image
             if not skip_images and check_sd(sd_config):
                 progress.update(task, description=f"🎨 第{ch_num}章 挿絵生成中...")
+                # Ch2, Ch4, Ch5 have fairy characters
+                fairy_in_chapter = ch_num in (2, 4, 5)
                 try:
                     positive, negative = build_sd_prompt(
                         pref_name, ch_num, wl_key, chapter_text, llm_config
                     )
                     img_path = output_dir / "images" / f"chapter_{ch_num:02d}.png"
-                    if generate_image(positive, negative, img_path, sd_config):
+                    if generate_image(positive, negative, img_path, sd_config, has_fairy=fairy_in_chapter):
+                        orient = "縦" if fairy_in_chapter else "横"
+                        console.print(f"  [green]✅ 第{ch_num}章 挿絵完了[/] ({orient})")
                         image_files.append(f"chapter_{ch_num:02d}.png")
-                        console.print(f"  [green]✅ 第{ch_num}章 挿絵完了[/]")
                     else:
                         image_files.append("")
                 except Exception as e:
@@ -1137,6 +1267,11 @@ def run_pipeline(
     if not skip_push:
         console.print("\n[cyan]🚀 GitHub Pages へデプロイ中...[/]")
         git_push(output_dir, pref_name, wl_key)
+
+    # Email notification
+    if send_email:
+        console.print("\n[cyan]📧 Gmail送信中...[/]")
+        send_gmail(output_dir, pref_name, wl_key, chapters, image_files)
 
     # Summary
     console.print()
@@ -1192,6 +1327,7 @@ def main():
                         help="DeepSeek model (default: deepseek-chat)")
     parser.add_argument("--skip-images", action="store_true", help="画像生成をスキップ")
     parser.add_argument("--skip-push", action="store_true", help="GitHub pushをスキップ")
+    parser.add_argument("--email", action="store_true", help="生成完了後にGmailで送信")
     parser.add_argument("--all", action="store_true", help="5世界線すべてを一括生成")
     parser.add_argument("--list", action="store_true", help="全都道府県一覧を表示")
     parser.add_argument("--sd-url", default=None, help="SD WebUI URL")
@@ -1240,6 +1376,7 @@ def main():
                 args.prefecture, wl_key, llm_config, sd_config,
                 skip_images=args.skip_images,
                 skip_push=args.skip_push,
+                send_email=args.email,
             )
     else:
         if not args.worldline:
@@ -1253,6 +1390,7 @@ def main():
             args.prefecture, args.worldline, llm_config, sd_config,
             skip_images=args.skip_images,
             skip_push=args.skip_push,
+            send_email=args.email,
         )
 
 

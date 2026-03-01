@@ -1,0 +1,27 @@
+{
+  "prefecture": "佐賀",
+  "kingdom": "サガリア・アンバー",
+  "world_line": "商都線",
+  "world_line_value": "陶商圏",
+  "king": {
+    "name": "サガリア・アンバー",
+    "title": "静火王",
+    "personality": "寡黙。内に熱を持つ。",
+    "emotion": "持続"
+  },
+  "fairy": {
+    "name": "アンベラ",
+    "attribute": "陶土",
+    "personality": "寡黙",
+    "role": "火圧制御"
+  },
+  "special_fairy": {
+    "name": "アリタナ",
+    "attribute": "陶土",
+    "personality": "静火",
+    "role": "焼成波調整"
+  },
+  "llm_provider": "deepseek",
+  "chapters_count": 5,
+  "images_count": 5
+}

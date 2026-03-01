@@ -1,0 +1,27 @@
+{
+  "prefecture": "福岡",
+  "kingdom": "フクオカリア・ゲートウェイ",
+  "world_line": "封印線",
+  "world_line_value": "門封印",
+  "king": {
+    "name": "フクオカリア・ゲートウェイ",
+    "title": "玄関王",
+    "personality": "野心的。社交性高い。",
+    "emotion": "挑戦心"
+  },
+  "fairy": {
+    "name": "ゲートリア",
+    "attribute": "玄関",
+    "personality": "野心的",
+    "role": "人流バランス"
+  },
+  "special_fairy": {
+    "name": "ハカタリア",
+    "attribute": "玄関精",
+    "personality": "野心",
+    "role": "人流安定"
+  },
+  "llm_provider": "deepseek",
+  "chapters_count": 5,
+  "images_count": 5
+}

@@ -1,0 +1,27 @@
+{
+  "prefecture": "岩手",
+  "kingdom": "イワティア・ルーン",
+  "world_line": "静律線",
+  "world_line_value": "民話静",
+  "king": {
+    "name": "イワティア・ルーン",
+    "title": "語守王",
+    "personality": "古い物語を重んじる。内省的。",
+    "emotion": "深い共感"
+  },
+  "fairy": {
+    "name": "ルーンティア",
+    "attribute": "古語・石",
+    "personality": "物静かで聡明",
+    "role": "土地の物語保存"
+  },
+  "special_fairy": {
+    "name": "イハトヴァ",
+    "attribute": "民話",
+    "personality": "物静か",
+    "role": "土地神話の保存"
+  },
+  "llm_provider": "deepseek",
+  "chapters_count": 5,
+  "images_count": 5
+}

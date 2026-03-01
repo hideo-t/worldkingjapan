@@ -1,0 +1,27 @@
+{
+  "prefecture": "鹿児島",
+  "kingdom": "サツマリア・リボルト",
+  "world_line": "静律線",
+  "world_line_value": "烈静域",
+  "king": {
+    "name": "サツマリア・リボルト",
+    "title": "革命王",
+    "personality": "反骨精神。独立志向。",
+    "emotion": "覚悟"
+  },
+  "fairy": {
+    "name": "リボルナ",
+    "attribute": "革命",
+    "personality": "強気",
+    "role": "地熱均衡"
+  },
+  "special_fairy": {
+    "name": "サクラジマナ",
+    "attribute": "火精",
+    "personality": "反骨",
+    "role": "地熱均衡"
+  },
+  "llm_provider": "deepseek",
+  "chapters_count": 5,
+  "images_count": 5
+}

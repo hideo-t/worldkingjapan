@@ -1,0 +1,27 @@
+{
+  "prefecture": "大阪",
+  "kingdom": "オオサカリア・リベル",
+  "world_line": "封印線",
+  "world_line_value": "商魂封",
+  "king": {
+    "name": "オオサカリア・リベル",
+    "title": "笑王",
+    "personality": "陽気。機転が利く。",
+    "emotion": "情熱"
+  },
+  "fairy": {
+    "name": "リベルタ",
+    "attribute": "笑い",
+    "personality": "明るく大胆",
+    "role": "怒気分散"
+  },
+  "special_fairy": {
+    "name": "ナニワラ",
+    "attribute": "笑気",
+    "personality": "豪快",
+    "role": "怒気分散"
+  },
+  "llm_provider": "deepseek",
+  "chapters_count": 5,
+  "images_count": 5
+}

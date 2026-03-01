@@ -1,0 +1,27 @@
+{
+  "prefecture": "和歌山",
+  "kingdom": "キイリア・パスウェイ",
+  "world_line": "静律線",
+  "world_line_value": "聖静域",
+  "king": {
+    "name": "キイリア・パスウェイ",
+    "title": "巡礼王",
+    "personality": "導く性格。優しい。",
+    "emotion": "慈悲"
+  },
+  "fairy": {
+    "name": "パセラ",
+    "attribute": "巡礼",
+    "personality": "慈悲深い",
+    "role": "信仰波安定"
+  },
+  "special_fairy": {
+    "name": "クマノア",
+    "attribute": "巡礼道",
+    "personality": "慈悲深い",
+    "role": "信仰流安定"
+  },
+  "llm_provider": "deepseek",
+  "chapters_count": 5,
+  "images_count": 5
+}

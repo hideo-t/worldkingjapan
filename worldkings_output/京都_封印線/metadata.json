@@ -21,7 +21,7 @@
     "personality": "優雅",
     "role": "歴史波動制御"
   },
-  "llm_provider": "claude",
+  "llm_provider": "deepseek",
   "chapters_count": 5,
   "images_count": 5
 }

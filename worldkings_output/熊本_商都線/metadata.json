@@ -1,0 +1,27 @@
+{
+  "prefecture": "熊本",
+  "kingdom": "クマモトリア・ヴァルカン",
+  "world_line": "商都線",
+  "world_line_value": "城商圏",
+  "king": {
+    "name": "クマモトリア・ヴァルカン",
+    "title": "火山王",
+    "personality": "激情型だが理性あり。",
+    "emotion": "闘志"
+  },
+  "fairy": {
+    "name": "ヴァルニア",
+    "attribute": "火山",
+    "personality": "情熱型",
+    "role": "噴気圧分散"
+  },
+  "special_fairy": {
+    "name": "アソリア",
+    "attribute": "火山精",
+    "personality": "力強い",
+    "role": "噴気圧分散"
+  },
+  "llm_provider": "deepseek",
+  "chapters_count": 5,
+  "images_count": 5
+}

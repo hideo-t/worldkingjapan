@@ -1,0 +1,27 @@
+{
+  "prefecture": "栃木",
+  "kingdom": "トチギア・セラフィム",
+  "world_line": "境界線",
+  "world_line_value": "山境",
+  "king": {
+    "name": "トチギア・セラフィム",
+    "title": "守護王",
+    "personality": "規律重視。義務感が強い。",
+    "emotion": "忠誠"
+  },
+  "fairy": {
+    "name": "セラフィナ",
+    "attribute": "霊峰",
+    "personality": "厳格で忠誠心高い",
+    "role": "守護結界維持"
+  },
+  "special_fairy": {
+    "name": "ニッコラ",
+    "attribute": "霊峰光",
+    "personality": "誠実",
+    "role": "聖域波動安定"
+  },
+  "llm_provider": "deepseek",
+  "chapters_count": 5,
+  "images_count": 5
+}

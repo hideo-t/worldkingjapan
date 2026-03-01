@@ -1,0 +1,27 @@
+{
+  "prefecture": "兵庫",
+  "kingdom": "ヒョウゴリア・クロス",
+  "world_line": "静律線",
+  "world_line_value": "異静域",
+  "king": {
+    "name": "ヒョウゴリア・クロス",
+    "title": "交差王",
+    "personality": "多面的。二面性あり。",
+    "emotion": "葛藤"
+  },
+  "fairy": {
+    "name": "クロッサ",
+    "attribute": "交差",
+    "personality": "二面性",
+    "role": "多層衝突緩和"
+  },
+  "special_fairy": {
+    "name": "コウベリア",
+    "attribute": "異国波",
+    "personality": "多面的",
+    "role": "港湾衝突緩和"
+  },
+  "llm_provider": "deepseek",
+  "chapters_count": 5,
+  "images_count": 5
+}

@@ -1,0 +1,27 @@
+{
+  "prefecture": "長崎",
+  "kingdom": "ナガサキア・クロニクル",
+  "world_line": "静律線",
+  "world_line_value": "祈静域",
+  "king": {
+    "name": "ナガサキア・クロニクル",
+    "title": "祈王",
+    "personality": "祈り深い。静かな強さ。",
+    "emotion": "赦し"
+  },
+  "fairy": {
+    "name": "クロナ",
+    "attribute": "祈り",
+    "personality": "優しい",
+    "role": "交差波緩衝"
+  },
+  "special_fairy": {
+    "name": "デジマリア",
+    "attribute": "交差波",
+    "personality": "慈悲",
+    "role": "文化緩衝"
+  },
+  "llm_provider": "deepseek",
+  "chapters_count": 5,
+  "images_count": 5
+}

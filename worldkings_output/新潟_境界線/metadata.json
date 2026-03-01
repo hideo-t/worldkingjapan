@@ -1,0 +1,27 @@
+{
+  "prefecture": "新潟",
+  "kingdom": "ニイガリア・アルバ",
+  "world_line": "境界線",
+  "world_line_value": "海境",
+  "king": {
+    "name": "ニイガリア・アルバ",
+    "title": "余白王",
+    "personality": "思慮深い。静観型。",
+    "emotion": "忍耐"
+  },
+  "fairy": {
+    "name": "アルバナ",
+    "attribute": "雪・余白",
+    "personality": "忍耐強い",
+    "role": "過剰圧の緩和"
+  },
+  "special_fairy": {
+    "name": "コシヒカリス",
+    "attribute": "稲穂光",
+    "personality": "穏やか",
+    "role": "豊穣波安定"
+  },
+  "llm_provider": "deepseek",
+  "chapters_count": 5,
+  "images_count": 5
+}

@@ -1,0 +1,27 @@
+{
+  "prefecture": "長野",
+  "kingdom": "ナガノリア・セルフ",
+  "world_line": "商都線",
+  "world_line_value": "観商圏",
+  "king": {
+    "name": "ナガノリア・セルフ",
+    "title": "内省王",
+    "personality": "哲学的。自己探求型。",
+    "emotion": "静かな迷い"
+  },
+  "fairy": {
+    "name": "セルフィア",
+    "attribute": "高地・風",
+    "personality": "内省的",
+    "role": "精神波安定"
+  },
+  "special_fairy": {
+    "name": "アルペナ",
+    "attribute": "高原風",
+    "personality": "哲学的",
+    "role": "静寂増幅"
+  },
+  "llm_provider": "deepseek",
+  "chapters_count": 5,
+  "images_count": 5
+}

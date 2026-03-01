@@ -1,0 +1,27 @@
+{
+  "prefecture": "山形",
+  "kingdom": "ヤマガリア・フルクト",
+  "world_line": "境界線",
+  "world_line_value": "内陸境",
+  "king": {
+    "name": "ヤマガリア・フルクト",
+    "title": "実王",
+    "personality": "努力家。結果より過程重視。",
+    "emotion": "穏やかな誇り"
+  },
+  "fairy": {
+    "name": "フルッタ",
+    "attribute": "実り",
+    "personality": "穏やかで母性的",
+    "role": "忍耐の波を保つ"
+  },
+  "special_fairy": {
+    "name": "サクラン",
+    "attribute": "花実",
+    "personality": "母性的",
+    "role": "忍耐の補強"
+  },
+  "llm_provider": "deepseek",
+  "chapters_count": 5,
+  "images_count": 5
+}

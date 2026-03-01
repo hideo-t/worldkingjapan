@@ -1,0 +1,27 @@
+{
+  "prefecture": "高知",
+  "kingdom": "コウチリア・フリーダム",
+  "world_line": "封印線",
+  "world_line_value": "海封印",
+  "king": {
+    "name": "コウチリア・フリーダム",
+    "title": "奔王",
+    "personality": "豪胆。自由奔放。",
+    "emotion": "直情"
+  },
+  "fairy": {
+    "name": "フリダ",
+    "attribute": "奔放",
+    "personality": "豪快",
+    "role": "海流補正"
+  },
+  "special_fairy": {
+    "name": "カツオラ",
+    "attribute": "海豪",
+    "personality": "豪胆",
+    "role": "海流補正"
+  },
+  "llm_provider": "deepseek",
+  "chapters_count": 5,
+  "images_count": 5
+}

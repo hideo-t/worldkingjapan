@@ -1,0 +1,27 @@
+{
+  "prefecture": "山口",
+  "kingdom": "ヤマグチア・リバース",
+  "world_line": "封印線",
+  "world_line_value": "潮封印",
+  "king": {
+    "name": "ヤマグチア・リバース",
+    "title": "潮流王",
+    "personality": "変革志向。大胆。",
+    "emotion": "革命性"
+  },
+  "fairy": {
+    "name": "リヴァナ",
+    "attribute": "潮流",
+    "personality": "大胆",
+    "role": "歴史転換波補正"
+  },
+  "special_fairy": {
+    "name": "チョウリュウナ",
+    "attribute": "潮流精",
+    "personality": "大胆",
+    "role": "変革波補正"
+  },
+  "llm_provider": "deepseek",
+  "chapters_count": 5,
+  "images_count": 5
+}

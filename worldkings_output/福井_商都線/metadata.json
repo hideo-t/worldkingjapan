@@ -1,0 +1,27 @@
+{
+  "prefecture": "福井",
+  "kingdom": "フクイア・ストラタ",
+  "world_line": "商都線",
+  "world_line_value": "恐商圏",
+  "king": {
+    "name": "フクイア・ストラタ",
+    "title": "層王",
+    "personality": "歴史を重視。慎重派。",
+    "emotion": "安定志向"
+  },
+  "fairy": {
+    "name": "ストラリス",
+    "attribute": "地層",
+    "personality": "冷静沈着",
+    "role": "地盤安定"
+  },
+  "special_fairy": {
+    "name": "ジュラミア",
+    "attribute": "古層",
+    "personality": "落ち着き",
+    "role": "地質記憶保存"
+  },
+  "llm_provider": "deepseek",
+  "chapters_count": 5,
+  "images_count": 5
+}

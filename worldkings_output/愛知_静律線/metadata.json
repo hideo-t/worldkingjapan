@@ -1,0 +1,27 @@
+{
+  "prefecture": "愛知",
+  "kingdom": "アイチア・メカニカ",
+  "world_line": "静律線",
+  "world_line_value": "合理静",
+  "king": {
+    "name": "アイチア・メカニカ",
+    "title": "機構王",
+    "personality": "合理主義。感情抑制型。",
+    "emotion": "計算"
+  },
+  "fairy": {
+    "name": "メカリス",
+    "attribute": "機構",
+    "personality": "合理的",
+    "role": "都市振動調整"
+  },
+  "special_fairy": {
+    "name": "テクノリア",
+    "attribute": "機構精",
+    "personality": "合理的",
+    "role": "産業振動安定"
+  },
+  "llm_provider": "deepseek",
+  "chapters_count": 5,
+  "images_count": 5
+}
