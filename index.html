@@ -290,7 +290,7 @@ function t(k){return I18N[CL]?.[k]||I18N.ja[k]||k}
 function rn(rk){return I18N[CL].regions[rk]||rk}
 function wn(wk){return I18N[CL].wlNames[wk]||wk}
 function psub(n){return CL!=='ja'&&PN[n]?PN[n][CL]||'':''}
-function imgPath(pref,wl,ch){return encodeURI(`worldkings_output/${pref}_${wl}/images/chapter_${String(ch).padStart(2,'0')}.png`)}
+function imgPath(pref,wl,ch){return encodeURI(`worldkings_output/${pref}_${wl}/thumbs/chapter_${String(ch).padStart(2,'0')}.webp`)}_${wl}/images/chapter_${String(ch).padStart(2,'0')}.png`)}
 
 // All prefectures flat
 function allPrefs(){const a=[];for(const rk of REGIONS_ORDER){for(const p of RD[rk]){a.push({...p,region:rk})}}return a}
