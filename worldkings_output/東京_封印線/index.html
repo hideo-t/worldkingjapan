@@ -179,7 +179,7 @@
 <div class="emblem-info">
   紋章：加速する三重円　｜　色：黒＋金＋赤　｜　象徴：加速
 </div>
-<!-- i18n patch v2 -->
+<!-- i18n patch v3 -->
 <style>
 .back-link{position:fixed;top:12px;left:12px;z-index:9999;color:#888;text-decoration:none;font-size:.85rem;padding:4px 10px;background:rgba(255,255,255,.06);border-radius:4px;border:1px solid rgba(255,255,255,.1);transition:.2s}
 .back-link:hover{color:#fff;background:rgba(255,255,255,.12)}
@@ -196,12 +196,24 @@
 }
 .goog-te-gadget .goog-te-combo option{background:#1a1a2e;color:#ccc}
 .goog-te-banner-frame{display:none!important}
-body{top:0!important}
+body{top:0!important;padding-bottom:60px}
+.story-nav{position:fixed;bottom:0;left:0;right:0;z-index:9999;display:flex;justify-content:center;align-items:center;gap:8px;padding:10px 12px;background:rgba(10,10,20,.95);border-top:1px solid rgba(255,255,255,.08);backdrop-filter:blur(10px)}
+.story-nav a,.story-nav button{background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.1);color:#aaa;padding:8px 16px;border-radius:6px;cursor:pointer;font-size:.8rem;text-decoration:none;transition:.2s;white-space:nowrap}
+.story-nav a:hover,.story-nav button:hover{background:rgba(201,168,76,.15);border-color:rgba(201,168,76,.3);color:#c9a84c}
+.story-nav .nav-label{font-size:.65rem;color:#555;display:block;text-align:center;line-height:1}
+.story-nav .nav-name{font-size:.75rem;color:#bbb;display:block;text-align:center;line-height:1.3;margin-top:2px;max-width:120px;overflow:hidden;text-overflow:ellipsis}
+.story-nav .nav-random{background:rgba(201,168,76,.1);border-color:rgba(201,168,76,.2);color:#c9a84c;font-size:.9rem;padding:8px 20px}
+@media(max-width:600px){
+  .story-nav{gap:4px;padding:8px 6px}
+  .story-nav a,.story-nav button{padding:6px 10px;font-size:.7rem}
+  .story-nav .nav-name{max-width:80px;font-size:.65rem}
+}
 </style>
 <a class="back-link" href="../../index.html">← 戻る</a>
 <div class="gtranslate-wrap">
 <div id="google_translate_element"></div>
 </div>
+<div class="story-nav" id="storyNav"></div>
 <script>
 function googleTranslateElementInit(){
   new google.translate.TranslateElement({
@@ -215,6 +227,7 @@ function googleTranslateElementInit(){
 <script src="https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
 <script>
 (function(){
+  // Auto-select language
   var p=new URLSearchParams(location.search);
   var lang=p.get('lang');
   if(lang&&lang!=='ja'){
@@ -228,6 +241,47 @@ function googleTranslateElementInit(){
       if(attempts>50)clearInterval(iv);
     },200);
   }
+
+  // Story navigation
+  var ALL_STORIES=["三重_商都線", "三重_境界線", "三重_変革線", "三重_封印線", "三重_静律線", "京都_商都線", "京都_境界線", "京都_変革線", "京都_封印線", "京都_静律線", "佐賀_商都線", "佐賀_境界線", "佐賀_変革線", "佐賀_封印線", "佐賀_静律線", "兵庫_商都線", "兵庫_境界線", "兵庫_変革線", "兵庫_封印線", "兵庫_静律線", "北海道_商都線", "北海道_境界線", "北海道_変革線", "北海道_封印線", "北海道_静律線", "千葉_商都線", "千葉_境界線", "千葉_変革線", "千葉_封印線", "千葉_静律線", "和歌山_商都線", "和歌山_境界線", "和歌山_変革線", "和歌山_封印線", "和歌山_静律線", "埼玉_商都線", "埼玉_境界線", "埼玉_変革線", "埼玉_封印線", "埼玉_静律線", "大分_商都線", "大分_境界線", "大分_変革線", "大分_封印線", "大分_静律線", "大阪_商都線", "大阪_境界線", "大阪_変革線", "大阪_封印線", "大阪_静律線", "奈良_商都線", "奈良_境界線", "奈良_変革線", "奈良_封印線", "奈良_静律線", "宮城_商都線", "宮城_境界線", "宮城_変革線", "宮城_封印線", "宮城_静律線", "宮崎_商都線", "宮崎_境界線", "宮崎_変革線", "宮崎_封印線", "宮崎_静律線", "富山_商都線", "富山_境界線", "富山_変革線", "富山_封印線", "富山_静律線", "山口_商都線", "山口_境界線", "山口_変革線", "山口_封印線", "山口_静律線", "山形_商都線", "山形_境界線", "山形_変革線", "山形_封印線", "山形_静律線", "山梨_商都線", "山梨_境界線", "山梨_変革線", "山梨_封印線", "山梨_静律線", "岐阜_商都線", "岐阜_境界線", "岐阜_変革線", "岐阜_封印線", "岐阜_静律線", "岡山_商都線", "岡山_境界線", "岡山_変革線", "岡山_封印線", "岡山_静律線", "岩手_商都線", "岩手_境界線", "岩手_変革線", "岩手_封印線", "岩手_静律線", "島根_商都線", "島根_境界線", "島根_変革線", "島根_封印線", "島根_静律線", "広島_商都線", "広島_境界線", "広島_変革線", "広島_封印線", "広島_静律線", "徳島_商都線", "徳島_境界線", "徳島_変革線", "徳島_封印線", "徳島_静律線", "愛媛_商都線", "愛媛_境界線", "愛媛_変革線", "愛媛_封印線", "愛媛_静律線", "愛知_商都線", "愛知_境界線", "愛知_変革線", "愛知_封印線", "愛知_静律線", "新潟_商都線", "新潟_境界線", "新潟_変革線", "新潟_封印線", "新潟_静律線", "東京_商都線", "東京_境界線", "東京_変革線", "東京_封印線", "東京_静律線", "栃木_商都線", "栃木_境界線", "栃木_変革線", "栃木_封印線", "栃木_静律線", "沖縄_商都線", "沖縄_境界線", "沖縄_変革線", "沖縄_封印線", "沖縄_静律線", "滋賀_商都線", "滋賀_境界線", "滋賀_変革線", "滋賀_封印線", "滋賀_静律線", "熊本_商都線", "熊本_境界線", "熊本_変革線", "熊本_封印線", "熊本_静律線", "石川_商都線", "石川_境界線", "石川_変革線", "石川_封印線", "石川_静律線", "神奈川_商都線", "神奈川_境界線", "神奈川_変革線", "神奈川_封印線", "神奈川_静律線", "福井_商都線", "福井_境界線", "福井_変革線", "福井_封印線", "福井_静律線", "福岡_商都線", "福岡_境界線", "福岡_変革線", "福岡_封印線", "福岡_静律線", "福島_商都線", "福島_境界線", "福島_変革線", "福島_封印線", "福島_静律線", "秋田_商都線", "秋田_境界線", "秋田_変革線", "秋田_封印線", "秋田_静律線", "群馬_商都線", "群馬_境界線", "群馬_変革線", "群馬_封印線", "群馬_静律線", "茨城_商都線", "茨城_境界線", "茨城_変革線", "茨城_封印線", "茨城_静律線", "長崎_商都線", "長崎_境界線", "長崎_変革線", "長崎_封印線", "長崎_静律線", "長野_商都線", "長野_境界線", "長野_変革線", "長野_封印線", "長野_静律線", "青森_商都線", "青森_境界線", "青森_変革線", "青森_封印線", "青森_静律線", "静岡_商都線", "静岡_境界線", "静岡_変革線", "静岡_封印線", "静岡_静律線", "香川_商都線", "香川_境界線", "香川_変革線", "香川_封印線", "香川_静律線", "高知_商都線", "高知_境界線", "高知_変革線", "高知_封印線", "高知_静律線", "鳥取_商都線", "鳥取_境界線", "鳥取_変革線", "鳥取_封印線", "鳥取_静律線", "鹿児島_商都線", "鹿児島_境界線", "鹿児島_変革線", "鹿児島_封印線", "鹿児島_静律線"];
+  var path=location.pathname;
+  var match=path.match(/worldkings_output\/([^\/]+)\//);
+  if(!match)match=path.match(/worldkings_output%2F([^%\/]+)/);
+  var current=match?decodeURIComponent(match[1]):'';
+  var idx=ALL_STORIES.indexOf(current);
+  var nav=document.getElementById('storyNav');
+
+  function storyUrl(name){
+    return encodeURI('../'+name+'/index.html')+(lang?'?lang='+lang:'');
+  }
+  function displayName(name){
+    var parts=name.split('_');
+    return parts[0]+'\n'+parts.slice(1).join('_');
+  }
+
+  if(idx>=0&&nav){
+    var prevIdx=(idx-1+ALL_STORIES.length)%ALL_STORIES.length;
+    var nextIdx=(idx+1)%ALL_STORIES.length;
+    var prevName=ALL_STORIES[prevIdx];
+    var nextName=ALL_STORIES[nextIdx];
+
+    nav.innerHTML=
+      '<a href="'+storyUrl(prevName)+'" title="'+prevName+'">'+
+        '<span class="nav-label">← 前</span>'+
+        '<span class="nav-name">'+prevName.split('_')[0]+'</span>'+
+      '</a>'+
+      '<button class="nav-random" onclick="goRandom()" title="ランダム">🎲</button>'+
+      '<a href="'+storyUrl(nextName)+'" title="'+nextName+'">'+
+        '<span class="nav-label">次 →</span>'+
+        '<span class="nav-name">'+nextName.split('_')[0]+'</span>'+
+      '</a>';
+  }
+
+  window.goRandom=function(){
+    var r=idx;
+    while(r===idx&&ALL_STORIES.length>1)r=Math.floor(Math.random()*ALL_STORIES.length);
+    location.href=storyUrl(ALL_STORIES[r]);
+  };
 })();
 </script>
 
