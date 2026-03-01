@@ -321,7 +321,7 @@ else showView('v-home');
 function storyCard(pref,wl,wlName,showPref=true){
 const img=imgPath(pref,wl,2);
 const sub=psub(pref);
-return `<div class="card" onclick="window.open(encodeURI('worldkings_output/${pref}_${wl}/index.html'),'_blank')">
+return `<div class="card" onclick="window.open(encodeURI('worldkings_output/${pref}_${wl}/index.html')+(CL!=='ja'?'?lang='+CL:''),'_blank')">
 <img class="card-img" src="${img}" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'" loading="lazy">
 <div class="card-fallback" style="display:none;background:${WL_GRAD[wl]}">${pref.charAt(0)}</div>
 <div class="card-overlay">
