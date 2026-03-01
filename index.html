@@ -290,7 +290,9 @@ function t(k){return I18N[CL]?.[k]||I18N.ja[k]||k}
 function rn(rk){return I18N[CL].regions[rk]||rk}
 function wn(wk){return I18N[CL].wlNames[wk]||wk}
 function psub(n){return CL!=='ja'&&PN[n]?PN[n][CL]||'':''}
-function imgPath(pref,wl,ch){return encodeURI(`worldkings_output/${pref}_${wl}/thumbs/chapter_${String(ch).padStart(2,'0')}.webp`)}_${wl}/images/chapter_${String(ch).padStart(2,'0')}.png`)}
+function imgPath(pref,wl,ch){const c=String(ch).padStart(2,'0');return encodeURI(`worldkings_output/${pref}_${wl}/thumbs/chapter_${c}.webp`)}
+function imgFB1(pref,wl,ch){const c=String(ch).padStart(2,'0');return encodeURI(`worldkings_output/${pref}_${wl}/images/chapter_${c}.webp`)}
+function imgFB2(pref,wl,ch){const c=String(ch).padStart(2,'0');return encodeURI(`worldkings_output/${pref}_${wl}/images/chapter_${c}.png`)}
 
 // All prefectures flat
 function allPrefs(){const a=[];for(const rk of REGIONS_ORDER){for(const p of RD[rk]){a.push({...p,region:rk})}}return a}
@@ -320,9 +322,11 @@ else showView('v-home');
 // ═══ CARD HTML ═══
 function storyCard(pref,wl,wlName,showPref=true){
 const img=imgPath(pref,wl,2);
+const fb1=imgFB1(pref,wl,2);
+const fb2=imgFB2(pref,wl,2);
 const sub=psub(pref);
 return `<div class="card" onclick="window.open(encodeURI('worldkings_output/${pref}_${wl}/index.html')+(CL!=='ja'?'?lang='+CL:''),'_blank')">
-<img class="card-img" src="${img}" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'" loading="lazy">
+<img class="card-img" src="${img}" data-fb1="${fb1}" data-fb2="${fb2}" onerror="if(this.dataset.fb1){var s=this.dataset.fb1;this.dataset.fb1='';this.src=s}else if(this.dataset.fb2){var s=this.dataset.fb2;this.dataset.fb2='';this.src=s}else{this.style.display='none';this.nextElementSibling.style.display='flex'}" loading="lazy">
 <div class="card-fallback" style="display:none;background:${WL_GRAD[wl]}">${pref.charAt(0)}</div>
 <div class="card-overlay">
 ${showPref?`<div class="card-pref">${pref}</div>${sub?`<div class="card-pref-sub">${sub}</div>`:''}`:``}
