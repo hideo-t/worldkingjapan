@@ -23,7 +23,7 @@ I18N_INJECT_V2 = '''
   cursor:pointer;outline:none;
 }
 .goog-te-gadget .goog-te-combo option{background:#1a1a2e;color:#ccc}
-.goog-te-banner-frame,.skiptranslate{display:none!important}
+.goog-te-banner-frame{display:none!important}
 body{top:0!important}
 </style>
 <a class="back-link" href="../../index.html">← 戻る</a>
@@ -64,17 +64,13 @@ function googleTranslateElementInit(){
 def patch_file(filepath: Path):
     content = filepath.read_text(encoding='utf-8')
 
-    # Remove v1 patch if present
-    if '<!-- i18n patch -->' in content:
+    # Remove old v1 or v2 patch if present
+    if '<!-- i18n patch' in content:
         content = re.sub(
-            r'\n*<!-- i18n patch -->.*?</script>\s*(?=\n*</body>)',
+            r'\n*<!-- i18n patch[^>]*-->.*?</script>\s*(?=\n*</body>)',
             '', content, flags=re.DOTALL
         )
-        print(f"  (v1 removed)")
-
-    # Skip if v2 already applied
-    if 'i18n patch v2' in content:
-        return False
+        print(f"  (old patch removed)")
 
     if '</body>' in content:
         content = content.replace('</body>', I18N_INJECT_V2 + '\n</body>')
