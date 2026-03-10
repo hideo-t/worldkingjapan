@@ -62,11 +62,6 @@ except ImportError:
 # ─── World Kings Data ─────────────────────────────────────────
 from world_kings_data import PREFECTURES, WORLD_SETTING, get_world_line_key
 from fairy_visuals import get_fairy_prompt, get_fairy_negative_extra, FAIRY_VISUALS
-try:
-    from rakuten_travel import get_hotel_section_html
-    HAS_RAKUTEN = True
-except ImportError:
-    HAS_RAKUTEN = False
 
 
 # ─── Simple Console fallback ──────────────────────────────────
@@ -815,6 +810,18 @@ def build_html_reader(
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>世界王 ── {pref['kingdom']}〈{wl_key}〉{wl_value}</title>
+<meta name="description"        content="「{pref['question']}」{pref_name}を舞台にしたAIファンタジー小説。世界線：{wl_key}（{wl_value}）">
+<meta property="og:type"        content="article">
+<meta property="og:site_name"   content="世界王 World Kings">
+<meta property="og:url"         content="https://hideo-t.github.io/worldkingjapan/worldkings_output/{pref_name}_{wl_key}/index.html">
+<meta property="og:title"       content="{pref_name}〈{wl_key}〉{wl_value} ── 世界王">
+<meta property="og:description" content="「{pref['question']}」{pref_name}を舞台にしたAIファンタジー小説。世界線：{wl_key}（{wl_value}）">
+<meta property="og:image"       content="https://hideo-t.github.io/worldkingjapan/worldkings_output/{pref_name}_{wl_key}/thumbs/chapter_01.webp">
+<meta property="og:locale"      content="ja_JP">
+<meta name="twitter:card"       content="summary_large_image">
+<meta name="twitter:title"      content="{pref_name}〈{wl_key}〉{wl_value} ── 世界王">
+<meta name="twitter:description" content="「{pref['question']}」{pref_name}を舞台にしたAIファンタジー小説。世界線：{wl_key}（{wl_value}）">
+<meta name="twitter:image"      content="https://hideo-t.github.io/worldkingjapan/worldkings_output/{pref_name}_{wl_key}/thumbs/chapter_01.webp">
 <style>
   @import url('https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@400;700&display=swap');
 
@@ -944,17 +951,6 @@ def build_html_reader(
 </html>"""
 
     # Inject i18n support
-    # ── 楽天トラベル 空室検索ウィジェット
-    if HAS_RAKUTEN:
-        hotel_section = get_hotel_section_html(
-            pref_name=pref_name,
-            wl_key=wl_key,
-            accent_color=accent,
-            accent_light=accent_light,
-            bg_color=bg,
-        )
-        html = html.replace('\n</body>', f'\n{hotel_section}\n</body>')
-
     i18n_block = _get_detail_i18n_block()
     html = html.replace('</body>', i18n_block + '\n</body>')
 
