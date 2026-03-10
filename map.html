@@ -25,6 +25,38 @@ body{background:var(--bg);color:var(--tx);font-family:'Noto Serif JP','Cormorant
 .map-wrap{position:relative;width:100%;max-width:800px;margin:3.5rem auto 0;padding:1rem;aspect-ratio:7/10}
 .map-inner{position:relative;width:100%;height:100%}
 
+/* JAPAN MAP IMAGE OVERLAY */
+.map-bg-img{
+  position:absolute;
+  top:var(--map-top,-8%);
+  left:var(--map-left,-18%);
+  width:var(--map-w,136%);
+  height:auto;
+  opacity:.18;
+  pointer-events:none;
+  filter:brightness(1.2) contrast(1.1);
+  mix-blend-mode:screen;
+  z-index:1;
+  transition:top .1s,left .1s,width .1s;
+}
+
+/* TUNE PANEL */
+#tune-panel{
+  position:fixed;bottom:4rem;right:.5rem;z-index:300;
+  background:rgba(6,6,14,.95);border:1px solid rgba(201,168,76,.2);
+  border-radius:10px;padding:.7rem .9rem;font-size:.65rem;color:var(--txd);
+  display:none;flex-direction:column;gap:.35rem;min-width:190px;
+  font-family:monospace;
+}
+#tune-panel label{display:flex;justify-content:space-between;gap:.5rem;align-items:center}
+#tune-panel input[type=range]{width:100px}
+#tune-toggle{
+  position:fixed;bottom:4rem;right:.5rem;z-index:301;
+  background:rgba(6,6,14,.9);border:1px solid rgba(201,168,76,.15);
+  border-radius:6px;padding:.3rem .6rem;font-size:.6rem;color:var(--goldd);
+  cursor:pointer;font-family:monospace;
+}
+
 /* PREFECTURE NODE */
 .pref-node{position:absolute;transform:translate(-50%,-50%);cursor:pointer;z-index:10;transition:all .25s ease;-webkit-tap-highlight-color:transparent}
 .pref-dot{width:28px;height:28px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:.5rem;font-weight:700;color:rgba(255,255,255,.9);transition:all .3s;border:2px solid transparent;position:relative}
@@ -111,7 +143,9 @@ body{background:var(--bg);color:var(--tx);font-family:'Noto Serif JP','Cormorant
 
 <!-- MAP -->
 <div class="map-wrap">
-<div class="map-inner" id="mapInner"></div>
+<div class="map-inner" id="mapInner">
+  <img class="map-bg-img" src="japan_map.png" alt="">
+</div>
 </div>
 
 <!-- POPUP -->
@@ -298,6 +332,56 @@ buildMap();
 buildLegend();
 const bl=(navigator.language||'').substring(0,2);
 if(['en','zh','ko'].includes(bl))setLang(bl);
+
+// ── MAP ALIGNMENT TUNER ──
+(function(){
+const S=localStorage;
+const get=(k,d)=>S.getItem('maptune_'+k)??d;
+const mi=document.querySelector('.map-inner');
+function apply(top,left,w,op){
+  mi.style.setProperty('--map-top',top+'%');
+  mi.style.setProperty('--map-left',left+'%');
+  mi.style.setProperty('--map-w',w+'%');
+  document.querySelector('.map-bg-img').style.opacity=op/100;
+}
+let top=+get('top',-8),left=+get('left',-18),w=+get('w',136),op=+get('op',18);
+apply(top,left,w,op);
+
+// Toggle button
+const btn=document.createElement('button');
+btn.id='tune-toggle';btn.textContent='⚙ map';
+document.body.appendChild(btn);
+
+const panel=document.createElement('div');
+panel.id='tune-panel';
+panel.innerHTML=`
+<div style="color:var(--gold);margin-bottom:.3rem;font-size:.7rem">🗾 Map Align</div>
+<label>top <input type="range" id="t-top" min="-50" max="20" step="1" value="${top}"><span id="v-top">${top}%</span></label>
+<label>left <input type="range" id="t-left" min="-50" max="20" step="1" value="${left}"><span id="v-left">${left}%</span></label>
+<label>width <input type="range" id="t-w" min="80" max="250" step="1" value="${w}"><span id="v-w">${w}%</span></label>
+<label>opacity <input type="range" id="t-op" min="5" max="60" step="1" value="${op}"><span id="v-op">${op}%</span></label>
+<button onclick="localStorage.clear();location.reload()" style="margin-top:.3rem;background:none;border:1px solid rgba(255,100,100,.3);color:#f88;border-radius:4px;padding:.2rem .5rem;cursor:pointer;font-size:.6rem">reset</button>
+`;
+document.body.appendChild(panel);
+
+btn.onclick=()=>{
+  const show=panel.style.display!=='flex';
+  panel.style.display=show?'flex':'none';
+  btn.style.display=show?'none':'block';
+};
+
+['top','left','w','op'].forEach(k=>{
+  document.getElementById('t-'+k).addEventListener('input',function(){
+    if(k==='top')top=+this.value;
+    if(k==='left')left=+this.value;
+    if(k==='w')w=+this.value;
+    if(k==='op')op=+this.value;
+    document.getElementById('v-'+k).textContent=this.value+'%';
+    apply(top,left,w,op);
+    S.setItem('maptune_'+k,this.value);
+  });
+});
+})();
 </script>
 </body>
 </html>
