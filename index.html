@@ -486,27 +486,29 @@ document.getElementById('prefDetailGrid').innerHTML=h||`<div style="color:var(--
 // ═══ MODE: POPULAR ═══
 function renderPopular(){
 document.getElementById('popularMode').style.display='';
-const POPULAR_DATA=[
-{title:'国内旅行者に人気の都道府県ランキング (2026年)',
- subtitle:'国内旅行先として根強い人気を誇るエリアです。',
- items:[
+const rankSuffix={ja:'位',en:'',zh:'位',ko:'위'};
+const readLabel={
+  ja:n=>`${n}の物語を読む →`,
+  en:n=>`Read ${n} stories →`,
+  zh:n=>`阅读${n}的故事 →`,
+  ko:n=>`${n} 이야기 읽기 →`,
+};
+const POPULAR_DATA={
+ja:[
+{title:'国内旅行者に人気の都道府県ランキング (2026年)',subtitle:'国内旅行先として根強い人気を誇るエリアです。',items:[
   {rank:1,pref:'北海道',spot:'北海道',desc:'雄大な自然とグルメ（海鮮・ジンギスカン）が最大の魅力です。'},
   {rank:2,pref:'沖縄',spot:'沖縄県',desc:'那覇・首里、石垣島、宮古島など、ビーチリゾートとしての需要が非常に高いです。'},
   {rank:3,pref:'京都',spot:'京都府',desc:'四季折々の寺社仏閣巡りが定番です。'},
   {rank:4,pref:'東京',spot:'東京都',desc:'最新の商業施設やエンターテインメントが集結しています。'},
 ]},
-{title:'訪日外国人に人気の観光スポット (2025-2026年)',
- subtitle:'インバウンド客には、日本特有の歴史や文化を感じられる場所が支持されています。',
- items:[
+{title:'訪日外国人に人気の観光スポット (2025-2026年)',subtitle:'インバウンド客には、日本特有の歴史や文化を感じられる場所が支持されています。',items:[
   {rank:1,pref:'京都',spot:'伏見稲荷大社（京都）',desc:'千本鳥居の幻想的な風景が圧倒的人気です。'},
   {rank:2,pref:'広島',spot:'広島平和記念資料館（広島）',desc:'歴史的意義の深さから、多くの外国人が訪れます。'},
   {rank:3,pref:'奈良',spot:'東大寺（奈良）',desc:'大仏の迫力と奈良公園の鹿とのふれあいが好評です。'},
   {rank:4,pref:'京都',spot:'金閣寺（京都）',desc:'豪華絢爛な建築が「日本らしさ」の象徴として人気です。'},
   {rank:5,pref:'東京',spot:'浅草寺（東京）',desc:'東京観光の起点として、雷門や仲見世通りが親しまれています。'},
 ]},
-{title:'【季節・テーマ別】今行くべき注目スポット',
- subtitle:'2026年3月現在、見頃を迎える春の観光地や絶景スポットです。',
- items:[
+{title:'【季節・テーマ別】今行くべき注目スポット',subtitle:'2026年3月現在、見頃を迎える春の観光地や絶景スポットです。',items:[
   {rank:'🌸',pref:'神奈川',spot:'三溪園（神奈川）',desc:'古建築と桜が調和する横浜の名庭園。3/27からライトアップ開催。'},
   {rank:'🌸',pref:'岡山',spot:'津山城・鶴山公園（岡山）',desc:'日本さくら名所100選。石垣と桜の対比が見事な城跡。'},
   {rank:'🌸',pref:'愛知',spot:'岡崎公園（愛知）',desc:'東海地方随一の夜桜と岡崎城の共演が楽しめます。'},
@@ -514,16 +516,89 @@ const POPULAR_DATA=[
   {rank:'🗻',pref:'宮崎',spot:'高千穂峡（宮崎）',desc:'神秘的な断崖と滝が続く名勝。'},
   {rank:'🗻',pref:'山口',spot:'角島大橋（山口）',desc:'エメラルドグリーンの海を渡る絶景の橋。'},
 ]},
-];
+],
+en:[
+{title:'Most Popular Prefectures for Domestic Travelers (2026)',subtitle:'These destinations attract consistent domestic tourism year-round.',items:[
+  {rank:1,pref:'北海道',spot:'Hokkaido',desc:'Vast nature and gourmet food (seafood, Genghis Khan BBQ) make it irresistible.'},
+  {rank:2,pref:'沖縄',spot:'Okinawa',desc:'Naha, Ishigaki, Miyako — demand for beach resort stays remains extremely high.'},
+  {rank:3,pref:'京都',spot:'Kyoto',desc:'Seasonal temple and shrine visits are a perennial classic.'},
+  {rank:4,pref:'東京',spot:'Tokyo',desc:'The latest commercial facilities and entertainment are all concentrated here.'},
+]},
+{title:'Top Spots for International Visitors (2025-2026)',subtitle:'Overseas travelers are drawn to places with deep Japanese history and culture.',items:[
+  {rank:1,pref:'京都',spot:'Fushimi Inari Taisha (Kyoto)',desc:'The otherworldly tunnel of thousands of torii gates is overwhelmingly popular.'},
+  {rank:2,pref:'広島',spot:'Hiroshima Peace Memorial Museum',desc:'Its profound historical significance draws visitors from around the world.'},
+  {rank:3,pref:'奈良',spot:'Todai-ji Temple (Nara)',desc:'The giant Buddha and deer encounters in Nara Park are highly appreciated.'},
+  {rank:4,pref:'京都',spot:'Kinkaku-ji (Kyoto)',desc:'The lavish golden architecture symbolizes "Japan" for many visitors.'},
+  {rank:5,pref:'東京',spot:'Senso-ji Temple (Tokyo)',desc:'The Thunder Gate and Nakamise shopping street are beloved starting points.'},
+]},
+{title:'Seasonal & Thematic Highlights — Where to Go Now',subtitle:'Spring scenery and breathtaking landscapes at their peak as of March 2026.',items:[
+  {rank:'🌸',pref:'神奈川',spot:'Sankeien Garden (Kanagawa)',desc:'Historic architecture and cherry blossoms in harmony. Light-up event from Mar 27.'},
+  {rank:'🌸',pref:'岡山',spot:'Tsuyama Castle / Kakuzan Park (Okayama)',desc:'One of Japan\'s top 100 cherry blossom sites — stone walls meet sakura.'},
+  {rank:'🌸',pref:'愛知',spot:'Okazaki Park (Aichi)',desc:'The finest night cherry blossoms in Tokai, framed by Okazaki Castle.'},
+  {rank:'🗻',pref:'岐阜',spot:'Shirakawa-go (Gifu)',desc:'A World Heritage gassho-zukuri thatched farmhouse village.'},
+  {rank:'🗻',pref:'宮崎',spot:'Takachiho Gorge (Miyazaki)',desc:'Mystical cliffs and waterfalls stretching through a sacred landscape.'},
+  {rank:'🗻',pref:'山口',spot:'Tsunoshima Bridge (Yamaguchi)',desc:'A scenic bridge crossing an emerald-green sea.'},
+]},
+],
+zh:[
+{title:'国内旅行者最受欢迎的都道府县排行榜（2026年）',subtitle:'这些地区在国内旅游目的地中长期保持超高人气。',items:[
+  {rank:1,pref:'北海道',spot:'北海道',desc:'壮阔的大自然与美食（海鲜·成吉思汗烤肉）是最大魅力。'},
+  {rank:2,pref:'沖縄',spot:'冲绳县',desc:'那霸·首里城、石垣岛、宫古岛等，作为海滨度假地的需求极高。'},
+  {rank:3,pref:'京都',spot:'京都府',desc:'四季各异的寺社参拜是定番行程。'},
+  {rank:4,pref:'東京',spot:'东京都',desc:'汇聚了最新的商业设施与娱乐资源。'},
+]},
+{title:'访日外国人最受欢迎的观光景点（2025-2026年）',subtitle:'海外游客特别钟情于能感受日本历史与文化的场所。',items:[
+  {rank:1,pref:'京都',spot:'伏见稻荷大社（京都）',desc:'千本鸟居的梦幻风景拥有压倒性的人气。'},
+  {rank:2,pref:'広島',spot:'广岛和平纪念资料馆',desc:'深刻的历史意义吸引了大量外国游客前往。'},
+  {rank:3,pref:'奈良',spot:'东大寺（奈良）',desc:'大佛的震撼与奈良公园的鹿互动广受好评。'},
+  {rank:4,pref:'京都',spot:'金阁寺（京都）',desc:'金碧辉煌的建筑作为"日本象征"深受欢迎。'},
+  {rank:5,pref:'東京',spot:'浅草寺（东京）',desc:'雷门与仲见世商店街是东京观光的必游起点。'},
+]},
+{title:'【季节·主题别】现在必去的热门景点',subtitle:'2026年3月，正值春季赏花与绝景最佳时期。',items:[
+  {rank:'🌸',pref:'神奈川',spot:'三溪园（神奈川）',desc:'古建筑与樱花相融的横滨名园。3/27起举办夜间灯光秀。'},
+  {rank:'🌸',pref:'岡山',spot:'津山城·鹤山公园（冈山）',desc:'日本百大赏樱名所，石垣与樱花的对比令人叹为观止。'},
+  {rank:'🌸',pref:'愛知',spot:'冈崎公园（爱知）',desc:'东海地区最美的夜樱与冈崎城的绝妙搭配。'},
+  {rank:'🗻',pref:'岐阜',spot:'白川乡（岐阜）',desc:'世界遗产合掌造村落。'},
+  {rank:'🗻',pref:'宮崎',spot:'高千穗峡（宫崎）',desc:'神秘的断崖与瀑布绵延不绝的名胜之地。'},
+  {rank:'🗻',pref:'山口',spot:'角岛大桥（山口）',desc:'横跨翡翠绿海面的壮观大桥。'},
+]},
+],
+ko:[
+{title:'국내 여행자에게 인기 있는 도도부현 순위 (2026년)',subtitle:'국내 여행지로 꾸준히 높은 인기를 자랑하는 지역입니다.',items:[
+  {rank:1,pref:'北海道',spot:'홋카이도',desc:'웅장한 자연과 먹거리(해산물·징기스칸)가 가장 큰 매력입니다.'},
+  {rank:2,pref:'沖縄',spot:'오키나와현',desc:'나하·슈리, 이시가키섬, 미야코섬 등 비치 리조트 수요가 매우 높습니다.'},
+  {rank:3,pref:'京都',spot:'교토부',desc:'사계절 사원·신사 탐방이 정석 코스입니다.'},
+  {rank:4,pref:'東京',spot:'도쿄도',desc:'최신 상업시설과 엔터테인먼트가 집결해 있습니다.'},
+]},
+{title:'방일 외국인에게 인기 있는 관광 명소 (2025-2026년)',subtitle:'인바운드 관광객에게는 일본 특유의 역사와 문화를 느낄 수 있는 곳이 지지받고 있습니다.',items:[
+  {rank:1,pref:'京都',spot:'후시미이나리 신사 (교토)',desc:'수천 개의 도리이가 이어지는 환상적인 풍경이 압도적 인기입니다.'},
+  {rank:2,pref:'広島',spot:'히로시마 평화기념자료관',desc:'깊은 역사적 의미로 인해 많은 외국인이 방문합니다.'},
+  {rank:3,pref:'奈良',spot:'도다이지 (나라)',desc:'대불의 압도감과 나라 공원의 사슴과의 만남이 호평받습니다.'},
+  {rank:4,pref:'京都',spot:'킨카쿠지 (교토)',desc:'화려한 금각 건축물이 "일본다움"의 상징으로 인기입니다.'},
+  {rank:5,pref:'東京',spot:'센소지 (도쿄)',desc:'가미나리몬과 나카미세 거리는 도쿄 관광의 출발점입니다.'},
+]},
+{title:'【계절·테마별】지금 꼭 가야 할 주목 명소',subtitle:'2026년 3월 현재 봄꽃 명소와 절경 스폿이 절정을 맞이하고 있습니다.',items:[
+  {rank:'🌸',pref:'神奈川',spot:'산케이엔 정원 (가나가와)',desc:'고건축과 벚꽃이 어우러지는 요코하마 명원. 3/27부터 야간 조명 행사.'},
+  {rank:'🌸',pref:'岡山',spot:'쓰야마성·가쿠잔 공원 (오카야마)',desc:'일본 벚꽃 명소 100선. 석벽과 벚꽃의 대비가 멋진 성터.'},
+  {rank:'🌸',pref:'愛知',spot:'오카자키 공원 (아이치)',desc:'도카이 지방 최고의 야간 벚꽃과 오카자키성의 조화.'},
+  {rank:'🗻',pref:'岐阜',spot:'시라카와고 (기후)',desc:'세계유산 갓쇼즈쿠리 마을.'},
+  {rank:'🗻',pref:'宮崎',spot:'다카치호 협곡 (미야자키)',desc:'신비로운 절벽과 폭포가 이어지는 명승지.'},
+  {rank:'🗻',pref:'山口',spot:'쓰노시마 대교 (야마구치)',desc:'에메랄드빛 바다를 가로지르는 절경의 다리.'},
+]},
+],
+};
+const secs=POPULAR_DATA[CL]||POPULAR_DATA.ja;
+const rs=rankSuffix[CL]||'位';
+const rl=readLabel[CL]||readLabel.ja;
 let h='';
-for(const sec of POPULAR_DATA){
+for(const sec of secs){
 h+=`<div class="pop-section"><div class="pop-section-title">${sec.title}</div><div class="pop-section-subtitle">${sec.subtitle}</div>`;
 for(const item of sec.items){
 const rc=typeof item.rank==='number'?['','r1','r2','r3'][item.rank]||'':'';
-const rankStr=typeof item.rank==='number'?item.rank+'位':item.rank;
+const rankStr=typeof item.rank==='number'?item.rank+rs:item.rank;
 h+=`<div class="pop-item" onclick="openPref('${item.pref}')">
 <div class="pop-rank ${rc}">${rankStr}</div>
-<div class="pop-info"><div class="pop-name">${item.spot}<span class="pop-tag">${item.pref}の物語を読む →</span></div><div class="pop-desc">${item.desc}</div></div>
+<div class="pop-info"><div class="pop-name">${item.spot}<span class="pop-tag">${rl(item.pref)}</span></div><div class="pop-desc">${item.desc}</div></div>
 </div>`;
 }
 h+=`</div><div class="pop-divider"></div>`;
