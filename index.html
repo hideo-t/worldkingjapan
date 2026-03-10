@@ -44,6 +44,7 @@ body{background:var(--bg);color:var(--tx);font-family:'Noto Serif JP','Noto Seri
 .pop-section-subtitle{font-size:.7rem;color:var(--txd);margin-bottom:1rem;padding-left:1rem}
 .pop-item{display:flex;align-items:flex-start;gap:.9rem;padding:.7rem .9rem;border-radius:8px;background:rgba(255,255,255,.02);border:1px solid rgba(255,255,255,.04);margin-bottom:.5rem;cursor:pointer;transition:.25s}
 .pop-item:hover{background:rgba(201,168,76,.06);border-color:rgba(201,168,76,.2)}
+.pop-thumb{width:56px;height:56px;border-radius:6px;object-fit:cover;flex-shrink:0;background:rgba(255,255,255,.04)}
 .pop-rank{font-size:1.1rem;font-weight:700;color:var(--goldd);min-width:1.8rem;padding-top:.1rem}
 .pop-rank.r1{color:#ffd700}.pop-rank.r2{color:#c0c0c0}.pop-rank.r3{color:#cd7f32}
 .pop-info{flex:1}
@@ -596,7 +597,12 @@ h+=`<div class="pop-section"><div class="pop-section-title">${sec.title}</div><d
 for(const item of sec.items){
 const rc=typeof item.rank==='number'?['','r1','r2','r3'][item.rank]||'':'';
 const rankStr=typeof item.rank==='number'?item.rank+rs:item.rank;
+const rwl=WLS[Math.floor(Math.random()*WLS.length)];
+const rch=String(Math.floor(Math.random()*5)+1).padStart(2,'0');
+const rthumb=encodeURI(`worldkings_output/${item.pref}_${rwl}/thumbs/chapter_${rch}.webp`);
+const rfb=encodeURI(`worldkings_output/${item.pref}_${rwl}/images/chapter_${rch}.webp`);
 h+=`<div class="pop-item" onclick="openPref('${item.pref}')">
+<img class="pop-thumb" src="${rthumb}" onerror="this.src='${rfb}';this.onerror=function(){this.style.background='${WL_GRAD[rwl]}';this.style.opacity='.5'}" loading="lazy">
 <div class="pop-rank ${rc}">${rankStr}</div>
 <div class="pop-info"><div class="pop-name">${item.spot}<span class="pop-tag">${rl(item.pref)}</span></div><div class="pop-desc">${item.desc}</div></div>
 </div>`;
