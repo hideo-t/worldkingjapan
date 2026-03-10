@@ -144,9 +144,7 @@ body{background:var(--bg);color:var(--tx);font-family:'Noto Serif JP','Cormorant
 
 <!-- MAP -->
 <div class="map-wrap">
-<div class="map-inner" id="mapInner">
-  <img class="map-bg-img" src="japan_map.png" alt="">
-</div>
+<div class="map-inner" id="mapInner"></div>
 </div>
 
 <!-- POPUP -->
@@ -267,6 +265,12 @@ h+=`<div class="pref-node region-${p.r}" data-name="${p.n}" style="left:${p.x}%;
 </div>`;
 }
 c.innerHTML=h;
+// 地図背景画像を再挿入（innerHTML上書きで消えるため）
+const mapImg=document.createElement('img');
+mapImg.className='map-bg-img';
+mapImg.src='japan_map.png';
+mapImg.alt='';
+c.insertBefore(mapImg,c.firstChild);
 }
 
 function buildLegend(){
