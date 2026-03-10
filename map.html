@@ -274,11 +274,11 @@ c.insertBefore(mapImg,c.firstChild);
 // localStorage の調整値を再適用
 const S=localStorage;
 const gn=(k,d)=>+(S.getItem('maptune_'+k)??d);
-mapImg.style.top=gn('top',-8)+'%';
-mapImg.style.left=gn('left',-18)+'%';
-mapImg.style.width=gn('w',136)+'%';
-mapImg.style.opacity=gn('op',18)/100;
-mapImg.style.transform=`rotate(${gn('rot',0)}deg)`;
+mapImg.style.top=gn('top',-4)+'%';
+mapImg.style.left=gn('left',-16)+'%';
+mapImg.style.width=gn('w',155)+'%';
+mapImg.style.opacity=gn('op',21)/100;
+mapImg.style.transform=`rotate(${gn('rot',-6)}deg)`;
 mapImg.style.transformOrigin='center center';
 }
 
@@ -361,7 +361,7 @@ function apply(top,left,w,op,rot){
   img.style.transform=`rotate(${rot}deg)`;
   img.style.transformOrigin='center center';
 }
-let top=get('top',-8),left=get('left',-18),w=get('w',136),op=get('op',18),rot=get('rot',0);
+let top=get('top',-4),left=get('left',-16),w=get('w',155),op=get('op',21),rot=get('rot',-6);
 apply(top,left,w,op,rot);
 
 const btn=document.createElement('button');
