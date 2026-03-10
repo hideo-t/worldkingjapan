@@ -306,10 +306,13 @@ const sub=psub(name);
 const question=q(name);
 let wlHtml='';
 for(const w of WLS){
-const img=`worldkings_output/${name}_${w}/images/chapter_2.png`;
-const href=`worldkings_output/${name}_${w}/index.html`;
+const rch=String(Math.floor(Math.random()*5)+1).padStart(2,'0');
+const thumb=encodeURI(`worldkings_output/${name}_${w}/thumbs/chapter_${rch}.webp`);
+const fb1=encodeURI(`worldkings_output/${name}_${w}/images/chapter_${rch}.webp`);
+const fb2=encodeURI(`worldkings_output/${name}_${w}/images/chapter_${rch}.png`);
+const href=encodeURI(`worldkings_output/${name}_${w}/index.html`);
 wlHtml+=`<div class="wl-story" onclick="event.stopPropagation();window.open('${href}','_blank')">
-<img class="wl-story-img" src="${img}" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'" loading="lazy">
+<img class="wl-story-img" src="${thumb}" data-fb1="${fb1}" data-fb2="${fb2}" onerror="if(this.dataset.fb1){var s=this.dataset.fb1;this.dataset.fb1='';this.src=s}else if(this.dataset.fb2){var s=this.dataset.fb2;this.dataset.fb2='';this.src=s}else{this.style.display='none';this.nextElementSibling.style.display='flex'}" loading="lazy">
 <div class="wl-story-fallback" style="display:none;background:${WLG[w]}">${name.charAt(0)}</div>
 <div class="wl-story-info"><span class="wl-story-dot" style="background:${WLC[w]}"></span><span class="wl-story-name">${wn(w)}</span></div>
 </div>`;
