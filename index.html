@@ -3,13 +3,13 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Misty Japan ── 世界王 World Kings</title>
+<title>Mysterious Japan ── 世界王 World Kings</title>
 <meta name="description" content="AI-generated fantasy novels for all 47 Japanese prefectures × 5 world lines = 235 stories.">
-<meta property="og:title" content="Misty Japan ── 世界王 World Kings">
+<meta property="og:title" content="Mysterious Japan ── 世界王 World Kings">
 <meta property="og:description" content="AI fantasy novels rooted in real Japanese geography. 47 prefectures × 5 world lines.">
 <style>
 @import url('https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@300;400;700;900&family=Noto+Serif+SC:wght@400;700&family=Noto+Serif+KR:wght@400;700&family=Zen+Old+Mincho:wght@400;700&family=Cormorant+Garamond:wght@400;600;700&display=swap');
-:root{--bg:#06060e;--bg2:#0c0c1a;--bg3:#12122a;--tx:#c8c8d4;--txd:#5a5a72;--txb:#eeeef4;--seal:#7b2ff7;--trade:#f7a02f;--zen:#2f7bf7;--rev:#f72f2f;--bdr:#2ff77b;--gold:#c9a84c;--goldd:#8a7235;--r:10px}
+:root{--bg:#06060e;--bg2:#0c0c1a;--bg3:#12122a;--tx:#c8c8d4;--txd:#b0b0c8;--txb:#eeeef4;--seal:#7b2ff7;--trade:#f7a02f;--zen:#2f7bf7;--rev:#f72f2f;--bdr:#2ff77b;--gold:#c9a84c;--goldd:#8a7235;--r:10px}
 *{margin:0;padding:0;box-sizing:border-box}html{scroll-behavior:smooth}
 body{background:var(--bg);color:var(--tx);font-family:'Noto Serif JP','Noto Serif SC','Noto Serif KR','Cormorant Garamond',serif;line-height:1.7;overflow-x:hidden;min-height:100vh}
 
@@ -28,7 +28,7 @@ body{background:var(--bg);color:var(--tx);font-family:'Noto Serif JP','Noto Seri
 .hero::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse 600px 400px at 30% 30%,rgba(123,47,247,.06),transparent),radial-gradient(ellipse 500px 400px at 70% 50%,rgba(47,123,247,.04),transparent);pointer-events:none}
 .hero-kanji{font-family:'Zen Old Mincho',serif;font-size:clamp(2.5rem,8vw,5rem);font-weight:700;color:transparent;background:linear-gradient(135deg,var(--gold),#f0dca0 40%,var(--goldd) 70%,var(--gold));-webkit-background-clip:text;background-clip:text;letter-spacing:.15em;line-height:1.2;position:relative;z-index:1}
 .hero-sub{font-family:'Cormorant Garamond',serif;font-size:clamp(.6rem,2vw,.85rem);color:var(--goldd);letter-spacing:.5em;text-transform:uppercase;margin-top:.3rem;position:relative;z-index:1}
-.hero-quote{font-size:clamp(.75rem,2vw,.95rem);color:var(--txd);max-width:500px;margin:1.2rem auto 0;font-weight:300;line-height:2;position:relative;z-index:1}
+.hero-quote{font-size:clamp(.75rem,2vw,.95rem);color:#d8d8ee;max-width:500px;margin:1.2rem auto 0;font-weight:400;line-height:2;position:relative;z-index:1;text-shadow:0 1px 8px rgba(0,0,0,.8)}
 
 /* STATS */
 .stats{display:flex;justify-content:center;gap:1.5rem;padding:1.2rem 1rem;border-top:1px solid rgba(201,168,76,.08);border-bottom:1px solid rgba(201,168,76,.08);flex-wrap:wrap}
@@ -147,8 +147,8 @@ body{background:var(--bg);color:var(--tx);font-family:'Noto Serif JP','Noto Seri
 <!-- VIEW: HOME -->
 <div class="view active" id="v-home">
 <div class="hero">
-<div class="hero-kanji">世界王</div>
-<div class="hero-sub">Misty Japan ── World Kings</div>
+<div class="hero-kanji">Mysterious Japan</div>
+<div class="hero-sub">世界王 &nbsp;·&nbsp; World Kings</div>
 <div class="hero-quote" id="heroQuote"></div>
 </div>
 <div class="stats">
@@ -206,7 +206,7 @@ body{background:var(--bg);color:var(--tx);font-family:'Noto Serif JP','Noto Seri
 <!-- FOOTER -->
 <div class="footer">
 <div class="footer-quote" id="footerQuote"></div>
-<div class="footer-meta">世界王 × NovelForge ── Misty Japan<br>AI Generated Fantasy Novel Collection<br>© 2026 World Kings Project</div>
+<div class="footer-meta">Mysterious Japan ── 世界王 World Kings<br>AI Generated Fantasy Novel Collection<br>© 2026 World Kings Project</div>
 </div>
 
 <script>
@@ -321,9 +321,10 @@ else showView('v-home');
 
 // ═══ CARD HTML ═══
 function storyCard(pref,wl,wlName,showPref=true){
-const img=imgPath(pref,wl,2);
-const fb1=imgFB1(pref,wl,2);
-const fb2=imgFB2(pref,wl,2);
+const _rch=(Math.floor(Math.random()*5)+1);
+const img=imgPath(pref,wl,_rch);
+const fb1=imgFB1(pref,wl,_rch);
+const fb2=imgFB2(pref,wl,_rch);
 const sub=psub(pref);
 return `<div class="card" onclick="window.open(encodeURI('worldkings_output/${pref}_${wl}/index.html')+(CL!=='ja'?'?lang='+CL:''),'_blank')">
 <img class="card-img" src="${img}" data-fb1="${fb1}" data-fb2="${fb2}" onerror="if(this.dataset.fb1){var s=this.dataset.fb1;this.dataset.fb1='';this.src=s}else if(this.dataset.fb2){var s=this.dataset.fb2;this.dataset.fb2='';this.src=s}else{this.style.display='none';this.nextElementSibling.style.display='flex'}" loading="lazy">
