@@ -140,9 +140,70 @@ body{background:var(--bg);color:var(--tx);font-family:'Noto Serif JP','Noto Seri
 @media(min-width:641px)and(max-width:1024px){
 .grid{grid-template-columns:repeat(auto-fill,minmax(140px,1fr))}
 }
+
+/* ── INTRO OVERLAY ── */
+#intro-overlay{
+  position:fixed;inset:0;z-index:9999;
+  background:var(--bg);
+  display:flex;align-items:center;justify-content:center;
+  pointer-events:none;
+  animation:introFade 0.6s ease-in 2.4s forwards;
+}
+#intro-map{
+  width:min(520px,80vw);
+  opacity:0;
+  transform:scale(4);
+  animation:mapZoomOut 1.8s cubic-bezier(0.16,1,0.3,1) 0.3s forwards;
+  filter:drop-shadow(0 0 24px rgba(201,168,76,.25));
+}
+@keyframes mapZoomOut{
+  0%  {opacity:0;transform:scale(4)}
+  20% {opacity:1}
+  100%{opacity:1;transform:scale(1)}
+}
+@keyframes introFade{
+  0%  {opacity:1;pointer-events:all}
+  100%{opacity:0;pointer-events:none;display:none}
+}
+
+/* ── MAP IN HERO ── */
+.hero-map-wrap{
+  position:relative;
+  width:min(340px,70vw);
+  margin:1.5rem auto 0;
+  opacity:0;
+  animation:heroMapAppear 0.8s ease 2.8s forwards;
+}
+.hero-map-img{
+  width:100%;
+  filter:drop-shadow(0 0 18px rgba(201,168,76,.18)) brightness(0.85);
+  mix-blend-mode:lighten;
+}
+@keyframes heroMapAppear{
+  from{opacity:0;transform:translateY(10px)}
+  to  {opacity:1;transform:translateY(0)}
+}
+
+/* hero テキストも遅延フェードイン */
+.hero-kanji,.hero-sub,.hero-quote{
+  opacity:0;
+  animation:heroTextIn 0.7s ease forwards;
+}
+.hero-kanji{animation-delay:2.5s}
+.hero-sub{animation-delay:2.65s}
+.hero-quote{animation-delay:2.8s}
+@keyframes heroTextIn{
+  from{opacity:0;transform:translateY(8px)}
+  to  {opacity:1;transform:translateY(0)}
+}
 </style>
 </head>
 <body>
+
+<!-- INTRO OVERLAY -->
+<div id="intro-overlay">
+  <img id="intro-map" src="japan_map.png" alt="Japan">
+</div>
 
 <!-- LANG -->
 <div class="lang-bar">
@@ -164,6 +225,9 @@ body{background:var(--bg);color:var(--tx);font-family:'Noto Serif JP','Noto Seri
 <div class="hero-kanji">Mysterious Japan</div>
 <div class="hero-sub">世界王 &nbsp;·&nbsp; World Kings</div>
 <div class="hero-quote" id="heroQuote"></div>
+<div class="hero-map-wrap">
+  <img class="hero-map-img" src="japan_map.png" alt="Japan Map">
+</div>
 </div>
 <div class="stats">
 <div class="stat"><b>47</b><span data-i18n="prefectures"></span></div>
