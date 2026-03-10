@@ -283,125 +283,6 @@ function googleTranslateElementInit(){
 </script>
 
 
-<!-- rakuten-widget-injected -->
-
-<!-- ══════════════════════════════════════════════════════════
-     楽天トラベル 空室検索ウィジェット
-     県: 岩手 | コード: iwate | 世界線: 封印線
-     ══════════════════════════════════════════════════════════ -->
-
-
-<script>
-// ── APIキー（環境変数から生成時に埋め込み済み）────────────────────────
-const HT_APP_ID    = "48183afe-d7a2-47ee-92a6-da11db5a18ee";
-const HT_AFFIL_ID  = "51be1a0f.f394ea74.51be1a10.268fcc2f";
-const MIDDLE_CODE  = "iwate";
-const LARGE_CODE   = "japan";
-const SQUEEZE_COND = "onsen";
-
-// ── 日付デフォルト ────────────────────────────────────────────────────
-(function(){
-  const today=new Date(), tomorrow=new Date(today);
-  tomorrow.setDate(today.getDate()+1);
-  const fmt=d=>d.toISOString().split('T')[0];
-  document.getElementById('ht-checkin').value  = fmt(today);
-  document.getElementById('ht-checkout').value = fmt(tomorrow);
-  document.getElementById('ht-checkin').min    = fmt(today);
-  document.getElementById('ht-checkout').min   = fmt(tomorrow);
-  document.getElementById('ht-checkin').addEventListener('change',function(){
-    const cin=new Date(this.value), cout=new Date(cin);
-    cout.setDate(cin.getDate()+1);
-    const el=document.getElementById('ht-checkout');
-    el.min=fmt(cout);
-    if(new Date(el.value)<=cin) el.value=fmt(cout);
-  });
-})();
-
-let _htPage=1, _htLastParams=null;
-
-async function searchHotels(){
-  _htPage=1;
-  _htLastParams={
-    checkin:  document.getElementById('ht-checkin').value,
-    checkout: document.getElementById('ht-checkout').value,
-    adult:    document.getElementById('ht-adult').value,
-  };
-  document.getElementById('ht-list').innerHTML='';
-  document.getElementById('ht-more').style.display='none';
-  document.getElementById('ht-results').style.display='block';
-  document.getElementById('ht-loading').style.display='block';
-  document.getElementById('ht-search-btn').disabled=true;
-  await fetchHotels(1);
-  document.getElementById('ht-search-btn').disabled=false;
-}
-
-async function loadMoreHotels(){
-  _htPage++;
-  document.getElementById('ht-more').style.display='none';
-  document.getElementById('ht-loading').style.display='block';
-  await fetchHotels(_htPage);
-}
-
-async function fetchHotels(page){
-  const p=_htLastParams;
-  const params=new URLSearchParams({
-    applicationId:   HT_APP_ID,
-    largeClassCode:  LARGE_CODE,
-    middleClassCode: MIDDLE_CODE,
-    checkinDate:     p.checkin,
-    checkoutDate:    p.checkout,
-    adultNum:        p.adult,
-    hits:            '6',
-    page:            String(page),
-    formatVersion:   '2',
-    responseType:    'middle',
-    sort:            'standard',
-    ...(HT_AFFIL_ID  ? {affiliateId:HT_AFFIL_ID}  : {}),
-    ...(SQUEEZE_COND ? {squeezeCondition:SQUEEZE_COND} : {}),
-  });
-  try{
-    const res=await fetch(`https://app.rakuten.co.jp/services/api/Travel/VacantHotelSearch/20170426?${params}`);
-    const data=await res.json();
-    if(data.error){ showError('APIエラー: '+(data.error_description||data.error)); return; }
-    const hotels=data.hotels||[];
-    document.getElementById('ht-loading').style.display='none';
-    if(hotels.length===0&&page===1){
-      document.getElementById('ht-list').innerHTML='<div class="hotel-widget__empty">空室が見つかりませんでした。<br>日程や条件を変えてお試しください。</div>';
-      return;
-    }
-    const listEl=document.getElementById('ht-list');
-    hotels.forEach(h=>{
-      const info=h.hotelBasicInfo||h;
-      const charge=h.roomInfo?.[0]?.dailyCharge||{};
-      const name=info.hotelName||'（名称不明）';
-      const url=info.planListUrl||info.hotelInformationUrl||'#';
-      const thumb=info.hotelThumbnailUrl||'';
-      const station=info.nearestStation?`🚉 ${info.nearestStation}`:'';
-      const review=info.reviewAverage?`${'★'.repeat(Math.round(info.reviewAverage))} ${info.reviewAverage} (${info.reviewCount}件)`:'';
-      const price=info.hotelMinCharge?`¥${Number(info.hotelMinCharge).toLocaleString()}〜/泊`:(charge.rakutenCharge?`¥${Number(charge.rakutenCharge).toLocaleString()}〜/泊`:'');
-      const thumbEl=thumb?`<img class="hotel-card__thumb" src="${thumb}" alt="${name}" loading="lazy">`:`<div class="hotel-card__thumb-placeholder">🏯</div>`;
-      listEl.insertAdjacentHTML('beforeend',`
-        <a class="hotel-card" href="${url}" target="_blank" rel="noopener">
-          ${thumbEl}
-          <div class="hotel-card__body">
-            <div class="hotel-card__name">${name}</div>
-            <div class="hotel-card__meta">${station}</div>
-            ${price  ?`<div class="hotel-card__price">${price}</div>`  :''}
-            ${review ?`<div class="hotel-card__review">${review}</div>`:''}
-          </div>
-        </a>`);
-    });
-    const totalPages=data.pagingInfo?.pageCount||1;
-    if(page<totalPages&&page<5) document.getElementById('ht-more').style.display='block';
-  }catch(e){ showError('通信エラー: '+e.message); }
-}
-
-function showError(msg){
-  document.getElementById('ht-loading').style.display='none';
-  document.getElementById('ht-list').innerHTML=`<div class="hotel-widget__error">⚠ ${msg}</div>`;
-}
-</script>
-<!-- ══════════════════════════════════════════════════════════ -->
 
 
 <!-- rakuten-widget-injected -->
@@ -481,7 +362,7 @@ function htSearch_iwate(site){
   var ad=document.getElementById('ht-ad-iwate').value;
   var url='';
   if(site==='rakuten'){
-    url='https://travel.rakuten.co.jp/HOTEL/search/search.php'
+    url='https://travel.rakuten.co.jp/search/HOTEL/'
       +'?f_area=iwate'
       +'&f_otona_su='+ad
       +'&f_s1='+ci[0]+'&f_m1='+ci[1]+'&f_d1='+ci[2]

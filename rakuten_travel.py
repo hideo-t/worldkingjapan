@@ -145,7 +145,7 @@ function htSearch_{code}(site){{
   var ad=document.getElementById('ht-ad-{code}').value;
   var url='';
   if(site==='rakuten'){{
-    url='https://travel.rakuten.co.jp/HOTEL/search/search.php'
+    url='https://travel.rakuten.co.jp/search/HOTEL/'
       +'?f_area={code}'
       +'&f_otona_su='+ad
       +'&f_s1='+ci[0]+'&f_m1='+ci[1]+'&f_d1='+ci[2]
