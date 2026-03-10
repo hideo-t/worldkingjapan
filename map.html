@@ -271,6 +271,15 @@ mapImg.className='map-bg-img';
 mapImg.src='japan_map.png';
 mapImg.alt='';
 c.insertBefore(mapImg,c.firstChild);
+// localStorage の調整値を再適用
+const S=localStorage;
+const gn=(k,d)=>+(S.getItem('maptune_'+k)??d);
+mapImg.style.top=gn('top',-8)+'%';
+mapImg.style.left=gn('left',-18)+'%';
+mapImg.style.width=gn('w',136)+'%';
+mapImg.style.opacity=gn('op',18)/100;
+mapImg.style.transform=`rotate(${gn('rot',0)}deg)`;
+mapImg.style.transformOrigin='center center';
 }
 
 function buildLegend(){
@@ -342,16 +351,18 @@ if(['en','zh','ko'].includes(bl))setLang(bl);
 (function(){
 const S=localStorage;
 const get=(k,d)=>+(S.getItem('maptune_'+k)??d);
-const mi=document.querySelector('.map-inner');
-const img=document.querySelector('.map-bg-img');
-function apply(top,left,w,op){
+function getImg(){return document.querySelector('.map-bg-img')}
+function apply(top,left,w,op,rot){
+  const img=getImg(); if(!img)return;
   img.style.top=top+'%';
   img.style.left=left+'%';
   img.style.width=w+'%';
   img.style.opacity=op/100;
+  img.style.transform=`rotate(${rot}deg)`;
+  img.style.transformOrigin='center center';
 }
-let top=get('top',-8),left=get('left',-18),w=get('w',136),op=get('op',18);
-apply(top,left,w,op);
+let top=get('top',-8),left=get('left',-18),w=get('w',136),op=get('op',18),rot=get('rot',0);
+apply(top,left,w,op,rot);
 
 const btn=document.createElement('button');
 btn.id='tune-toggle';btn.textContent='⚙ map align';
@@ -364,8 +375,9 @@ panel.innerHTML=`
 <label>top <input type="range" id="t-top" min="-50" max="20" step="1" value="${top}"><span id="v-top">${top}%</span></label>
 <label>left <input type="range" id="t-left" min="-60" max="20" step="1" value="${left}"><span id="v-left">${left}%</span></label>
 <label>width <input type="range" id="t-w" min="80" max="250" step="1" value="${w}"><span id="v-w">${w}%</span></label>
+<label>rotate <input type="range" id="t-rot" min="-30" max="30" step="0.5" value="${rot}"><span id="v-rot">${rot}°</span></label>
 <label>opacity <input type="range" id="t-op" min="5" max="60" step="1" value="${op}"><span id="v-op">${op}%</span></label>
-<button onclick="['top','left','w','op'].forEach(k=>localStorage.removeItem('maptune_'+k));location.reload()" style="background:none;border:1px solid rgba(255,80,80,.4);color:#f88;border-radius:4px;padding:.2rem .6rem;cursor:pointer;font-size:.6rem">reset</button>
+<button onclick="['top','left','w','op','rot'].forEach(k=>localStorage.removeItem('maptune_'+k));location.reload()" style="background:none;border:1px solid rgba(255,80,80,.4);color:#f88;border-radius:4px;padding:.2rem .6rem;cursor:pointer;font-size:.6rem">reset</button>
 `;
 document.body.appendChild(panel);
 
@@ -376,15 +388,18 @@ btn.onclick=()=>{
   btn.textContent=open?'✕ close':'⚙ map align';
 };
 
-['top','left','w','op'].forEach(k=>{
+const keys=['top','left','w','rot','op'];
+keys.forEach(k=>{
   document.getElementById('t-'+k).addEventListener('input',function(){
     const v=+this.value;
     if(k==='top')top=v;
     if(k==='left')left=v;
     if(k==='w')w=v;
     if(k==='op')op=v;
-    document.getElementById('v-'+k).textContent=v+'%';
-    apply(top,left,w,op);
+    if(k==='rot')rot=v;
+    const unit=k==='rot'?'°':'%';
+    document.getElementById('v-'+k).textContent=v+unit;
+    apply(top,left,w,op,rot);
     S.setItem('maptune_'+k,v);
   });
 });
