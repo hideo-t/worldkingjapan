@@ -143,6 +143,41 @@ body{background:var(--bg);color:var(--tx);font-family:'Noto Serif JP','Noto Seri
 .filter-bar{gap:.2rem;padding:.5rem}.filter-chip{padding:.25rem .6rem;font-size:.6rem}
 .hero{padding:3rem 1rem 1.5rem}.stats{gap:1rem;padding:1rem}
 }
+
+/* ═══ MY PAGE ═══ */
+.card-badges{position:absolute;top:.4rem;right:.4rem;display:flex;gap:.25rem;z-index:5}
+.card-read-badge{background:rgba(47,247,123,.85);border-radius:50%;width:18px;height:18px;display:flex;align-items:center;justify-content:center;font-size:.6rem;backdrop-filter:blur(4px)}
+.card-fav-btn{background:rgba(6,6,14,.7);border:none;border-radius:50%;width:22px;height:22px;display:flex;align-items:center;justify-content:center;font-size:.7rem;cursor:pointer;transition:.2s;backdrop-filter:blur(4px)}
+.card-fav-btn:hover{background:rgba(247,160,47,.3);transform:scale(1.2)}
+.card-fav-btn.active{background:rgba(247,160,47,.5)}
+.mypage-wrap{max-width:900px;margin:0 auto;padding:1rem 1.2rem 4rem}
+.my-hero{text-align:center;padding:1.5rem 0 1rem;border-bottom:1px solid rgba(201,168,76,.1);margin-bottom:1.5rem}
+.my-hero-icon{font-size:2.5rem;margin-bottom:.5rem}
+.my-hero-name{font-family:'Zen Old Mincho',serif;font-size:1.1rem;color:var(--gold);letter-spacing:.15em}
+.my-stats{display:flex;justify-content:center;gap:1.5rem;flex-wrap:wrap;margin-top:1rem}
+.my-stat{text-align:center;padding:.6rem 1rem;background:rgba(255,255,255,.02);border:1px solid rgba(255,255,255,.05);border-radius:10px;min-width:80px}
+.my-stat b{display:block;font-family:'Zen Old Mincho',serif;font-size:1.5rem;color:var(--gold)}
+.my-stat span{font-size:.55rem;color:var(--txd);letter-spacing:.1em}
+.my-progress-wrap{margin:1.5rem 0}
+.my-progress-bar{height:6px;background:rgba(255,255,255,.06);border-radius:3px;overflow:hidden;margin:.4rem 0}
+.my-progress-fill{height:100%;background:linear-gradient(90deg,var(--seal),var(--goldd));border-radius:3px;transition:width .6s ease}
+.my-section{margin:2rem 0}
+.my-section-head{font-size:.8rem;color:var(--gold);letter-spacing:.15em;border-left:2px solid var(--gold);padding-left:.7rem;margin-bottom:.8rem;display:flex;align-items:center;justify-content:space-between}
+.my-section-head a{font-size:.65rem;color:var(--txd);text-decoration:none;cursor:pointer;transition:.2s}
+.my-section-head a:hover{color:var(--gold)}
+.my-empty{color:var(--txd);font-size:.75rem;text-align:center;padding:1.5rem;background:rgba(255,255,255,.02);border-radius:8px;border:1px dashed rgba(255,255,255,.06)}
+/* 旅マップ (47県グリッド) */
+.my-prefmap{display:flex;flex-wrap:wrap;gap:4px;justify-content:center;padding:.8rem;background:rgba(255,255,255,.02);border-radius:12px;border:1px solid rgba(255,255,255,.04)}
+.my-pref-cell{width:36px;height:36px;border-radius:6px;display:flex;align-items:center;justify-content:center;font-size:.55rem;font-weight:700;cursor:pointer;transition:.25s;border:1px solid rgba(255,255,255,.06);color:rgba(255,255,255,.3);background:rgba(255,255,255,.02);font-family:'Zen Old Mincho',serif}
+.my-pref-cell.visited{color:rgba(255,255,255,.9);border-color:rgba(201,168,76,.4)}
+.my-pref-cell.visited:hover{transform:scale(1.15);box-shadow:0 0 12px rgba(201,168,76,.3)}
+.my-tab-wrap{display:flex;gap:.3rem;margin-bottom:.8rem}
+.my-tab{padding:.3rem .8rem;border:1px solid rgba(255,255,255,.06);border-radius:15px;background:none;color:var(--txd);font-size:.7rem;cursor:pointer;transition:.2s;font-family:inherit}
+.my-tab.active{background:rgba(201,168,76,.12);border-color:var(--goldd);color:var(--gold)}
+.my-mypage-btn{display:flex;flex-direction:column;align-items:center;gap:.15rem;background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.08);border-radius:10px;padding:.4rem .9rem;cursor:pointer;transition:.3s;font-family:inherit;color:var(--txd);letter-spacing:.08em}
+.my-mypage-btn:hover{border-color:var(--goldd);background:rgba(201,168,76,.06);color:var(--gold)}
+.my-mypage-icon{font-size:1.3rem;line-height:1}
+.my-mypage-label{font-size:.55rem;letter-spacing:.1em}
 @media(min-width:641px)and(max-width:1024px){
 .grid{grid-template-columns:repeat(auto-fill,minmax(140px,1fr))}
 }
@@ -244,6 +279,10 @@ body{background:var(--bg);color:var(--tx);font-family:'Noto Serif JP','Noto Seri
   <span class="dice-icon">🎲</span>
   <span class="dice-label" data-i18n="diceLabel"></span>
 </button>
+<button class="my-mypage-btn" onclick="openMyPage()">
+  <span class="my-mypage-icon">📖</span>
+  <span class="my-mypage-label" data-i18n="mypage"></span>
+</button>
 </div>
 <div class="nav-mode">
 <button class="nav-mode-btn active" onclick="setMode('all')" data-i18n="modeAll"></button>
@@ -301,6 +340,12 @@ body{background:var(--bg);color:var(--tx);font-family:'Noto Serif JP','Noto Seri
 <div class="view" id="v-about">
 <div class="breadcrumb"><span onclick="showView('v-home')" style="cursor:pointer">TOP</span><span class="sep">›</span><span id="bcAbout">このサイトについて</span></div>
 <div style="max-width:700px;margin:0 auto;padding:1.5rem 1.2rem 4rem" id="aboutContent"></div>
+</div>
+
+<!-- VIEW: MY PAGE -->
+<div class="view" id="v-mypage">
+<div class="breadcrumb"><span onclick="showView('v-home')" style="cursor:pointer">TOP</span><span class="sep">›</span><span id="bcMypage">マイページ</span></div>
+<div class="mypage-wrap" id="mypageContent"></div>
 </div>
 
 <!-- FOOTER -->
@@ -377,10 +422,10 @@ const PN={北海道:{en:"Hokkaido",zh:"北海道",ko:"홋카이도"},青森:{en:
 
 // ═══ i18n ═══
 const I18N={
-ja:{heroQuote:"この国は、見えない王たちに守られている。<br>47の都道府県、235の世界線。あなたの町にも、王がいる。",footerQuote:"あなたの町にも、王がいる。",prefectures:"都道府県",stories:"物語",fairies:"妖精",worldlines:"世界線",back:"戻る",diceLabel:"日本を旅する",modeAll:"すべて",modePopular:"人気順",modeRegion:"ブロック別",modeWL:"世界線別",modeMap:"日本地図",searchPlaceholder:"都道府県名で検索...",all:"すべて",stories_count:"話",regions:{hokkaido_tohoku:"北海道・東北",kanto:"関東",chubu:"中部",kinki:"近畿",chugoku:"中国",shikoku:"四国",kyushu_okinawa:"九州・沖縄"},wlNames:{封印線:"封印線",商都線:"商都線",静律線:"静律線",変革線:"変革線",境界線:"境界線"}},
-en:{heroQuote:"This land is guarded by invisible kings.<br>47 prefectures, 235 world lines. There is a king in your town, too.",footerQuote:"There is a king in your town, too.",prefectures:"Prefectures",stories:"Stories",fairies:"Fairies",worldlines:"World Lines",back:"Back",diceLabel:"Explore Japan",modeAll:"All",modePopular:"Popular",modeRegion:"By Region",modeWL:"By World Line",modeMap:"Japan Map",searchPlaceholder:"Search prefectures...",all:"All",stories_count:"stories",regions:{hokkaido_tohoku:"Hokkaido & Tohoku",kanto:"Kanto",chubu:"Chubu",kinki:"Kansai",chugoku:"Chugoku",shikoku:"Shikoku",kyushu_okinawa:"Kyushu & Okinawa"},wlNames:{封印線:"Seal",商都線:"Trade",静律線:"Zen",変革線:"Revolution",境界線:"Border"}},
-zh:{heroQuote:"这个国家，被看不见的王守护着。<br>47个都道府县，235条世界线。你的城市里也有一位王。",footerQuote:"你的城市里，也有一位王。",prefectures:"都道府县",stories:"故事",fairies:"精灵",worldlines:"世界线",back:"返回",diceLabel:"漫游日本",modeAll:"全部",modePopular:"热门",modeRegion:"按地区",modeWL:"按世界线",modeMap:"日本地图",searchPlaceholder:"搜索都道府县...",all:"全部",stories_count:"篇",regions:{hokkaido_tohoku:"北海道・东北",kanto:"关东",chubu:"中部",kinki:"近畿",chugoku:"中国地方",shikoku:"四国",kyushu_okinawa:"九州・冲绳"},wlNames:{封印線:"封印",商都線:"商都",静律線:"静律",変革線:"变革",境界線:"境界"}},
-ko:{heroQuote:"이 나라는 보이지 않는 왕들에 의해 지켜지고 있다.<br>47개 도도부현, 235개의 세계선. 당신의 마을에도 왕이 있다.",footerQuote:"당신의 마을에도 왕이 있다.",prefectures:"도도부현",stories:"이야기",fairies:"요정",worldlines:"세계선",back:"뒤로",diceLabel:"일본 여행",modeAll:"전체",modePopular:"인기순",modeRegion:"지역별",modeWL:"세계선별",modeMap:"일본지도",searchPlaceholder:"도도부현 검색...",all:"전체",stories_count:"편",regions:{hokkaido_tohoku:"홋카이도・도호쿠",kanto:"간토",chubu:"주부",kinki:"긴키",chugoku:"주고쿠",shikoku:"시코쿠",kyushu_okinawa:"규슈・오키나와"},wlNames:{封印線:"봉인",商都線:"상도",静律線:"정률",変革線:"변혁",境界線:"경계"}}
+ja:{heroQuote:"この国は、見えない王たちに守られている。<br>47の都道府県、235の世界線。あなたの町にも、王がいる。",footerQuote:"あなたの町にも、王がいる。",prefectures:"都道府県",stories:"物語",fairies:"妖精",worldlines:"世界線",back:"戻る",diceLabel:"日本を旅する",mypage:"マイページ",modeAll:"すべて",modePopular:"人気順",modeRegion:"ブロック別",modeWL:"世界線別",modeMap:"日本地図",searchPlaceholder:"都道府県名で検索...",all:"すべて",stories_count:"話",regions:{hokkaido_tohoku:"北海道・東北",kanto:"関東",chubu:"中部",kinki:"近畿",chugoku:"中国",shikoku:"四国",kyushu_okinawa:"九州・沖縄"},wlNames:{封印線:"封印線",商都線:"商都線",静律線:"静律線",変革線:"変革線",境界線:"境界線"}},
+en:{heroQuote:"This land is guarded by invisible kings.<br>47 prefectures, 235 world lines. There is a king in your town, too.",footerQuote:"There is a king in your town, too.",prefectures:"Prefectures",stories:"Stories",fairies:"Fairies",worldlines:"World Lines",back:"Back",diceLabel:"Explore Japan",mypage:"My Page",modeAll:"All",modePopular:"Popular",modeRegion:"By Region",modeWL:"By World Line",modeMap:"Japan Map",searchPlaceholder:"Search prefectures...",all:"All",stories_count:"stories",regions:{hokkaido_tohoku:"Hokkaido & Tohoku",kanto:"Kanto",chubu:"Chubu",kinki:"Kansai",chugoku:"Chugoku",shikoku:"Shikoku",kyushu_okinawa:"Kyushu & Okinawa"},wlNames:{封印線:"Seal",商都線:"Trade",静律線:"Zen",変革線:"Revolution",境界線:"Border"}},
+zh:{heroQuote:"这个国家，被看不见的王守护着。<br>47个都道府县，235条世界线。你的城市里也有一位王。",footerQuote:"你的城市里，也有一位王。",prefectures:"都道府县",stories:"故事",fairies:"精灵",worldlines:"世界线",back:"返回",diceLabel:"漫游日本",mypage:"我的主页",modeAll:"全部",modePopular:"热门",modeRegion:"按地区",modeWL:"按世界线",modeMap:"日本地图",searchPlaceholder:"搜索都道府县...",all:"全部",stories_count:"篇",regions:{hokkaido_tohoku:"北海道・东北",kanto:"关东",chubu:"中部",kinki:"近畿",chugoku:"中国地方",shikoku:"四国",kyushu_okinawa:"九州・冲绳"},wlNames:{封印線:"封印",商都線:"商都",静律線:"静律",変革線:"变革",境界線:"境界"}},
+ko:{heroQuote:"이 나라는 보이지 않는 왕들에 의해 지켜지고 있다.<br>47개 도도부현, 235개의 세계선. 당신의 마을에도 왕이 있다.",footerQuote:"당신의 마을에도 왕이 있다.",prefectures:"도도부현",stories:"이야기",fairies:"요정",worldlines:"세계선",back:"뒤로",diceLabel:"일본 여행",mypage:"마이페이지",modeAll:"전체",modePopular:"인기순",modeRegion:"지역별",modeWL:"세계선별",modeMap:"일본지도",searchPlaceholder:"도도부현 검색...",all:"전체",stories_count:"편",regions:{hokkaido_tohoku:"홋카이도・도호쿠",kanto:"간토",chubu:"주부",kinki:"긴키",chugoku:"주고쿠",shikoku:"시코쿠",kyushu_okinawa:"규슈・오키나와"},wlNames:{封印線:"봉인",商都線:"상도",静律線:"정률",変革線:"변혁",境界線:"경계"}}
 };
 
 let CL='ja',mode='all',filterWL='',filterRegion='';
@@ -429,6 +474,22 @@ const url=encodeURI(`worldkings_output/${p.n}_${wl}/index.html`)+(CL!=='ja'?'?la
 window.open(url,'_blank');
 }
 
+
+// ═══ MY PAGE DATA (localStorage) ═══
+const MP={
+  key:'wk_my_',
+  get reads(){return JSON.parse(localStorage.getItem(this.key+'reads')||'{}')},
+  get favs(){return JSON.parse(localStorage.getItem(this.key+'favs')||'[]')},
+  get hist(){return JSON.parse(localStorage.getItem(this.key+'hist')||'[]')},
+  markRead(pref,wl){const d=this.reads;d[pref+'_'+wl]=(d[pref+'_'+wl]||0)+1;localStorage.setItem(this.key+'reads',JSON.stringify(d))},
+  toggleFav(pref,wl){const f=this.favs,k=pref+'_'+wl,i=f.indexOf(k);if(i>=0)f.splice(i,1);else f.unshift(k);localStorage.setItem(this.key+'favs',JSON.stringify(f));return i<0},
+  addHist(pref,wl){const h=this.hist,k=pref+'__'+wl+'__'+Date.now();h.unshift(k);localStorage.setItem(this.key+'hist',JSON.stringify(h.slice(0,100)))},
+  isRead(pref,wl){return !!(this.reads[pref+'_'+wl])},
+  isFav(pref,wl){return this.favs.includes(pref+'_'+wl)},
+  get readCount(){return Object.keys(this.reads).length},
+  get prefVisited(){return [...new Set(Object.keys(this.reads).map(k=>k.split('_')[0]))]},
+};
+
 // ═══ CARD HTML ═══
 function storyCard(pref,wl,wlName,showPref=true){
 const _rch=(Math.floor(Math.random()*5)+1);
@@ -436,15 +497,177 @@ const img=imgPath(pref,wl,_rch);
 const fb1=imgFB1(pref,wl,_rch);
 const fb2=imgFB2(pref,wl,_rch);
 const sub=psub(pref);
-return `<div class="card" onclick="window.open(encodeURI('worldkings_output/${pref}_${wl}/index.html')+(CL!=='ja'?'?lang='+CL:''),'_blank')">
+const isRead=MP.isRead(pref,wl);
+const isFav=MP.isFav(pref,wl);
+const key=`${pref}||${wl}`;
+return `<div class="card" onclick="openStory('${pref}','${wl}')">
 <img class="card-img" src="${img}" data-fb1="${fb1}" data-fb2="${fb2}" onerror="if(this.dataset.fb1){var s=this.dataset.fb1;this.dataset.fb1='';this.src=s}else if(this.dataset.fb2){var s=this.dataset.fb2;this.dataset.fb2='';this.src=s}else{this.style.display='none';this.nextElementSibling.style.display='flex'}" loading="lazy">
 <div class="card-fallback" style="display:none;background:${WL_GRAD[wl]}">${pref.charAt(0)}</div>
+<div class="card-badges">
+  ${isRead?`<div class="card-read-badge" title="既読">✓</div>`:''}
+  <button class="card-fav-btn${isFav?' active':''}" onclick="event.stopPropagation();toggleFavBtn(this,'${pref}','${wl}')" title="お気に入り">${isFav?'★':'☆'}</button>
+</div>
 <div class="card-overlay">
 ${showPref?`<div class="card-pref">${pref}</div>${sub?`<div class="card-pref-sub">${sub}</div>`:''}`:``}
 <div class="card-wl"><span class="dot" style="background:${WL_COLORS[wl]}"></span>${wn(wl)}${wlName?` · ${wlName}`:''}</div>
 ${showPref?'':`<div class="card-pref" style="font-size:.9rem;margin-top:.15rem">${pref}</div>${sub?`<div class="card-pref-sub">${sub}</div>`:''}`}
 </div></div>`;
 }
+
+function openStory(pref,wl){
+  MP.markRead(pref,wl);
+  MP.addHist(pref,wl);
+  window.open(encodeURI(`worldkings_output/${pref}_${wl}/index.html`)+(CL!=='ja'?'?lang='+CL:''),'_blank');
+}
+
+function toggleFavBtn(btn,pref,wl){
+  const added=MP.toggleFav(pref,wl);
+  btn.textContent=added?'★':'☆';
+  btn.classList.toggle('active',added);
+  // 読み済みバッジを兄として追加／更新
+  const badges=btn.parentElement;
+  const old=badges.querySelector('.card-read-badge');
+  if(MP.isRead(pref,wl)&&!old){
+    badges.insertAdjacentHTML('afterbegin','<div class="card-read-badge" title="既読">✓</div>');
+  }
+}
+
+// ═══ MY PAGE VIEW ═══
+function openMyPage(){
+  history_stack.push(()=>showView('v-home'));
+  showView('v-mypage');
+  renderMyPage();
+}
+
+function renderMyPage(){
+  const reads=MP.reads;
+  const favs=MP.favs;
+  const hist=MP.hist;
+  const readCount=MP.readCount;
+  const visitedPrefs=MP.prefVisited;
+  const totalStories=235;
+  const pct=Math.round(readCount/totalStories*100);
+
+  // WL progress
+  const wlCounts={};
+  WLS.forEach(w=>{wlCounts[w]=Object.keys(reads).filter(k=>k.endsWith('_'+w)).length});
+
+  // Prefecture color map (visited → warm)
+  const allP=allPrefs();
+  const prefCells=allP.map(p=>{
+    const cnt=WLS.filter(w=>MP.isRead(p.n,w)).length;
+    const bg=cnt===5?'rgba(201,168,76,.7)':cnt>0?`rgba(201,168,76,${.1+cnt*.12})`:'rgba(255,255,255,.03)';
+    const border=cnt>0?'rgba(201,168,76,.4)':'rgba(255,255,255,.06)';
+    return `<div class="my-pref-cell${cnt>0?' visited':''}" style="background:${bg};border-color:${border}" title="${p.n}（${cnt}/5）" onclick="openPrefFromMyPage('${p.n}')">${p.n.charAt(0)}<br><span style="font-size:.4rem;opacity:.6">${cnt}/5</span></div>`;
+  }).join('');
+
+  // Fav cards
+  let favHtml='';
+  if(favs.length===0){
+    favHtml=`<div class="my-empty">お気に入りはまだありません。カードの ☆ ボタンで追加できます。</div>`;
+  } else {
+    favHtml=`<div class="grid" style="padding:0">`;
+    for(const k of favs.slice(0,20)){
+      const [pref,wl]=k.split('_');
+      if(pref&&wl)favHtml+=storyCard(pref,wl,'');
+    }
+    favHtml+='</div>';
+  }
+
+  // History list
+  let histHtml='';
+  if(hist.length===0){
+    histHtml=`<div class="my-empty">読んだ物語がここに記録されます。</div>`;
+  } else {
+    histHtml=`<div style="display:flex;flex-direction:column;gap:.4rem">`;
+    const seen=new Set();
+    for(const h of hist.slice(0,30)){
+      const parts=h.split('__');
+      const pref=parts[0],wl=parts[1],ts=+parts[2];
+      const uk=pref+'_'+wl;
+      if(seen.has(uk))continue;seen.add(uk);
+      const date=ts?new Date(ts).toLocaleDateString('ja-JP',{month:'short',day:'numeric',hour:'2-digit',minute:'2-digit'}):'';
+      histHtml+=`<div style="display:flex;align-items:center;gap:.7rem;padding:.5rem .7rem;background:rgba(255,255,255,.02);border-radius:8px;cursor:pointer;border:1px solid rgba(255,255,255,.04)" onclick="openStory('${pref}','${wl}')">
+        <span style="width:8px;height:8px;border-radius:50%;background:${WL_COLORS[wl]||'#888'};flex-shrink:0"></span>
+        <span style="font-family:'Zen Old Mincho',serif;color:var(--txb);font-size:.85rem">${pref}</span>
+        <span style="font-size:.65rem;color:var(--txd)">${wn(wl)}</span>
+        <span style="margin-left:auto;font-size:.6rem;color:var(--txd)">${date}</span>
+      </div>`;
+    }
+    histHtml+='</div>';
+  }
+
+  // WL progress bars
+  const wlBars=WLS.map(w=>`
+    <div style="display:flex;align-items:center;gap:.6rem;margin-bottom:.5rem">
+      <span style="width:6px;height:6px;border-radius:50%;background:${WL_COLORS[w]};flex-shrink:0"></span>
+      <span style="font-size:.7rem;color:var(--txd);width:4em">${wn(w)}</span>
+      <div style="flex:1;height:5px;background:rgba(255,255,255,.06);border-radius:3px;overflow:hidden">
+        <div style="height:100%;width:${Math.round(wlCounts[w]/47*100)}%;background:${WL_COLORS[w]};border-radius:3px;transition:width .6s"></div>
+      </div>
+      <span style="font-size:.65rem;color:var(--goldd);min-width:3em;text-align:right">${wlCounts[w]}/47</span>
+    </div>`).join('');
+
+  document.getElementById('mypageContent').innerHTML=`
+<div class="my-hero">
+  <div class="my-hero-icon">📖</div>
+  <div class="my-hero-name">マイページ</div>
+  <div class="my-stats">
+    <div class="my-stat"><b>${readCount}</b><span>既読</span></div>
+    <div class="my-stat"><b>${totalStories-readCount}</b><span>未読</span></div>
+    <div class="my-stat"><b>${visitedPrefs.length}</b><span>訪問県</span></div>
+    <div class="my-stat"><b>${favs.length}</b><span>お気に入り</span></div>
+    <div class="my-stat"><b>${pct}%</b><span>達成率</span></div>
+  </div>
+</div>
+
+<div class="my-section">
+  <div class="my-section-head">📊 読書進捗 <span style="font-size:.7rem;color:var(--txd)">${readCount} / ${totalStories} 話</span></div>
+  <div class="my-progress-bar"><div class="my-progress-fill" style="width:${pct}%"></div></div>
+  <div style="margin-top:1rem">${wlBars}</div>
+</div>
+
+<div class="my-section">
+  <div class="my-section-head">🗾 旅マップ <span style="font-size:.7rem;color:var(--txd)">${visitedPrefs.length} / 47 県</span></div>
+  <div class="my-prefmap">${prefCells}</div>
+  <div style="display:flex;gap:1rem;justify-content:center;margin-top:.7rem;font-size:.6rem;color:var(--txd)">
+    <span>⬜ 未訪問</span>
+    <span style="color:rgba(201,168,76,.5)">■ 訪問済み（薄→濃 = 1→5話）</span>
+    <span style="color:var(--gold)">■ 全話完読</span>
+  </div>
+</div>
+
+<div class="my-section">
+  <div class="my-section-head">⭐ お気に入り
+    ${favs.length>0?`<a onclick="if(confirm('お気に入りをすべて削除しますか？')){localStorage.setItem('wk_my_favs','[]');renderMyPage()}">全削除</a>`:''}
+  </div>
+  ${favHtml}
+</div>
+
+<div class="my-section">
+  <div class="my-section-head">🕒 最近読んだ物語
+    ${hist.length>0?`<a onclick="if(confirm('履歴をリセットしますか？')){localStorage.setItem('wk_my_hist','[]');renderMyPage()}">リセット</a>`:''}
+  </div>
+  ${histHtml}
+</div>
+
+<div class="my-section" style="border-top:1px solid rgba(255,255,255,.05);padding-top:1.5rem;margin-top:2rem">
+  <button onclick="if(confirm('すべての記録（既読・お気に入り・履歴）をリセットしますか？')){['reads','favs','hist'].forEach(k=>localStorage.removeItem('wk_my_'+k));renderMyPage()}" style="background:none;border:1px solid rgba(255,80,80,.3);color:rgba(255,120,120,.7);border-radius:6px;padding:.4rem 1rem;cursor:pointer;font-size:.7rem;font-family:inherit">🗑 すべてのデータをリセット</button>
+</div>
+`;
+}
+
+function openPrefFromMyPage(name){
+  const allP=allPrefs();
+  const p=allP.find(x=>x.n===name);if(!p)return;
+  history_stack.push(()=>openMyPage());
+  document.getElementById('bcPref').innerHTML=`<span onclick="showView('v-home')">TOP</span><span class="sep">›</span><span onclick="openMyPage()" style="cursor:pointer">マイページ</span><span class="sep">›</span>${name}`;
+  let h='';for(const wl of WLS)h+=storyCard(name,wl,p.wl[wl]);
+  document.getElementById('stPref').innerHTML=`<h2>${name}</h2>`;
+  document.getElementById('prefDetailGrid').innerHTML=h;
+  showView('v-pref');
+}
+
 
 // ═══ MODE: ALL ═══
 function renderAll(){
