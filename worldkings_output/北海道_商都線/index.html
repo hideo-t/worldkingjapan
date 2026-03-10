@@ -291,6 +291,8 @@ function googleTranslateElementInit(){
 
 
 
+
+
 <!-- rakuten-widget-injected -->
 
 <!-- rakuten-hotel-widget: 北海道_商都線 -->
@@ -300,19 +302,6 @@ function googleTranslateElementInit(){
     <p class="hotel-widget__desc">北海道の王国を旅した余韻を胸に、実際にこの地に泊まってみませんか。</p>
 
     <div class="hotel-widget__form">
-      <div class="hotel-widget__row">
-        <label>チェックイン<input type="date" id="ht-ci-hokkaido"/></label>
-        <label>チェックアウト<input type="date" id="ht-co-hokkaido"/></label>
-        <label>大人
-          <select id="ht-ad-hokkaido">
-            <option value="1">1名</option>
-            <option value="2" selected>2名</option>
-            <option value="3">3名</option>
-            <option value="4">4名</option>
-          </select>
-        </label>
-      </div>
-
       <div class="hotel-widget__btns">
         <button class="ht-btn ht-btn--rakuten" onclick="htSearch_hokkaido('rakuten')">
           <img src="https://www.rakuten.co.jp/favicon.ico" onerror="this.style.display='none'" width="14" height="14"> 楽天トラベル
@@ -360,18 +349,9 @@ function googleTranslateElementInit(){
 })();
 
 function htSearch_hokkaido(site){
-  var ci=document.getElementById('ht-ci-hokkaido').value.split('-');
-  var co=document.getElementById('ht-co-hokkaido').value.split('-');
-  var ad=document.getElementById('ht-ad-hokkaido').value;
   var url='';
   if(site==='rakuten'){
-    url='https://search.travel.rakuten.co.jp/ds/list'
-      +'?f_dai=japan'
-      +'&f_chu=hokkaido'
-      +'&f_nen1='+ci[0]+'&f_tuki1='+ci[1]+'&f_hi1='+ci[2]
-      +'&f_nen2='+co[0]+'&f_tuki2='+co[1]+'&f_hi2='+co[2]
-      +'&f_otona_su='+ad+'&f_kodomo_su=0'
-      +'&f_heya_su=1';
+    url='https://travel.rakuten.co.jp/yado/hokkaido/';
   } else if(site==='booking'){
     url='https://www.booking.com/search.html'
       +'?ss='+encodeURIComponent('Hokkaido Japan')
