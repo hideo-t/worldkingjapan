@@ -34,17 +34,7 @@ PREF_TO_EN = {
     "鹿児島":"Kagoshima","沖縄":"Okinawa",
 }
 
-WORLD_LINE_KEYWORD = {
-    "封印線":"温泉", "商都線":"", "静律線":"朝食付き", "変革線":"WiFi", "境界線":"大浴場",
-}
-WORLD_LINE_LABEL = {
-    "封印線":"♨ 温泉宿", "商都線":"🏨 全タイプ", "静律線":"🍳 朝食付き",
-    "変革線":"📶 Wi-Fi完備", "境界線":"🛁 大浴場あり",
-}
 # Booking.com キーワード補完（英語）
-WORLD_LINE_BK_KW = {
-    "封印線":"onsen", "商都線":"", "静律線":"", "変革線":"", "境界線":"",
-}
 
 
 def get_hotel_section_html(pref_name, wl_key,
@@ -57,9 +47,6 @@ def get_hotel_section_html(pref_name, wl_key,
         return ""
 
     affil   = affil_id or RAKUTEN_AFFIL_ID
-    keyword = WORLD_LINE_KEYWORD.get(wl_key, "")
-    label   = WORLD_LINE_LABEL.get(wl_key, "🏨 全タイプ")
-    kw_js   = f"+'&f_nen='+encodeURIComponent('{keyword}')" if keyword else ""
 
     # Booking.com 検索URL（ss=県名+Japan）
     bk_query = urllib.parse.quote(f"{pref_en} Japan")
@@ -73,9 +60,7 @@ def get_hotel_section_html(pref_name, wl_key,
 <!-- rakuten-hotel-widget: {pref_name}_{wl_key} -->
 <section id="hotel-search" class="hotel-widget">
   <div class="hotel-widget__inner">
-    <h2 class="hotel-widget__title">
-      <span>🏯</span> この地の宿を探す &nbsp;<span class="hotel-widget__badge">{label}</span>
-    </h2>
+    <h2 class="hotel-widget__title"><span>🏯</span> この地の宿を探す</h2>
     <p class="hotel-widget__desc">{pref_name}の王国を旅した余韻を胸に、実際にこの地に泊まってみませんか。</p>
 
     <div class="hotel-widget__form">
@@ -111,7 +96,6 @@ def get_hotel_section_html(pref_name, wl_key,
 .hotel-widget{{background:linear-gradient(to bottom,{bg_color}00,{bg_color}cc);border-top:1px solid {accent_color}44;padding:4rem 1.5rem;margin-top:3rem}}
 .hotel-widget__inner{{max-width:720px;margin:0 auto}}
 .hotel-widget__title{{font-size:1.3rem;color:{accent_light};margin-bottom:.5rem;display:flex;align-items:center;gap:.5rem;flex-wrap:wrap}}
-.hotel-widget__badge{{font-size:.72rem;background:{accent_color}44;border:1px solid {accent_color};color:{accent_light};padding:.15rem .6rem;border-radius:99px;font-weight:normal}}
 .hotel-widget__desc{{color:#888;font-size:.9rem;margin-bottom:1.5rem}}
 .hotel-widget__form{{display:flex;flex-direction:column;gap:1.2rem}}
 .hotel-widget__row{{display:flex;gap:1rem;flex-wrap:wrap;align-items:flex-end}}
