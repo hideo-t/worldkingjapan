@@ -9,7 +9,7 @@ RAKUTEN_AFFIL_ID = os.environ.get("RAKUTEN_AFFIL_ID", "")
 
 PREF_TO_RAKUTEN_CODE = {
     "北海道":"hokkaido","青森":"aomori","岩手":"iwate","宮城":"miyagi","秋田":"akita",
-    "山形":"yamagata","福島":"fukushima","茨城":"ibaraki","栃木":"tochigi","群馬":"gunma",
+    "山形":"yamagata","福島":"hukushima","茨城":"ibaragi","栃木":"tochigi","群馬":"gunma",
     "埼玉":"saitama","千葉":"chiba","東京":"tokyo","神奈川":"kanagawa","新潟":"niigata",
     "富山":"toyama","石川":"ishikawa","福井":"fukui","山梨":"yamanashi","長野":"nagano",
     "岐阜":"gifu","静岡":"shizuoka","愛知":"aichi","三重":"mie","滋賀":"shiga",
