@@ -33,6 +33,12 @@ body{background:var(--bg);color:var(--tx);font-family:'Noto Serif JP','Noto Seri
 /* STATS */
 .stats{display:flex;justify-content:center;gap:1.5rem;padding:1.2rem 1rem;border-top:1px solid rgba(201,168,76,.08);border-bottom:1px solid rgba(201,168,76,.08);flex-wrap:wrap}
 .stat{text-align:center}.stat b{font-family:'Zen Old Mincho',serif;font-size:1.4rem;color:var(--gold);display:block}.stat span{font-size:.6rem;color:var(--txd);letter-spacing:.15em}
+.dice-btn{display:flex;flex-direction:column;align-items:center;gap:.2rem;background:none;border:1px solid rgba(201,168,76,.2);border-radius:10px;padding:.4rem .9rem;cursor:pointer;transition:.3s;font-family:inherit;color:var(--txd);letter-spacing:.1em;position:relative;overflow:hidden}
+.dice-btn:hover{border-color:var(--goldd);background:rgba(201,168,76,.06);color:var(--gold)}
+.dice-btn:hover .dice-icon{animation:diceRoll .4s ease}
+.dice-icon{font-size:1.4rem;display:block;line-height:1}
+.dice-label{font-size:.55rem;letter-spacing:.12em;white-space:nowrap}
+@keyframes diceRoll{0%{transform:rotate(0) scale(1)}30%{transform:rotate(-20deg) scale(1.2)}70%{transform:rotate(15deg) scale(1.1)}100%{transform:rotate(0) scale(1)}}
 
 /* NAV MODE SELECTOR */
 .nav-mode{display:flex;justify-content:center;gap:.8rem;padding:1.5rem 1rem .5rem;flex-wrap:wrap}
@@ -234,6 +240,10 @@ body{background:var(--bg);color:var(--tx);font-family:'Noto Serif JP','Noto Seri
 <div class="stat"><b>235</b><span data-i18n="stories"></span></div>
 <div class="stat"><b>94</b><span data-i18n="fairies"></span></div>
 <div class="stat"><b>5</b><span data-i18n="worldlines"></span></div>
+<button class="dice-btn" onclick="randomStory()" title="ランダムな物語へ">
+  <span class="dice-icon">🎲</span>
+  <span class="dice-label" data-i18n="diceLabel"></span>
+</button>
 </div>
 <div class="nav-mode">
 <button class="nav-mode-btn active" onclick="setMode('all')" data-i18n="modeAll"></button>
@@ -367,10 +377,10 @@ const PN={北海道:{en:"Hokkaido",zh:"北海道",ko:"홋카이도"},青森:{en:
 
 // ═══ i18n ═══
 const I18N={
-ja:{heroQuote:"この国は、見えない王たちに守られている。<br>47の都道府県、235の世界線。あなたの町にも、王がいる。",footerQuote:"あなたの町にも、王がいる。",prefectures:"都道府県",stories:"物語",fairies:"妖精",worldlines:"世界線",back:"戻る",modeAll:"すべて",modePopular:"人気順",modeRegion:"ブロック別",modeWL:"世界線別",modeMap:"日本地図",searchPlaceholder:"都道府県名で検索...",all:"すべて",stories_count:"話",regions:{hokkaido_tohoku:"北海道・東北",kanto:"関東",chubu:"中部",kinki:"近畿",chugoku:"中国",shikoku:"四国",kyushu_okinawa:"九州・沖縄"},wlNames:{封印線:"封印線",商都線:"商都線",静律線:"静律線",変革線:"変革線",境界線:"境界線"}},
-en:{heroQuote:"This land is guarded by invisible kings.<br>47 prefectures, 235 world lines. There is a king in your town, too.",footerQuote:"There is a king in your town, too.",prefectures:"Prefectures",stories:"Stories",fairies:"Fairies",worldlines:"World Lines",back:"Back",modeAll:"All",modePopular:"Popular",modeRegion:"By Region",modeWL:"By World Line",modeMap:"Japan Map",searchPlaceholder:"Search prefectures...",all:"All",stories_count:"stories",regions:{hokkaido_tohoku:"Hokkaido & Tohoku",kanto:"Kanto",chubu:"Chubu",kinki:"Kansai",chugoku:"Chugoku",shikoku:"Shikoku",kyushu_okinawa:"Kyushu & Okinawa"},wlNames:{封印線:"Seal",商都線:"Trade",静律線:"Zen",変革線:"Revolution",境界線:"Border"}},
-zh:{heroQuote:"这个国家，被看不见的王守护着。<br>47个都道府县，235条世界线。你的城市里也有一位王。",footerQuote:"你的城市里，也有一位王。",prefectures:"都道府县",stories:"故事",fairies:"精灵",worldlines:"世界线",back:"返回",modeAll:"全部",modePopular:"热门",modeRegion:"按地区",modeWL:"按世界线",modeMap:"日本地图",searchPlaceholder:"搜索都道府县...",all:"全部",stories_count:"篇",regions:{hokkaido_tohoku:"北海道・东北",kanto:"关东",chubu:"中部",kinki:"近畿",chugoku:"中国地方",shikoku:"四国",kyushu_okinawa:"九州・冲绳"},wlNames:{封印線:"封印",商都線:"商都",静律線:"静律",変革線:"变革",境界線:"境界"}},
-ko:{heroQuote:"이 나라는 보이지 않는 왕들에 의해 지켜지고 있다.<br>47개 도도부현, 235개의 세계선. 당신의 마을에도 왕이 있다.",footerQuote:"당신의 마을에도 왕이 있다.",prefectures:"도도부현",stories:"이야기",fairies:"요정",worldlines:"세계선",back:"뒤로",modeAll:"전체",modePopular:"인기순",modeRegion:"지역별",modeWL:"세계선별",modeMap:"일본지도",searchPlaceholder:"도도부현 검색...",all:"전체",stories_count:"편",regions:{hokkaido_tohoku:"홋카이도・도호쿠",kanto:"간토",chubu:"주부",kinki:"긴키",chugoku:"주고쿠",shikoku:"시코쿠",kyushu_okinawa:"규슈・오키나와"},wlNames:{封印線:"봉인",商都線:"상도",静律線:"정률",変革線:"변혁",境界線:"경계"}}
+ja:{heroQuote:"この国は、見えない王たちに守られている。<br>47の都道府県、235の世界線。あなたの町にも、王がいる。",footerQuote:"あなたの町にも、王がいる。",prefectures:"都道府県",stories:"物語",fairies:"妖精",worldlines:"世界線",back:"戻る",diceLabel:"日本を旅する",modeAll:"すべて",modePopular:"人気順",modeRegion:"ブロック別",modeWL:"世界線別",modeMap:"日本地図",searchPlaceholder:"都道府県名で検索...",all:"すべて",stories_count:"話",regions:{hokkaido_tohoku:"北海道・東北",kanto:"関東",chubu:"中部",kinki:"近畿",chugoku:"中国",shikoku:"四国",kyushu_okinawa:"九州・沖縄"},wlNames:{封印線:"封印線",商都線:"商都線",静律線:"静律線",変革線:"変革線",境界線:"境界線"}},
+en:{heroQuote:"This land is guarded by invisible kings.<br>47 prefectures, 235 world lines. There is a king in your town, too.",footerQuote:"There is a king in your town, too.",prefectures:"Prefectures",stories:"Stories",fairies:"Fairies",worldlines:"World Lines",back:"Back",diceLabel:"Explore Japan",modeAll:"All",modePopular:"Popular",modeRegion:"By Region",modeWL:"By World Line",modeMap:"Japan Map",searchPlaceholder:"Search prefectures...",all:"All",stories_count:"stories",regions:{hokkaido_tohoku:"Hokkaido & Tohoku",kanto:"Kanto",chubu:"Chubu",kinki:"Kansai",chugoku:"Chugoku",shikoku:"Shikoku",kyushu_okinawa:"Kyushu & Okinawa"},wlNames:{封印線:"Seal",商都線:"Trade",静律線:"Zen",変革線:"Revolution",境界線:"Border"}},
+zh:{heroQuote:"这个国家，被看不见的王守护着。<br>47个都道府县，235条世界线。你的城市里也有一位王。",footerQuote:"你的城市里，也有一位王。",prefectures:"都道府县",stories:"故事",fairies:"精灵",worldlines:"世界线",back:"返回",diceLabel:"漫游日本",modeAll:"全部",modePopular:"热门",modeRegion:"按地区",modeWL:"按世界线",modeMap:"日本地图",searchPlaceholder:"搜索都道府县...",all:"全部",stories_count:"篇",regions:{hokkaido_tohoku:"北海道・东北",kanto:"关东",chubu:"中部",kinki:"近畿",chugoku:"中国地方",shikoku:"四国",kyushu_okinawa:"九州・冲绳"},wlNames:{封印線:"封印",商都線:"商都",静律線:"静律",変革線:"变革",境界線:"境界"}},
+ko:{heroQuote:"이 나라는 보이지 않는 왕들에 의해 지켜지고 있다.<br>47개 도도부현, 235개의 세계선. 당신의 마을에도 왕이 있다.",footerQuote:"당신의 마을에도 왕이 있다.",prefectures:"도도부현",stories:"이야기",fairies:"요정",worldlines:"세계선",back:"뒤로",diceLabel:"일본 여행",modeAll:"전체",modePopular:"인기순",modeRegion:"지역별",modeWL:"세계선별",modeMap:"일본지도",searchPlaceholder:"도도부현 검색...",all:"전체",stories_count:"편",regions:{hokkaido_tohoku:"홋카이도・도호쿠",kanto:"간토",chubu:"주부",kinki:"긴키",chugoku:"주고쿠",shikoku:"시코쿠",kyushu_okinawa:"규슈・오키나와"},wlNames:{封印線:"봉인",商都線:"상도",静律線:"정률",変革線:"변혁",境界線:"경계"}}
 };
 
 let CL='ja',mode='all',filterWL='',filterRegion='';
@@ -407,6 +417,16 @@ window.scrollTo({top:0,behavior:'smooth'});
 function goBack(){
 if(history_stack.length>0){const fn=history_stack.pop();fn()}
 else showView('v-home');
+}
+
+// ═══ RANDOM STORY ═══
+function randomStory(){
+const prefs=allPrefs();
+const p=prefs[Math.floor(Math.random()*prefs.length)];
+const wls=Object.keys(p.wl);
+const wl=wls[Math.floor(Math.random()*wls.length)];
+const url=encodeURI(`worldkings_output/${p.n}_${wl}/index.html`)+(CL!=='ja'?'?lang='+CL:'');
+window.open(url,'_blank');
 }
 
 // ═══ CARD HTML ═══
