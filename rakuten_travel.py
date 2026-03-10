@@ -145,12 +145,13 @@ function htSearch_{code}(site){{
   var ad=document.getElementById('ht-ad-{code}').value;
   var url='';
   if(site==='rakuten'){{
-    url='https://travel.rakuten.co.jp/search/HOTEL/'
-      +'?f_area={code}'
+    url='https://search.travel.rakuten.co.jp/ds/vacant/searchVacant'
+      +'?f_dai=japan'
+      +'&f_chu={code}'
+      +'&f_nen1='+ci[0]+'&f_tuki1='+parseInt(ci[1])+'&f_hi1='+parseInt(ci[2])
+      +'&f_nen2='+co[0]+'&f_tuki2='+parseInt(co[1])+'&f_hi2='+parseInt(co[2])
       +'&f_otona_su='+ad
-      +'&f_s1='+ci[0]+'&f_m1='+ci[1]+'&f_d1='+ci[2]
-      +'&f_s2='+co[0]+'&f_m2='+co[1]+'&f_d2='+co[2]
-      +'&scid=af_pc_etc&sc2id=af_101_0_0';
+      +'&f_heya_su=1';
   }} else if(site==='booking'){{
     url='https://www.booking.com/search.html'
       +'?ss='+encodeURIComponent('{pref_en} Japan')
