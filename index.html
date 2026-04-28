@@ -161,20 +161,8 @@ nav a:hover {
   padding: 120px 24px 80px;
   position: relative;
   background:
-    radial-gradient(ellipse at center top, rgba(201, 162, 39, 0.08) 0%, transparent 50%),
-    var(--black);
-}
-
-.hero::before {
-  content: '';
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  width: 600px;
-  height: 600px;
-  background: radial-gradient(circle, rgba(201, 162, 39, 0.03) 0%, transparent 70%);
-  pointer-events: none;
+    linear-gradient(180deg, rgba(10, 10, 10, 0.5) 0%, rgba(10, 10, 10, 0.8) 100%),
+    url('hero.jpg') center/cover no-repeat;
 }
 
 .hero-content {
@@ -225,7 +213,7 @@ nav a:hover {
 
 .hero-sub {
   font-size: 14px;
-  color: var(--text-muted);
+  color: var(--silver);
   margin-bottom: 48px;
   line-height: 2;
   max-width: 500px;
@@ -274,10 +262,46 @@ nav a:hover {
   background: rgba(201, 162, 39, 0.1);
 }
 
+/* Stats */
+.stats {
+  background: var(--black-light);
+  padding: 60px 24px;
+  border-bottom: 1px solid rgba(201, 162, 39, 0.1);
+}
+
+.stats-inner {
+  max-width: 1000px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 32px;
+  text-align: center;
+}
+
+.stat-num {
+  font-family: var(--cinzel);
+  font-size: 48px;
+  font-weight: 600;
+  color: var(--gold);
+  line-height: 1;
+}
+
+.stat-label {
+  font-size: 12px;
+  color: var(--text-muted);
+  margin-top: 8px;
+  letter-spacing: 0.1em;
+}
+
+@media (max-width: 600px) {
+  .stats-inner { grid-template-columns: repeat(2, 1fr); }
+  .stat-num { font-size: 36px; }
+}
+
 /* Pillars */
 .pillars {
   padding: 120px 24px;
-  background: var(--black-light);
+  background: var(--black);
 }
 
 .section-inner {
@@ -315,7 +339,7 @@ nav a:hover {
 }
 
 .pillar {
-  background: var(--black);
+  background: var(--black-light);
   padding: 48px 32px;
   text-align: center;
   transition: all 0.4s;
@@ -388,6 +412,7 @@ nav a:hover {
   align-items: center;
   gap: 20px;
   margin-bottom: 48px;
+  flex-wrap: wrap;
 }
 
 .category-icon {
@@ -414,19 +439,31 @@ nav a:hover {
   font-size: 12px;
   color: var(--text-muted);
   margin-left: auto;
+  background: rgba(201, 162, 39, 0.1);
+  padding: 6px 16px;
+  border-radius: 20px;
+}
+
+.subcategory {
+  color: var(--gold);
+  font-size: 14px;
+  margin: 32px 0 16px;
+  letter-spacing: 0.1em;
+  padding-left: 16px;
+  border-left: 2px solid var(--gold);
 }
 
 .links-grid {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-  gap: 16px;
+  gap: 12px;
 }
 
 .link-card {
   display: block;
   background: var(--black-mid);
   border: 1px solid rgba(201, 162, 39, 0.08);
-  padding: 20px 24px;
+  padding: 16px 20px;
   text-decoration: none;
   transition: all 0.3s;
 }
@@ -438,16 +475,17 @@ nav a:hover {
 }
 
 .link-card h4 {
-  font-size: 14px;
+  font-size: 13px;
   color: var(--silver-light);
   font-weight: 400;
-  margin-bottom: 6px;
-  letter-spacing: 0.05em;
+  margin-bottom: 4px;
+  letter-spacing: 0.03em;
 }
 
 .link-card p {
-  font-size: 12px;
+  font-size: 11px;
   color: var(--text-muted);
+  line-height: 1.5;
 }
 
 .link-card .arrow {
@@ -629,6 +667,7 @@ footer {
       <a href="#diagnosis">DIAGNOSIS</a>
       <a href="#stories">STORIES</a>
       <a href="#tools">TOOLS</a>
+      <a href="#business">BUSINESS</a>
       <a href="#contact">CONTACT</a>
     </nav>
   </div>
@@ -650,6 +689,27 @@ footer {
     </div>
   </div>
   <div class="scroll-indicator">SCROLL</div>
+</section>
+
+<section class="stats">
+  <div class="stats-inner">
+    <div class="stat">
+      <div class="stat-num">249</div>
+      <div class="stat-label">PROJECTS</div>
+    </div>
+    <div class="stat">
+      <div class="stat-num">100+</div>
+      <div class="stat-label">AI NOVELS</div>
+    </div>
+    <div class="stat">
+      <div class="stat-num">30+</div>
+      <div class="stat-label">TOOLS</div>
+    </div>
+    <div class="stat">
+      <div class="stat-num">20+</div>
+      <div class="stat-label">DIAGNOSIS</div>
+    </div>
+  </div>
 </section>
 
 <section class="pillars" id="pillars">
@@ -691,93 +751,279 @@ footer {
   </div>
 </section>
 
+<!-- KINGDOM -->
 <section class="category" id="kingdom">
   <div class="section-inner">
     <div class="category-header">
       <span class="category-icon">🏰</span>
       <div>
         <h2 class="category-title">王になる</h2>
-        <p class="category-en">KINGDOM</p>
+        <p class="category-en">KINGDOM CORE</p>
       </div>
-      <span class="category-count">3 services</span>
+      <span class="category-count">12 services</span>
     </div>
     <div class="links-grid">
       <a href="https://hideo-t.github.io/negaibi-tesou/" target="_blank" class="link-card">
         <span class="arrow">→</span>
         <h4>願い灯 世界王手相診断所</h4>
-        <p>AI手相診断で性格タイプを判定、王名・紋章を授与</p>
+        <p>AI手相診断で王名・紋章を授与</p>
       </a>
       <a href="https://hideo-t.github.io/negaibi/" target="_blank" class="link-card">
         <span class="arrow">→</span>
         <h4>願い灯（オリジナル）</h4>
         <p>願い灯プロジェクトの原点</p>
       </a>
+      <a href="https://hideo-t.github.io/sekaiou-echoes/" target="_blank" class="link-card">
+        <span class="arrow">→</span>
+        <h4>世界王 Echoes of the Forgotten</h4>
+        <p>世界王物語</p>
+      </a>
+      <a href="https://hideo-t.github.io/world-king-app-3/" target="_blank" class="link-card">
+        <span class="arrow">→</span>
+        <h4>World King App 3</h4>
+        <p>世界王アプリ最新版</p>
+      </a>
+      <a href="https://hideo-t.github.io/world-king-app-2/" target="_blank" class="link-card">
+        <span class="arrow">→</span>
+        <h4>World King App 2</h4>
+        <p>世界王アプリ</p>
+      </a>
+      <a href="https://hideo-t.github.io/world-king-app/" target="_blank" class="link-card">
+        <span class="arrow">→</span>
+        <h4>World King App</h4>
+        <p>世界王アプリ初期版</p>
+      </a>
+      <a href="https://hideo-t.github.io/your-kingdom-level/" target="_blank" class="link-card">
+        <span class="arrow">→</span>
+        <h4>Your Kingdom Level</h4>
+        <p>王国レベル診断</p>
+      </a>
+      <a href="https://hideo-t.github.io/kingdom-gallery/" target="_blank" class="link-card">
+        <span class="arrow">→</span>
+        <h4>Kingdom Gallery</h4>
+        <p>王国ギャラリー</p>
+      </a>
+      <a href="https://hideo-t.github.io/echoes-of-the-forgotten/" target="_blank" class="link-card">
+        <span class="arrow">→</span>
+        <h4>Echoes of the Forgotten</h4>
+        <p>忘れられた者たちの声</p>
+      </a>
       <a href="https://hideo-t.github.io/hibikiuranai/" target="_blank" class="link-card">
         <span class="arrow">→</span>
         <h4>響占い</h4>
         <p>言霊診断システム</p>
       </a>
+      <a href="https://hideo-t.github.io/library_of_souls/" target="_blank" class="link-card">
+        <span class="arrow">→</span>
+        <h4>Library of Souls</h4>
+        <p>魂の図書館</p>
+      </a>
+      <a href="https://hideo-t.github.io/hideoport/" target="_blank" class="link-card">
+        <span class="arrow">→</span>
+        <h4>Hideo Port</h4>
+        <p>秀夫ポータル</p>
+      </a>
     </div>
   </div>
 </section>
 
+<!-- DIAGNOSIS -->
 <section class="category" id="diagnosis">
   <div class="section-inner">
     <div class="category-header">
       <span class="category-icon">🔮</span>
       <div>
         <h2 class="category-title">自分を知る</h2>
-        <p class="category-en">DIAGNOSIS</p>
+        <p class="category-en">DIAGNOSIS & FORTUNE</p>
       </div>
-      <span class="category-count">6 services</span>
+      <span class="category-count">25+ services</span>
     </div>
+
+    <h3 class="subcategory">手相・占い系</h3>
+    <div class="links-grid">
+      <a href="https://hideo-t.github.io/palm-okinawa-fortune/" target="_blank" class="link-card">
+        <span class="arrow">→</span>
+        <h4>Palm Okinawa Fortune</h4>
+        <p>沖縄手相占い</p>
+      </a>
+      <a href="https://hideo-t.github.io/okinawa-palm-reading-goddess/" target="_blank" class="link-card">
+        <span class="arrow">→</span>
+        <h4>沖縄手相女神</h4>
+        <p>沖縄スタイル手相</p>
+      </a>
+      <a href="https://hideo-t.github.io/palm-okinawa/" target="_blank" class="link-card">
+        <span class="arrow">→</span>
+        <h4>Palm Okinawa</h4>
+        <p>手相診断</p>
+      </a>
+      <a href="https://hideo-t.github.io/tesowomen/" target="_blank" class="link-card">
+        <span class="arrow">→</span>
+        <h4>手相ウーマン</h4>
+        <p>女性向け手相</p>
+      </a>
+      <a href="https://hideo-t.github.io/tenohiranasushi/" target="_blank" class="link-card">
+        <span class="arrow">→</span>
+        <h4>てのひらなすし</h4>
+        <p>手相×寿司</p>
+      </a>
+      <a href="https://hideo-t.github.io/zaiun/" target="_blank" class="link-card">
+        <span class="arrow">→</span>
+        <h4>財運</h4>
+        <p>金運診断</p>
+      </a>
+      <a href="https://hideo-t.github.io/moonlight-spirit-diagnosis/" target="_blank" class="link-card">
+        <span class="arrow">→</span>
+        <h4>Moonlight Spirit</h4>
+        <p>月光霊診断</p>
+      </a>
+      <a href="https://hideo-t.github.io/todays-omikuji/" target="_blank" class="link-card">
+        <span class="arrow">→</span>
+        <h4>今日のおみくじ</h4>
+        <p>デイリーおみくじ</p>
+      </a>
+    </div>
+
+    <h3 class="subcategory">性格・タイプ診断</h3>
     <div class="links-grid">
       <a href="https://hideo-t.github.io/shindan/" target="_blank" class="link-card">
         <span class="arrow">→</span>
         <h4>診断</h4>
         <p>性格診断システム</p>
       </a>
+      <a href="https://hideo-t.github.io/protagonist-percentage-checker/" target="_blank" class="link-card">
+        <span class="arrow">→</span>
+        <h4>主人公度チェッカー</h4>
+        <p>あなたの主人公率</p>
+      </a>
+      <a href="https://hideo-t.github.io/inv_type/" target="_blank" class="link-card">
+        <span class="arrow">→</span>
+        <h4>投資タイプ</h4>
+        <p>投資スタイル診断</p>
+      </a>
+      <a href="https://hideo-t.github.io/NekoLogy/" target="_blank" class="link-card">
+        <span class="arrow">→</span>
+        <h4>NekoLogy</h4>
+        <p>猫タイプ診断</p>
+      </a>
+    </div>
+
+    <h3 class="subcategory">健康・ライフスタイル</h3>
+    <div class="links-grid">
       <a href="https://hideo-t.github.io/aidoctor/" target="_blank" class="link-card">
         <span class="arrow">→</span>
         <h4>AIドクター</h4>
         <p>AI健康相談</p>
-      </a>
-      <a href="https://hideo-t.github.io/sakeun/" target="_blank" class="link-card">
-        <span class="arrow">→</span>
-        <h4>酒運</h4>
-        <p>お酒と運勢の診断</p>
-      </a>
-      <a href="https://hideo-t.github.io/berometer/" target="_blank" class="link-card">
-        <span class="arrow">→</span>
-        <h4>ビアロメーター</h4>
-        <p>ビール相性診断</p>
-      </a>
-      <a href="https://hideo-t.github.io/pet/" target="_blank" class="link-card">
-        <span class="arrow">→</span>
-        <h4>ペット診断</h4>
-        <p>ペットとの相性分析</p>
       </a>
       <a href="https://hideo-t.github.io/yasetai/" target="_blank" class="link-card">
         <span class="arrow">→</span>
         <h4>痩せたい</h4>
         <p>ダイエット診断</p>
       </a>
+      <a href="https://hideo-t.github.io/sakeun/" target="_blank" class="link-card">
+        <span class="arrow">→</span>
+        <h4>酒運</h4>
+        <p>お酒と運勢</p>
+      </a>
+      <a href="https://hideo-t.github.io/berometer/" target="_blank" class="link-card">
+        <span class="arrow">→</span>
+        <h4>ビアロメーター</h4>
+        <p>ビール相性診断</p>
+      </a>
+      <a href="https://hideo-t.github.io/izakayayosoku/" target="_blank" class="link-card">
+        <span class="arrow">→</span>
+        <h4>居酒屋予測</h4>
+        <p>居酒屋マッチング</p>
+      </a>
+      <a href="https://hideo-t.github.io/izakaya/" target="_blank" class="link-card">
+        <span class="arrow">→</span>
+        <h4>居酒屋</h4>
+        <p>居酒屋ガイド</p>
+      </a>
+    </div>
+
+    <h3 class="subcategory">ペット・動物</h3>
+    <div class="links-grid">
+      <a href="https://hideo-t.github.io/pet/" target="_blank" class="link-card">
+        <span class="arrow">→</span>
+        <h4>ペット診断</h4>
+        <p>ペットとの相性</p>
+      </a>
+      <a href="https://hideo-t.github.io/nasu_paw_pulse/" target="_blank" class="link-card">
+        <span class="arrow">→</span>
+        <h4>那須パウパルス</h4>
+        <p>ペット診断</p>
+      </a>
+      <a href="https://hideo-t.github.io/nasu_pet_frame/" target="_blank" class="link-card">
+        <span class="arrow">→</span>
+        <h4>那須ペットフレーム</h4>
+        <p>ペットフォトフレーム</p>
+      </a>
+      <a href="https://hideo-t.github.io/wanko/" target="_blank" class="link-card">
+        <span class="arrow">→</span>
+        <h4>わんこ</h4>
+        <p>犬診断</p>
+      </a>
+      <a href="https://hideo-t.github.io/wankosanpo/" target="_blank" class="link-card">
+        <span class="arrow">→</span>
+        <h4>わんこ散歩</h4>
+        <p>お散歩ガイド</p>
+      </a>
+      <a href="https://hideo-t.github.io/wankotalk/" target="_blank" class="link-card">
+        <span class="arrow">→</span>
+        <h4>わんこトーク</h4>
+        <p>犬との会話AI</p>
+      </a>
+      <a href="https://hideo-t.github.io/todays-boss-is-this-bird/" target="_blank" class="link-card">
+        <span class="arrow">→</span>
+        <h4>今日の上司はこの鳥</h4>
+        <p>鳥占い</p>
+      </a>
+    </div>
+
+    <h3 class="subcategory">恋愛・マッチング</h3>
+    <div class="links-grid">
+      <a href="https://hideo-t.github.io/tekito-match/" target="_blank" class="link-card">
+        <span class="arrow">→</span>
+        <h4>てきとうマッチ</h4>
+        <p>ゆるいマッチング</p>
+      </a>
+      <a href="https://hideo-t.github.io/tekitou-match/" target="_blank" class="link-card">
+        <span class="arrow">→</span>
+        <h4>てきとうマッチ2</h4>
+        <p>マッチング診断</p>
+      </a>
+      <a href="https://hideo-t.github.io/nanchatte-line-ai-dating/" target="_blank" class="link-card">
+        <span class="arrow">→</span>
+        <h4>なんちゃってLINE</h4>
+        <p>AIデートシミュ</p>
+      </a>
+      <a href="https://hideo-t.github.io/fake-dating-chat-v2/" target="_blank" class="link-card">
+        <span class="arrow">→</span>
+        <h4>フェイクデートチャット</h4>
+        <p>デート会話練習</p>
+      </a>
+      <a href="https://hideo-t.github.io/nanchatte-gram/" target="_blank" class="link-card">
+        <span class="arrow">→</span>
+        <h4>なんちゃってグラム</h4>
+        <p>SNS風診断</p>
+      </a>
     </div>
   </div>
 </section>
 
+<!-- STORIES -->
 <section class="category" id="stories">
   <div class="section-inner">
     <div class="category-header">
       <span class="category-icon">📖</span>
       <div>
         <h2 class="category-title">世界を旅する</h2>
-        <p class="category-en">AI GENERATED STORIES</p>
+        <p class="category-en">AI GENERATED NOVELS</p>
       </div>
-      <span class="category-count">47 novels</span>
+      <span class="category-count">100+ novels</span>
     </div>
 
-    <h3 style="color: var(--gold); font-size: 14px; margin: 32px 0 16px; letter-spacing: 0.1em;">▼ ファンタジー・冒険</h3>
+    <h3 class="subcategory">ファンタジー・冒険</h3>
     <div class="links-grid">
       <a href="https://hideo-t.github.io/magical-school-journey/" target="_blank" class="link-card">
         <span class="arrow">→</span>
@@ -799,6 +1045,26 @@ footer {
         <h4>美の誓約: 野獣との共鳴</h4>
         <p>美女と野獣リメイク</p>
       </a>
+      <a href="https://hideo-t.github.io/forest-fairies-secret/" target="_blank" class="link-card">
+        <span class="arrow">→</span>
+        <h4>森の秘密: 妖精との邂逅</h4>
+        <p>妖精ファンタジー</p>
+      </a>
+      <a href="https://hideo-t.github.io/marine-fairy-adventure/" target="_blank" class="link-card">
+        <span class="arrow">→</span>
+        <h4>海の秘宝: 妖精の鼓動</h4>
+        <p>海洋妖精物語</p>
+      </a>
+      <a href="https://hideo-t.github.io/fairy-tale-adventure/" target="_blank" class="link-card">
+        <span class="arrow">→</span>
+        <h4>妖精の森の秘密</h4>
+        <p>妖精と人間の邂逅</p>
+      </a>
+      <a href="https://hideo-t.github.io/marine-creatures-adventure/" target="_blank" class="link-card">
+        <span class="arrow">→</span>
+        <h4>海の謎を解く者たち</h4>
+        <p>海洋冒険</p>
+      </a>
       <a href="https://hideo-t.github.io/ancient-journey-adventure/" target="_blank" class="link-card">
         <span class="arrow">→</span>
         <h4>古代の秘められた扉</h4>
@@ -809,9 +1075,19 @@ footer {
         <h4>深海への旅</h4>
         <p>闇に潜む真実</p>
       </a>
+      <a href="https://hideo-t.github.io/sugar-kingdom-cake-magic/" target="_blank" class="link-card">
+        <span class="arrow">→</span>
+        <h4>Sugar Kingdom</h4>
+        <p>ケーキの魔法王国</p>
+      </a>
+      <a href="https://hideo-t.github.io/cake-mosaic-kingdom/" target="_blank" class="link-card">
+        <span class="arrow">→</span>
+        <h4>Cake Mosaic Kingdom</h4>
+        <p>ケーキモザイク王国</p>
+      </a>
     </div>
 
-    <h3 style="color: var(--gold); font-size: 14px; margin: 32px 0 16px; letter-spacing: 0.1em;">▼ SF・未来</h3>
+    <h3 class="subcategory">SF・未来</h3>
     <div class="links-grid">
       <a href="https://hideo-t.github.io/ai-terrestrial-conquest/" target="_blank" class="link-card">
         <span class="arrow">→</span>
@@ -840,12 +1116,27 @@ footer {
       </a>
       <a href="https://hideo-t.github.io/robot-kids-adventure/" target="_blank" class="link-card">
         <span class="arrow">→</span>
-        <h4>ヘンテコロボットと怠け少年の冒険</h4>
+        <h4>ヘンテコロボットと怠け少年</h4>
         <p>ロボットコメディ</p>
+      </a>
+      <a href="https://hideo-t.github.io/tearful-computer-journey/" target="_blank" class="link-card">
+        <span class="arrow">→</span>
+        <h4>涙を流すPC</h4>
+        <p>スループット向上への道程</p>
+      </a>
+      <a href="https://hideo-t.github.io/ashen-starfield-novel/" target="_blank" class="link-card">
+        <span class="arrow">→</span>
+        <h4>灰色の星海</h4>
+        <p>Ashen Starfield</p>
+      </a>
+      <a href="https://hideo-t.github.io/only-earth-children/" target="_blank" class="link-card">
+        <span class="arrow">→</span>
+        <h4>唯一世界の子供たち</h4>
+        <p>哲学的SF</p>
       </a>
     </div>
 
-    <h3 style="color: var(--gold); font-size: 14px; margin: 32px 0 16px; letter-spacing: 0.1em;">▼ 歴史・忍者</h3>
+    <h3 class="subcategory">歴史・忍者</h3>
     <div class="links-grid">
       <a href="https://hideo-t.github.io/samurai-and-ninja-chronicles/" target="_blank" class="link-card">
         <span class="arrow">→</span>
@@ -859,7 +1150,7 @@ footer {
       </a>
       <a href="https://hideo-t.github.io/ninjas-of-sengoku/" target="_blank" class="link-card">
         <span class="arrow">→</span>
-        <h4>忍びの影: 戦国時代の闇</h4>
+        <h4>忍びの影: 戦国時代の闘</h4>
         <p>戦国忍者譚</p>
       </a>
       <a href="https://hideo-t.github.io/hidden-shadows/" target="_blank" class="link-card">
@@ -872,9 +1163,14 @@ footer {
         <h4>風林火山: 忍びの道</h4>
         <p>武田信玄と忍者</p>
       </a>
+      <a href="https://hideo-t.github.io/ninja-peace-journey/" target="_blank" class="link-card">
+        <span class="arrow">→</span>
+        <h4>女忍者の平和への道</h4>
+        <p>平和を求める忍者</p>
+      </a>
     </div>
 
-    <h3 style="color: var(--gold); font-size: 14px; margin: 32px 0 16px; letter-spacing: 0.1em;">▼ 反実仮想・思考実験</h3>
+    <h3 class="subcategory">反実仮想・思考実験</h3>
     <div class="links-grid">
       <a href="https://hideo-t.github.io/english-repo-name/" target="_blank" class="link-card">
         <span class="arrow">→</span>
@@ -898,36 +1194,27 @@ footer {
       </a>
       <a href="https://hideo-t.github.io/internet-and-america/" target="_blank" class="link-card">
         <span class="arrow">→</span>
-        <h4>もしアメリカがなければインターネットはなかった</h4>
+        <h4">もしアメリカがなければインターネットはなかった</h4>
         <p>技術史改変</p>
-      </a>
-      <a href="https://hideo-t.github.io/cafe-and-automobile/" target="_blank" class="link-card">
-        <span class="arrow">→</span>
-        <h4>もし自動車がなければカフェはなかった</h4>
-        <p>文化史改変</p>
       </a>
       <a href="https://hideo-t.github.io/soccer-and-war/" target="_blank" class="link-card">
         <span class="arrow">→</span>
         <h4>もし戦争がなければサッカーはなかった</h4>
         <p>スポーツ史改変</p>
       </a>
-    </div>
-
-    <h3 style="color: var(--gold); font-size: 14px; margin: 32px 0 16px; letter-spacing: 0.1em;">▼ 沖縄・地域</h3>
-    <div class="links-grid">
-      <a href="https://hideo-t.github.io/okinawan-spirit-medium-mystery/" target="_blank" class="link-card">
+      <a href="https://hideo-t.github.io/cafe-and-automobile/" target="_blank" class="link-card">
         <span class="arrow">→</span>
-        <h4>美ら霊媒師</h4>
-        <p>封印された島の秘密</p>
+        <h4>もし自動車がなければカフェはなかった</h4>
+        <p>文化史改変</p>
       </a>
-      <a href="https://hideo-t.github.io/ryukyu-horror-world/" target="_blank" class="link-card">
+      <a href="https://hideo-t.github.io/anti-smoking-world-building/" target="_blank" class="link-card">
         <span class="arrow">→</span>
-        <h4>残光の琉球</h4>
-        <p>独立とは名ばかりの監獄</p>
+        <h4>禁煙の代償</h4>
+        <p>タバコのない世界</p>
       </a>
     </div>
 
-    <h3 style="color: var(--gold); font-size: 14px; margin: 32px 0 16px; letter-spacing: 0.1em;">▼ 日常・青春</h3>
+    <h3 class="subcategory">日常・青春・恋愛</h3>
     <div class="links-grid">
       <a href="https://hideo-t.github.io/magichour-v005/" target="_blank" class="link-card">
         <span class="arrow">→</span>
@@ -941,162 +1228,534 @@ footer {
       </a>
       <a href="https://hideo-t.github.io/yui-19-years-of-life/" target="_blank" class="link-card">
         <span class="arrow">→</span>
-        <h4>19歳の春：新しい始まり</h4>
+        <h4">19歳の春：新しい始まり</h4>
         <p>青春成長物語</p>
+      </a>
+      <a href="https://hideo-t.github.io/hatsukoi-no-hanabira-v003/" target="_blank" class="link-card">
+        <span class="arrow">→</span>
+        <h4>初恋の花びら</h4>
+        <p>初恋ストーリー</p>
+      </a>
+      <a href="https://hideo-t.github.io/yumiyumiko/" target="_blank" class="link-card">
+        <span class="arrow">→</span>
+        <h4>ゆみこのハミング</h4>
+        <p>歌で届ける小さな奇跡</p>
+      </a>
+      <a href="https://hideo-t.github.io/tsuduku/" target="_blank" class="link-card">
+        <span class="arrow">→</span>
+        <h4>つづく</h4>
+        <p>名前も知らないやさしい君へ</p>
+      </a>
+      <a href="https://hideo-t.github.io/gtmasa/" target="_blank" class="link-card">
+        <span class="arrow">→</span>
+        <h4>gtmasa</h4>
+        <p>ギターを置いた夜に</p>
+      </a>
+      <a href="https://hideo-t.github.io/perfect-mom-life-journal/" target="_blank" class="link-card">
+        <span class="arrow">→</span>
+        <h4">完璧ママの日々奮闘記</h4>
+        <p>育児奮闘記</p>
+      </a>
+      <a href="https://hideo-t.github.io/adventure-of-fifty-six-year-old-man/" target="_blank" class="link-card">
+        <span class="arrow">→</span>
+        <h4>56歳のおっさんの冒険</h4>
+        <p>中年の再出発</p>
       </a>
       <a href="https://hideo-t.github.io/takahashi-hideo/" target="_blank" class="link-card">
         <span class="arrow">→</span>
-        <h4>高橋秀夫</h4>
+        <h4">高橋秀夫</h4>
         <p>名前が物語になる時</p>
       </a>
     </div>
 
-    <h3 style="color: var(--gold); font-size: 14px; margin: 32px 0 16px; letter-spacing: 0.1em;">▼ その他</h3>
+    <h3 class="subcategory">猫・動物</h3>
     <div class="links-grid">
-      <a href="https://hideo-t.github.io/only-earth-children/" target="_blank" class="link-card">
+      <a href="https://hideo-t.github.io/nekonekoneko/" target="_blank" class="link-card">
         <span class="arrow">→</span>
-        <h4>唯一世界の子供たち</h4>
-        <p>哲学的SF</p>
+        <h4">ねこねこねこ</h4>
+        <p>32日間の冒険</p>
       </a>
-      <a href="https://hideo-t.github.io/cell-world-setting/" target="_blank" class="link-card">
+      <a href="https://hideo-t.github.io/mimi-no-kaerimichi/" target="_blank" class="link-card">
         <span class="arrow">→</span>
-        <h4>細胞の鼓動</h4>
-        <p>細胞レベルの戦い</p>
+        <h4">ミミの帰り道</h4>
+        <p>32日間の冒険</p>
+      </a>
+      <a href="https://hideo-t.github.io/mimihonki/" target="_blank" class="link-card">
+        <span class="arrow">→</span>
+        <h4">ミミの本気</h4>
+        <p>猫の本気物語</p>
+      </a>
+      <a href="https://hideo-t.github.io/mii-no-new-adventure/" target="_blank" class="link-card">
+        <span class="arrow">→</span>
+        <h4">ミイの新しい冒険</h4>
+        <p>三年後の春</p>
+      </a>
+      <a href="https://hideo-t.github.io/nyankokaerezu/" target="_blank" class="link-card">
+        <span class="arrow">→</span>
+        <h4">おうちはどこ？ニャノ？</h4>
+        <p>迷い猫物語</p>
+      </a>
+      <a href="https://hideo-t.github.io/nyandemo-ari-kingdom/" target="_blank" class="link-card">
+        <span class="arrow">→</span>
+        <h4">ニャンでもあり王国</h4>
+        <p>猫王国物語</p>
+      </a>
+      <a href="https://hideo-t.github.io/cat-chaos-kingdom/" target="_blank" class="link-card">
+        <span class="arrow">→</span>
+        <h4">Cat Chaos Kingdom</h4>
+        <p>猫カオス王国</p>
+      </a>
+      <a href="https://hideo-t.github.io/adventure-of-kuro-and-friends/" target="_blank" class="link-card">
+        <span class="arrow">→</span>
+        <h4">五郎、けっこうとえっとりの大冒険</h4>
+        <p>動物たちの冒険</p>
+      </a>
+    </div>
+
+    <h3 class="subcategory">沖縄・地域</h3>
+    <div class="links-grid">
+      <a href="https://hideo-t.github.io/okinawan-spirit-medium-mystery/" target="_blank" class="link-card">
+        <span class="arrow">→</span>
+        <h4">美ら霊媒師</h4>
+        <p>封印された島の秘密</p>
+      </a>
+      <a href="https://hideo-t.github.io/ryukyu-horror-world/" target="_blank" class="link-card">
+        <span class="arrow">→</span>
+        <h4">残光の琉球</h4>
+        <p>独立とは名ばかりの監獄</p>
+      </a>
+    </div>
+
+    <h3 class="subcategory">コメディ・その他</h3>
+    <div class="links-grid">
+      <a href="https://hideo-t.github.io/onigiritaisen/" target="_blank" class="link-card">
+        <span class="arrow">→</span>
+        <h4">おにぎり大戦</h4>
+        <p>最後の一粒まで</p>
+      </a>
+      <a href="https://hideo-t.github.io/onigiri-daisenso-sequel/" target="_blank" class="link-card">
+        <span class="arrow">→</span>
+        <h4">おにぎり大戦 再来の敵へ</h4>
+        <p>続編</p>
       </a>
       <a href="https://hideo-t.github.io/ale-and-rugy-pollen-war/" target="_blank" class="link-card">
         <span class="arrow">→</span>
-        <h4>アレと、ルギー の 花粉症大作戦</h4>
+        <h4">アレと、ルギー の 花粉症大作戦</h4>
         <p>アレルギー擬人化コメディ</p>
+      </a>
+      <a href="https://hideo-t.github.io/cell-world-setting/" target="_blank" class="link-card">
+        <span class="arrow">→</span>
+        <h4">細胞の鼓動</h4>
+        <p>細胞レベルの戦い</p>
+      </a>
+      <a href="https://hideo-t.github.io/nideo/" target="_blank" class="link-card">
+        <span class="arrow">→</span>
+        <h4">3分で世界を量産する男</h4>
+        <p>創作の極意</p>
+      </a>
+      <a href="https://hideo-t.github.io/secret-of-the-city-night/" target="_blank" class="link-card">
+        <span class="arrow">→</span>
+        <h4">都会の秘密</h4>
+        <p>夜の音楽と心の渦巻き</p>
+      </a>
+      <a href="https://hideo-t.github.io/analog-war/" target="_blank" class="link-card">
+        <span class="arrow">→</span>
+        <h4">Analog War</h4>
+        <p>アナログの戦い</p>
       </a>
     </div>
   </div>
 </section>
 
+<!-- TOOLS -->
 <section class="category" id="tools">
   <div class="section-inner">
     <div class="category-header">
       <span class="category-icon">⚡</span>
       <div>
         <h2 class="category-title">AIを使う</h2>
-        <p class="category-en">AI TOOLS</p>
+        <p class="category-en">AI TOOLS & ENGINES</p>
       </div>
-      <span class="category-count">12 tools</span>
+      <span class="category-count">30+ tools</span>
     </div>
+
+    <h3 class="subcategory">小説・コンテンツ生成</h3>
     <div class="links-grid">
-      <a href="https://hideo-t.github.io/arxiv-shoka/" target="_blank" class="link-card">
-        <span class="arrow">→</span>
-        <h4>秀夫のarXiv書架</h4>
-        <p>arXiv論文を日本語で読む</p>
-      </a>
-      <a href="https://hideo-t.github.io/site-builder/" target="_blank" class="link-card">
-        <span class="arrow">→</span>
-        <h4>サイトビルダー</h4>
-        <p>AIでWebサイトを自動生成</p>
-      </a>
       <a href="https://hideo-t.github.io/NovelForge/" target="_blank" class="link-card">
         <span class="arrow">→</span>
-        <h4>NovelForge</h4>
+        <h4">NovelForge</h4>
         <p>AI小説生成エンジン</p>
       </a>
+      <a href="https://hideo-t.github.io/NovelForge3/" target="_blank" class="link-card">
+        <span class="arrow">→</span>
+        <h4">NovelForge 3</h4>
+        <p>小説エンジン最新版</p>
+      </a>
+      <a href="https://hideo-t.github.io/NovelForgeC/" target="_blank" class="link-card">
+        <span class="arrow">→</span>
+        <h4">NovelForge C</h4>
+        <p>カスタム版</p>
+      </a>
+      <a href="https://hideo-t.github.io/NovelForgeED/" target="_blank" class="link-card">
+        <span class="arrow">→</span>
+        <h4">NovelForge ED</h4>
+        <p>エディション版</p>
+      </a>
+      <a href="https://hideo-t.github.io/NovelForgeInvestment/" target="_blank" class="link-card">
+        <span class="arrow">→</span>
+        <h4">NovelForge Investment</h4>
+        <p>投資向け小説生成</p>
+      </a>
+      <a href="https://hideo-t.github.io/contentengine/" target="_blank" class="link-card">
+        <span class="arrow">→</span>
+        <h4">コンテンツエンジン</h4>
+        <p>コンテンツ自動生成</p>
+      </a>
+      <a href="https://hideo-t.github.io/utamonogatari/" target="_blank" class="link-card">
+        <span class="arrow">→</span>
+        <h4">歌物語</h4>
+        <p>歌詞生成AI</p>
+      </a>
+      <a href="https://hideo-t.github.io/aimibun/" target="_blank" class="link-card">
+        <span class="arrow">→</span>
+        <h4">AI美文</h4>
+        <p>美文生成</p>
+      </a>
+    </div>
+
+    <h3 class="subcategory">AIプラットフォーム</h3>
+    <div class="links-grid">
       <a href="https://hideo-t.github.io/Control-tower-for-multiple-AI/" target="_blank" class="link-card">
         <span class="arrow">→</span>
-        <h4>複数AI制御塔</h4>
+        <h4">複数AI制御塔</h4>
         <p>マルチAIオーケストレーション</p>
       </a>
       <a href="https://hideo-t.github.io/PrivateClaudeConsole/" target="_blank" class="link-card">
         <span class="arrow">→</span>
-        <h4>Private Claude Console</h4>
+        <h4">Private Claude Console</h4>
         <p>プライベートLLMコンソール</p>
       </a>
       <a href="https://hideo-t.github.io/aidoc_commander/" target="_blank" class="link-card">
         <span class="arrow">→</span>
-        <h4>AIドキュメントコマンダー</h4>
+        <h4">AIドキュメントコマンダー</h4>
         <p>ドキュメント自動生成</p>
-      </a>
-      <a href="https://hideo-t.github.io/contentengine/" target="_blank" class="link-card">
-        <span class="arrow">→</span>
-        <h4>コンテンツエンジン</h4>
-        <p>コンテンツ自動生成</p>
-      </a>
-      <a href="https://hideo-t.github.io/dasai-hunter/" target="_blank" class="link-card">
-        <span class="arrow">→</span>
-        <h4>ダサいハンター</h4>
-        <p>デザイン改善AI</p>
-      </a>
-      <a href="https://hideo-t.github.io/utamonogatari/" target="_blank" class="link-card">
-        <span class="arrow">→</span>
-        <h4>歌物語</h4>
-        <p>歌詞生成AI</p>
       </a>
       <a href="https://hideo-t.github.io/tonbochat/" target="_blank" class="link-card">
         <span class="arrow">→</span>
-        <h4>トンボチャット</h4>
+        <h4">トンボチャット</h4>
         <p>AIチャットボット</p>
-      </a>
-      <a href="https://hideo-t.github.io/phoka/" target="_blank" class="link-card">
-        <span class="arrow">→</span>
-        <h4>Phoka</h4>
-        <p>画像解析ツール</p>
       </a>
       <a href="https://hideo-t.github.io/ndabai/" target="_blank" class="link-card">
         <span class="arrow">→</span>
-        <h4>Ndabai</h4>
+        <h4">Ndabai</h4>
         <p>AIアシスタント</p>
+      </a>
+      <a href="https://hideo-t.github.io/kurojika/" target="_blank" class="link-card">
+        <span class="arrow">→</span>
+        <h4">Kurojika</h4>
+        <p>AI処理エンジン</p>
+      </a>
+    </div>
+
+    <h3 class="subcategory">開発・分析ツール</h3>
+    <div class="links-grid">
+      <a href="https://hideo-t.github.io/arxiv-shoka/" target="_blank" class="link-card">
+        <span class="arrow">→</span>
+        <h4">秀夫のarXiv書架</h4>
+        <p>arXiv論文を日本語で読む</p>
+      </a>
+      <a href="https://hideo-t.github.io/site-builder/" target="_blank" class="link-card">
+        <span class="arrow">→</span>
+        <h4">サイトビルダー</h4>
+        <p>AIでWebサイトを自動生成</p>
+      </a>
+      <a href="https://hideo-t.github.io/dasai-hunter/" target="_blank" class="link-card">
+        <span class="arrow">→</span>
+        <h4">ダサいハンター</h4>
+        <p>デザイン改善AI</p>
+      </a>
+      <a href="https://hideo-t.github.io/phoka/" target="_blank" class="link-card">
+        <span class="arrow">→</span>
+        <h4">Phoka</h4>
+        <p>画像解析ツール</p>
+      </a>
+      <a href="https://hideo-t.github.io/bin_scan/" target="_blank" class="link-card">
+        <span class="arrow">→</span>
+        <h4">Bin Scan</h4>
+        <p>バイナリスキャン</p>
+      </a>
+      <a href="https://hideo-t.github.io/JUDGEX/" target="_blank" class="link-card">
+        <span class="arrow">→</span>
+        <h4">JUDGEX</h4>
+        <p>判定エンジン</p>
+      </a>
+      <a href="https://hideo-t.github.io/judgex2/" target="_blank" class="link-card">
+        <span class="arrow">→</span>
+        <h4">JUDGEX 2</h4>
+        <p>判定エンジン v2</p>
+      </a>
+    </div>
+
+    <h3 class="subcategory">業務・管理ツール</h3>
+    <div class="links-grid">
+      <a href="https://hideo-t.github.io/genba-os-demo/" target="_blank" class="link-card">
+        <span class="arrow">→</span>
+        <h4">現場OS Demo</h4>
+        <p>建設現場管理</p>
+      </a>
+      <a href="https://hideo-t.github.io/genba-auto-doc/" target="_blank" class="link-card">
+        <span class="arrow">→</span>
+        <h4">現場自動ドキュメント</h4>
+        <p>自動書類作成</p>
+      </a>
+      <a href="https://hideo-t.github.io/genba-cost-lite/" target="_blank" class="link-card">
+        <span class="arrow">→</span>
+        <h4">現場コストライト</h4>
+        <p>コスト管理</p>
+      </a>
+      <a href="https://hideo-t.github.io/progress-mini-manager/" target="_blank" class="link-card">
+        <span class="arrow">→</span>
+        <h4">Progress Mini Manager</h4>
+        <p>進捗管理</p>
+      </a>
+      <a href="https://hideo-t.github.io/pa-event-manager/" target="_blank" class="link-card">
+        <span class="arrow">→</span>
+        <h4">PA Event Manager</h4>
+        <p>イベント音響管理</p>
+      </a>
+      <a href="https://hideo-t.github.io/audio-skill-certification/" target="_blank" class="link-card">
+        <span class="arrow">→</span>
+        <h4">Audio Skill Certification</h4>
+        <p>音響スキル認定</p>
+      </a>
+      <a href="https://hideo-t.github.io/trowel-skill-transfer/" target="_blank" class="link-card">
+        <span class="arrow">→</span>
+        <h4">Trowel Skill Transfer</h4>
+        <p>左官技術伝承</p>
+      </a>
+      <a href="https://hideo-t.github.io/connect-construction-app/" target="_blank" class="link-card">
+        <span class="arrow">→</span>
+        <h4">Connect Construction</h4>
+        <p>建設業界マッチング</p>
+      </a>
+    </div>
+
+    <h3 class="subcategory">ゲーム・エンタメ</h3>
+    <div class="links-grid">
+      <a href="https://hideo-t.github.io/game1/" target="_blank" class="link-card">
+        <span class="arrow">→</span>
+        <h4">Game 1</h4>
+        <p>ミニゲーム</p>
+      </a>
+      <a href="https://hideo-t.github.io/game2/" target="_blank" class="link-card">
+        <span class="arrow">→</span>
+        <h4">Game 2</h4>
+        <p>ミニゲーム</p>
+      </a>
+      <a href="https://hideo-t.github.io/game3/" target="_blank" class="link-card">
+        <span class="arrow">→</span>
+        <h4">Game 3</h4>
+        <p>ミニゲーム</p>
+      </a>
+      <a href="https://hideo-t.github.io/game4/" target="_blank" class="link-card">
+        <span class="arrow">→</span>
+        <h4">Game 4</h4>
+        <p>ミニゲーム</p>
+      </a>
+      <a href="https://hideo-t.github.io/gamepacman/" target="_blank" class="link-card">
+        <span class="arrow">→</span>
+        <h4">パックマン</h4>
+        <p>クラシックゲーム</p>
+      </a>
+      <a href="https://hideo-t.github.io/coingame/" target="_blank" class="link-card">
+        <span class="arrow">→</span>
+        <h4">コインゲーム</h4>
+        <p>コイン集めゲーム</p>
+      </a>
+      <a href="https://hideo-t.github.io/pzl/" target="_blank" class="link-card">
+        <span class="arrow">→</span>
+        <h4">パズル</h4>
+        <p>パズルゲーム</p>
+      </a>
+      <a href="https://hideo-t.github.io/wankopuzzle/" target="_blank" class="link-card">
+        <span class="arrow">→</span>
+        <h4">わんこパズル</h4>
+        <p>犬のパズル</p>
+      </a>
+      <a href="https://hideo-t.github.io/onigiri/" target="_blank" class="link-card">
+        <span class="arrow">→</span>
+        <h4">おにぎり</h4>
+        <p>おにぎりゲーム</p>
+      </a>
+      <a href="https://hideo-t.github.io/sound_tape_play/" target="_blank" class="link-card">
+        <span class="arrow">→</span>
+        <h4">Sound Tape Play</h4>
+        <p>テーププレイヤー</p>
+      </a>
+      <a href="https://hideo-t.github.io/tape-wizard/" target="_blank" class="link-card">
+        <span class="arrow">→</span>
+        <h4">Tape Wizard</h4>
+        <p>テープウィザード</p>
       </a>
     </div>
   </div>
 </section>
 
+<!-- BUSINESS -->
 <section class="category" id="business">
   <div class="section-inner">
     <div class="category-header">
       <span class="category-icon">🏢</span>
       <div>
         <h2 class="category-title">ビジネス</h2>
-        <p class="category-en">BUSINESS</p>
+        <p class="category-en">BUSINESS & CORPORATE</p>
       </div>
-      <span class="category-count">8 sites</span>
+      <span class="category-count">20+ sites</span>
     </div>
+
+    <h3 class="subcategory">企業・サービス</h3>
     <div class="links-grid">
       <a href="https://hideo-t.github.io/mitsuakira-pro/" target="_blank" class="link-card">
         <span class="arrow">→</span>
-        <h4>三晶プロ</h4>
+        <h4">三晶プロ</h4>
         <p>企業サイト</p>
       </a>
       <a href="https://hideo-t.github.io/garage-aizu/" target="_blank" class="link-card">
         <span class="arrow">→</span>
-        <h4>ガレージ会津</h4>
+        <h4">ガレージ会津</h4>
         <p>月極ガレージレンタル</p>
       </a>
       <a href="https://hideo-t.github.io/okinawa-ai-studio/" target="_blank" class="link-card">
         <span class="arrow">→</span>
-        <h4>沖縄AIスタジオ</h4>
+        <h4">沖縄AIスタジオ</h4>
         <p>AI開発拠点</p>
       </a>
       <a href="https://hideo-t.github.io/privatellm.jp/" target="_blank" class="link-card">
         <span class="arrow">→</span>
-        <h4>Private LLM</h4>
+        <h4">Private LLM</h4>
         <p>プライベートLLMサービス</p>
+      </a>
+      <a href="https://hideo-t.github.io/privatellm-cert/" target="_blank" class="link-card">
+        <span class="arrow">→</span>
+        <h4">Private LLM 認証</h4>
+        <p>認証システム</p>
       </a>
       <a href="https://hideo-t.github.io/parkhokinawa/" target="_blank" class="link-card">
         <span class="arrow">→</span>
-        <h4>パークホ沖縄</h4>
+        <h4">パークホ沖縄</h4>
         <p>沖縄パークホームズ</p>
+      </a>
+      <a href="https://hideo-t.github.io/aquasystem/" target="_blank" class="link-card">
+        <span class="arrow">→</span>
+        <h4">アクアシステム</h4>
+        <p>水関連システム</p>
       </a>
       <a href="https://hideo-t.github.io/kodomosyokudo/" target="_blank" class="link-card">
         <span class="arrow">→</span>
-        <h4>子ども食堂</h4>
+        <h4">子ども食堂</h4>
         <p>地域貢献プロジェクト</p>
       </a>
+      <a href="https://hideo-t.github.io/inoue/" target="_blank" class="link-card">
+        <span class="arrow">→</span>
+        <h4">Inoue</h4>
+        <p>企業サイト</p>
+      </a>
+    </div>
+
+    <h3 class="subcategory">ポータル・QA</h3>
+    <div class="links-grid">
       <a href="https://hideo-t.github.io/portal/" target="_blank" class="link-card">
         <span class="arrow">→</span>
-        <h4>ポータル</h4>
+        <h4">ポータル</h4>
         <p>総合ポータルサイト</p>
       </a>
       <a href="https://hideo-t.github.io/QAparkhome/" target="_blank" class="link-card">
         <span class="arrow">→</span>
-        <h4>QA パークホーム</h4>
+        <h4">QA パークホーム</h4>
         <p>品質管理</p>
+      </a>
+      <a href="https://hideo-t.github.io/QA/" target="_blank" class="link-card">
+        <span class="arrow">→</span>
+        <h4">QA</h4>
+        <p>品質保証</p>
+      </a>
+      <a href="https://hideo-t.github.io/5parkhomes-okinawa-redesign/" target="_blank" class="link-card">
+        <span class="arrow">→</span>
+        <h4">パークホームズ沖縄リデザイン</h4>
+        <p>サイトリニューアル</p>
+      </a>
+      <a href="https://hideo-t.github.io/site-a-redesign/" target="_blank" class="link-card">
+        <span class="arrow">→</span>
+        <h4">サイトAリデザイン</h4>
+        <p>サイトリニューアル</p>
+      </a>
+    </div>
+
+    <h3 class="subcategory">記念・イベント</h3>
+    <div class="links-grid">
+      <a href="https://hideo-t.github.io/311/" target="_blank" class="link-card">
+        <span class="arrow">→</span>
+        <h4">3.11</h4>
+        <p>震災メモリアル</p>
+      </a>
+      <a href="https://hideo-t.github.io/311memo2026/" target="_blank" class="link-card">
+        <span class="arrow">→</span>
+        <h4">3.11 メモ 2026</h4>
+        <p>震災記録</p>
+      </a>
+      <a href="https://hideo-t.github.io/dear-yumi-birthday-2026/" target="_blank" class="link-card">
+        <span class="arrow">→</span>
+        <h4">Dear Yumi Birthday 2026</h4>
+        <p>バースデーサイト</p>
+      </a>
+      <a href="https://hideo-t.github.io/love-letter-to-yumi/" target="_blank" class="link-card">
+        <span class="arrow">→</span>
+        <h4">Love Letter to Yumi</h4>
+        <p>ラブレターサイト</p>
+      </a>
+      <a href="https://hideo-t.github.io/silver-newborn/" target="_blank" class="link-card">
+        <span class="arrow">→</span>
+        <h4">Silver Newborn</h4>
+        <p>出産記念</p>
+      </a>
+    </div>
+
+    <h3 class="subcategory">その他</h3>
+    <div class="links-grid">
+      <a href="https://hideo-t.github.io/oso/" target="_blank" class="link-card">
+        <span class="arrow">→</span>
+        <h4">OSO</h4>
+        <p>プロジェクト</p>
+      </a>
+      <a href="https://hideo-t.github.io/midorinokaze/" target="_blank" class="link-card">
+        <span class="arrow">→</span>
+        <h4">緑の風</h4>
+        <p>環境プロジェクト</p>
+      </a>
+      <a href="https://hideo-t.github.io/hikagen/" target="_blank" class="link-card">
+        <span class="arrow">→</span>
+        <h4">日陰</h4>
+        <p>プロジェクト</p>
+      </a>
+      <a href="https://hideo-t.github.io/time/" target="_blank" class="link-card">
+        <span class="arrow">→</span>
+        <h4">Time</h4>
+        <p>時間プロジェクト</p>
+      </a>
+      <a href="https://hideo-t.github.io/drive/" target="_blank" class="link-card">
+        <span class="arrow">→</span>
+        <h4">Drive</h4>
+        <p>ドライブプロジェクト</p>
+      </a>
+      <a href="https://hideo-t.github.io/bosstelu/" target="_blank" class="link-card">
+        <span class="arrow">→</span>
+        <h4">ボステル</h4>
+        <p>プロジェクト</p>
+      </a>
+      <a href="https://hideo-t.github.io/giri2/" target="_blank" class="link-card">
+        <span class="arrow">→</span>
+        <h4">義理2</h4>
+        <p>義理チョコプロジェクト</p>
       </a>
     </div>
   </div>
@@ -1166,7 +1825,7 @@ const observer = new IntersectionObserver((entries) => {
   });
 }, { threshold: 0.1 });
 
-document.querySelectorAll('.category, .pillar').forEach(el => {
+document.querySelectorAll('.category, .pillar, .stat').forEach(el => {
   el.style.opacity = '0';
   el.style.transform = 'translateY(20px)';
   el.style.transition = 'opacity 0.6s, transform 0.6s';
