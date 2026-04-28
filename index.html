@@ -3,1112 +3,1172 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Mysterious Japan ── 世界王 World Kings</title>
-<meta name="description"        content="47都道府県 × 5世界線 = 235話。AIが生む日本ファンタジー小説コレクション。">
-<meta property="og:type"        content="website">
-<meta property="og:site_name"   content="世界王 World Kings">
-<meta property="og:url"         content="https://hideo-t.github.io/worldkingjapan/">
-<meta property="og:title"       content="世界王 World Kings ── Mysterious Japan">
-<meta property="og:description" content="47都道府県 × 5世界線 = 235話。AIが生む日本ファンタジー小説コレクション。">
-<meta property="og:image"       content="https://hideo-t.github.io/worldkingjapan/japan_map.png">
-<meta property="og:locale"      content="ja_JP">
-<meta name="twitter:card"       content="summary_large_image">
-<meta name="twitter:title"      content="世界王 World Kings ── Mysterious Japan">
-<meta name="twitter:description" content="47都道府県 × 5世界線 = 235話。AIが生む日本ファンタジー小説コレクション。">
-<meta name="twitter:image"      content="https://hideo-t.github.io/worldkingjapan/japan_map.png">
+<title>世界王 WORLD KING | あなたの世界を、ここに。</title>
+<meta name="description" content="人は、誰でも自分の世界の王になれる。AI診断・物語・ツールが融合した、あなただけの王国を創造するプラットフォーム。">
+<meta property="og:title" content="世界王 WORLD KING">
+<meta property="og:description" content="人は、誰でも自分の世界の王になれる。">
+<meta property="og:type" content="website">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700&family=Noto+Serif+JP:wght@300;400;500;600;700&family=Noto+Sans+JP:wght@300;400;500;600&display=swap" rel="stylesheet">
 <style>
-@import url('https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@300;400;700;900&family=Noto+Serif+SC:wght@400;700&family=Noto+Serif+KR:wght@400;700&family=Zen+Old+Mincho:wght@400;700&family=Cormorant+Garamond:wght@400;600;700&display=swap');
-:root{--bg:#06060e;--bg2:#0c0c1a;--bg3:#12122a;--tx:#c8c8d4;--txd:#b0b0c8;--txb:#eeeef4;--seal:#7b2ff7;--trade:#f7a02f;--zen:#2f7bf7;--rev:#f72f2f;--bdr:#2ff77b;--gold:#c9a84c;--goldd:#8a7235;--r:10px}
-*{margin:0;padding:0;box-sizing:border-box}html{scroll-behavior:smooth}
-body{background:var(--bg);color:var(--tx);font-family:'Noto Serif JP','Noto Serif SC','Noto Serif KR','Cormorant Garamond',serif;line-height:1.7;overflow-x:hidden;min-height:100vh}
-
-/* LANG BAR */
-.lang-bar{position:fixed;top:0;right:0;z-index:200;display:flex;gap:.2rem;padding:.5rem .8rem;background:rgba(6,6,14,.9);backdrop-filter:blur(10px);border-bottom-left-radius:8px}
-.lang-btn{padding:.2rem .6rem;border:1px solid rgba(255,255,255,.08);border-radius:4px;background:0 0;color:var(--txd);font-size:.65rem;cursor:pointer;transition:.2s;font-family:inherit}
-.lang-btn:hover{border-color:var(--goldd);color:var(--tx)}.lang-btn.active{background:rgba(201,168,76,.15);border-color:var(--goldd);color:var(--gold)}
-
-/* BACK BUTTON */
-.back-btn{position:fixed;top:0;left:0;z-index:200;display:none;align-items:center;gap:.4rem;padding:.55rem 1rem;background:rgba(6,6,14,.9);backdrop-filter:blur(10px);border:none;border-bottom-right-radius:8px;color:var(--gold);font-size:.75rem;cursor:pointer;font-family:inherit;transition:.2s;letter-spacing:.05em}
-.back-btn:hover{background:rgba(201,168,76,.1)}.back-btn.show{display:flex}
-.back-btn svg{width:16px;height:16px;stroke:var(--gold);fill:none;stroke-width:2}
-
-/* HERO */
-.hero{text-align:center;padding:3.5rem 1.5rem 2rem;position:relative}
-.hero::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse 600px 400px at 30% 30%,rgba(123,47,247,.06),transparent),radial-gradient(ellipse 500px 400px at 70% 50%,rgba(47,123,247,.04),transparent);pointer-events:none}
-.hero-kanji{font-family:'Zen Old Mincho',serif;font-size:clamp(2.5rem,8vw,5rem);font-weight:700;color:transparent;background:linear-gradient(135deg,var(--gold),#f0dca0 40%,var(--goldd) 70%,var(--gold));-webkit-background-clip:text;background-clip:text;letter-spacing:.15em;line-height:1.2;position:relative;z-index:1}
-.hero-sub{font-family:'Cormorant Garamond',serif;font-size:clamp(.6rem,2vw,.85rem);color:var(--goldd);letter-spacing:.5em;text-transform:uppercase;margin-top:.3rem;position:relative;z-index:1}
-.hero-quote{font-size:clamp(.75rem,2vw,.95rem);color:#d8d8ee;max-width:500px;margin:1.2rem auto 0;font-weight:400;line-height:2;position:relative;z-index:1;text-shadow:0 1px 8px rgba(0,0,0,.8)}
-
-/* STATS */
-.stats{display:flex;justify-content:center;gap:1.5rem;padding:1.2rem 1rem;border-top:1px solid rgba(201,168,76,.08);border-bottom:1px solid rgba(201,168,76,.08);flex-wrap:wrap}
-.stat{text-align:center}.stat b{font-family:'Zen Old Mincho',serif;font-size:1.4rem;color:var(--gold);display:block}.stat span{font-size:.6rem;color:var(--txd);letter-spacing:.15em}
-.dice-btn{display:flex;flex-direction:column;align-items:center;gap:.2rem;background:none;border:1px solid rgba(201,168,76,.2);border-radius:10px;padding:.4rem .9rem;cursor:pointer;transition:.3s;font-family:inherit;color:var(--txd);letter-spacing:.1em;position:relative;overflow:hidden}
-.dice-btn:hover{border-color:var(--goldd);background:rgba(201,168,76,.06);color:var(--gold)}
-.dice-btn:hover .dice-icon{animation:diceRoll .4s ease}
-.dice-icon{font-size:1.4rem;display:block;line-height:1}
-.dice-label{font-size:.55rem;letter-spacing:.12em;white-space:nowrap}
-@keyframes diceRoll{0%{transform:rotate(0) scale(1)}30%{transform:rotate(-20deg) scale(1.2)}70%{transform:rotate(15deg) scale(1.1)}100%{transform:rotate(0) scale(1)}}
-
-/* NAV MODE SELECTOR */
-.nav-mode{display:flex;justify-content:center;gap:.8rem;padding:1.5rem 1rem .5rem;flex-wrap:wrap}
-.nav-mode-btn{padding:.6rem 1.5rem;border:1px solid rgba(255,255,255,.06);border-radius:30px;background:var(--bg2);color:var(--txd);font-size:.8rem;cursor:pointer;transition:.3s;font-family:inherit;letter-spacing:.08em}
-.nav-mode-btn:hover{border-color:var(--goldd);color:var(--tx)}
-.nav-mode-btn.active{background:rgba(201,168,76,.12);border-color:var(--goldd);color:var(--gold)}
-.pop-section{margin-bottom:2.5rem}
-.pop-section-title{font-size:.95rem;color:var(--gold);letter-spacing:.12em;border-left:2px solid var(--gold);padding-left:.8rem;margin-bottom:.3rem}
-.pop-section-subtitle{font-size:.7rem;color:var(--txd);margin-bottom:1rem;padding-left:1rem}
-.pop-item{display:flex;align-items:flex-start;gap:.9rem;padding:.7rem .9rem;border-radius:8px;background:rgba(255,255,255,.02);border:1px solid rgba(255,255,255,.04);margin-bottom:.5rem;cursor:pointer;transition:.25s}
-.pop-item:hover{background:rgba(201,168,76,.06);border-color:rgba(201,168,76,.2)}
-.pop-thumb{width:56px;height:56px;border-radius:6px;object-fit:cover;flex-shrink:0;background:rgba(255,255,255,.04)}
-.pop-rank{font-size:1.1rem;font-weight:700;color:var(--goldd);min-width:1.8rem;padding-top:.1rem}
-.pop-rank.r1{color:#ffd700}.pop-rank.r2{color:#c0c0c0}.pop-rank.r3{color:#cd7f32}
-.pop-info{flex:1}
-.pop-name{font-size:.9rem;color:var(--tx);margin-bottom:.2rem}
-.pop-name .pop-tag{font-size:.65rem;color:var(--txd);margin-left:.5rem;background:rgba(255,255,255,.06);padding:.1rem .4rem;border-radius:4px}
-.pop-desc{font-size:.72rem;color:var(--txd);line-height:1.5}
-.pop-arrow{color:var(--goldd);font-size:.9rem;align-self:center;opacity:.5}
-.pop-divider{height:1px;background:rgba(255,255,255,.05);margin:2rem 0}
-
-/* FILTER BAR */
-.filter-bar{display:flex;justify-content:center;gap:.3rem;padding:.8rem 1rem;flex-wrap:wrap;max-width:900px;margin:0 auto}
-.filter-chip{padding:.3rem .8rem;border:1px solid rgba(255,255,255,.05);border-radius:20px;background:rgba(255,255,255,.02);color:var(--txd);font-size:.65rem;cursor:pointer;transition:.2s;font-family:inherit}
-.filter-chip:hover{border-color:rgba(201,168,76,.3);color:var(--tx)}
-.filter-chip.active{background:rgba(201,168,76,.12);border-color:var(--goldd);color:var(--gold)}
-.filter-chip[data-wl="封印線"].active{background:rgba(123,47,247,.15);border-color:rgba(123,47,247,.4);color:#c084fc}
-.filter-chip[data-wl="商都線"].active{background:rgba(247,160,47,.15);border-color:rgba(247,160,47,.4);color:#fcd084}
-.filter-chip[data-wl="静律線"].active{background:rgba(47,123,247,.15);border-color:rgba(47,123,247,.4);color:#84c0fc}
-.filter-chip[data-wl="変革線"].active{background:rgba(247,47,47,.15);border-color:rgba(247,47,47,.4);color:#fc8484}
-.filter-chip[data-wl="境界線"].active{background:rgba(47,247,123,.15);border-color:rgba(47,247,123,.4);color:#84fcc0}
-
-/* SEARCH */
-.search-wrap{max-width:400px;margin:.5rem auto;padding:0 1rem}
-.search-input{width:100%;padding:.6rem 1rem;background:var(--bg2);border:1px solid rgba(255,255,255,.05);border-radius:25px;color:var(--txb);font-family:inherit;font-size:.8rem;outline:0;transition:.3s}
-.search-input::placeholder{color:var(--txd)}.search-input:focus{border-color:rgba(201,168,76,.3)}
-
-/* THUMBNAIL GRID */
-.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(160px,1fr));gap:.6rem;padding:.8rem 1rem;max-width:1200px;margin:0 auto}
-.grid.region-grid{grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:1rem}
-.grid.wl-grid{grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:.8rem}
-
-/* CARD */
-.card{position:relative;border-radius:var(--r);overflow:hidden;cursor:pointer;transition:.3s;border:1px solid rgba(255,255,255,.04);aspect-ratio:3/4;background:var(--bg2)}
-.card:hover{transform:translateY(-3px);border-color:rgba(201,168,76,.2);box-shadow:0 8px 30px rgba(0,0,0,.4)}
-.card-img{width:100%;height:100%;object-fit:cover;transition:.3s}
-.card:hover .card-img{transform:scale(1.05)}
-.card-overlay{position:absolute;bottom:0;left:0;right:0;padding:.8rem .6rem .6rem;background:linear-gradient(transparent,rgba(6,6,14,.92) 40%)}
-.card-pref{font-family:'Zen Old Mincho',serif;font-size:1.1rem;color:var(--txb);font-weight:700}
-.card-pref-sub{font-size:.6rem;color:var(--txd);font-family:'Cormorant Garamond',serif}
-.card-wl{display:inline-flex;align-items:center;gap:.25rem;font-size:.55rem;color:var(--txd);margin-top:.25rem;padding:.15rem .5rem;background:rgba(255,255,255,.05);border-radius:12px}
-.card-wl .dot{width:5px;height:5px;border-radius:50%}
-.card-king{font-size:.55rem;color:var(--txd);margin-top:.2rem;opacity:.7}
-
-/* FALLBACK IMAGE (gradient placeholder) */
-.card-fallback{width:100%;height:100%;display:flex;align-items:center;justify-content:center;font-family:'Zen Old Mincho',serif;font-size:2rem;color:rgba(255,255,255,.08)}
-
-/* REGION CARD (larger) */
-.rcard{position:relative;border-radius:var(--r);overflow:hidden;cursor:pointer;transition:.3s;border:1px solid rgba(255,255,255,.04);aspect-ratio:16/9;background:var(--bg2);display:flex;align-items:center;justify-content:center;flex-direction:column;gap:.5rem}
-.rcard:hover{transform:translateY(-3px);border-color:rgba(201,168,76,.2);box-shadow:0 8px 30px rgba(0,0,0,.4)}
-.rcard-name{font-family:'Zen Old Mincho',serif;font-size:clamp(1.2rem,3vw,1.8rem);color:var(--txb);font-weight:700;letter-spacing:.1em}
-.rcard-sub{font-size:.7rem;color:var(--txd)}
-.rcard-count{font-size:.65rem;color:var(--goldd);margin-top:.3rem}
-.rcard::before{content:'';position:absolute;inset:0;opacity:.15;pointer-events:none}
-
-/* WORLD LINE CARD */
-.wlcard{position:relative;border-radius:var(--r);overflow:hidden;cursor:pointer;transition:.3s;border:1px solid rgba(255,255,255,.04);aspect-ratio:4/3;display:flex;align-items:center;justify-content:center;flex-direction:column;gap:.4rem}
-.wlcard:hover{transform:translateY(-3px);box-shadow:0 8px 30px rgba(0,0,0,.4)}
-.wlcard-name{font-family:'Zen Old Mincho',serif;font-size:1.6rem;color:var(--txb);font-weight:700;letter-spacing:.15em}
-.wlcard-en{font-size:.7rem;letter-spacing:.3em;text-transform:uppercase}
-.wlcard-count{font-size:.6rem;color:var(--txd);margin-top:.2rem}
-
-/* SECTION HEADERS */
-.section-title{max-width:1200px;margin:1.5rem auto .5rem;padding:0 1rem;display:flex;align-items:center;gap:.8rem}
-.section-title h2{font-family:'Zen Old Mincho',serif;font-size:clamp(1rem,3vw,1.4rem);color:var(--txb);font-weight:700;letter-spacing:.1em}
-.section-title .badge{font-size:.6rem;color:var(--txd);background:var(--bg2);padding:.2rem .5rem;border-radius:15px}
-
-/* BREADCRUMB */
-.breadcrumb{max-width:1200px;margin:.5rem auto 0;padding:0 1rem;font-size:.7rem;color:var(--txd)}
-.breadcrumb span{cursor:pointer;transition:.2s}.breadcrumb span:hover{color:var(--gold)}
-.breadcrumb .sep{margin:0 .4rem;opacity:.4}
-
-/* FOOTER */
-.footer{text-align:center;padding:3rem 2rem;border-top:1px solid rgba(201,168,76,.08);margin-top:2rem}
-.footer-quote{font-family:'Zen Old Mincho',serif;font-size:clamp(.9rem,2.5vw,1.3rem);color:var(--gold);letter-spacing:.15em;margin-bottom:1.5rem}
-.footer-meta{font-size:.6rem;color:var(--txd);letter-spacing:.2em;line-height:2}
-
-/* VIEW TRANSITIONS */
-.view{display:none;animation:viewIn .4s ease-out}.view.active{display:block}
-@keyframes viewIn{from{opacity:0;transform:translateY(15px)}to{opacity:1;transform:translateY(0)}}
-
-/* COLOR HELPERS */
-.wl-seal{--wc:var(--seal)}.wl-trade{--wc:var(--trade)}.wl-zen{--wc:var(--zen)}.wl-rev{--wc:var(--rev)}.wl-bdr{--wc:var(--bdr)}
-
-/* MOBILE */
-@media(max-width:640px){
-.grid{grid-template-columns:repeat(auto-fill,minmax(120px,1fr));gap:.4rem;padding:.5rem .5rem}
-.grid.region-grid{grid-template-columns:1fr}
-.grid.wl-grid{grid-template-columns:repeat(2,1fr)}
-.card-pref{font-size:.9rem}.card-overlay{padding:.5rem .4rem .4rem}
-.nav-mode{gap:.4rem;padding:1rem .5rem .3rem}.nav-mode-btn{padding:.5rem 1rem;font-size:.7rem}
-.filter-bar{gap:.2rem;padding:.5rem}.filter-chip{padding:.25rem .6rem;font-size:.6rem}
-.hero{padding:3rem 1rem 1.5rem}.stats{gap:1rem;padding:1rem}
+:root {
+  --black: #0a0a0a;
+  --black-light: #141414;
+  --black-mid: #1a1a1a;
+  --gold: #c9a227;
+  --gold-light: #e8c547;
+  --gold-dark: #a07d1c;
+  --silver: #b8b8b8;
+  --silver-light: #e0e0e0;
+  --white: #ffffff;
+  --text: #c8c8c8;
+  --text-muted: #888888;
+  --cinzel: "Cinzel", serif;
+  --serif: "Noto Serif JP", serif;
+  --sans: "Noto Sans JP", sans-serif;
 }
 
-/* ═══ MY PAGE ═══ */
-.card-badges{position:absolute;top:.4rem;right:.4rem;display:flex;gap:.25rem;z-index:5}
-.card-read-badge{background:rgba(47,247,123,.85);border-radius:50%;width:18px;height:18px;display:flex;align-items:center;justify-content:center;font-size:.6rem;backdrop-filter:blur(4px)}
-.card-fav-btn{background:rgba(6,6,14,.7);border:none;border-radius:50%;width:22px;height:22px;display:flex;align-items:center;justify-content:center;font-size:.7rem;cursor:pointer;transition:.2s;backdrop-filter:blur(4px)}
-.card-fav-btn:hover{background:rgba(247,160,47,.3);transform:scale(1.2)}
-.card-fav-btn.active{background:rgba(247,160,47,.5)}
-.mypage-wrap{max-width:900px;margin:0 auto;padding:1rem 1.2rem 4rem}
-.my-hero{text-align:center;padding:1.5rem 0 1rem;border-bottom:1px solid rgba(201,168,76,.1);margin-bottom:1.5rem}
-.my-hero-icon{font-size:2.5rem;margin-bottom:.5rem}
-.my-hero-name{font-family:'Zen Old Mincho',serif;font-size:1.1rem;color:var(--gold);letter-spacing:.15em}
-.my-stats{display:flex;justify-content:center;gap:1.5rem;flex-wrap:wrap;margin-top:1rem}
-.my-stat{text-align:center;padding:.6rem 1rem;background:rgba(255,255,255,.02);border:1px solid rgba(255,255,255,.05);border-radius:10px;min-width:80px}
-.my-stat b{display:block;font-family:'Zen Old Mincho',serif;font-size:1.5rem;color:var(--gold)}
-.my-stat span{font-size:.55rem;color:var(--txd);letter-spacing:.1em}
-.my-progress-wrap{margin:1.5rem 0}
-.my-progress-bar{height:6px;background:rgba(255,255,255,.06);border-radius:3px;overflow:hidden;margin:.4rem 0}
-.my-progress-fill{height:100%;background:linear-gradient(90deg,var(--seal),var(--goldd));border-radius:3px;transition:width .6s ease}
-.my-section{margin:2rem 0}
-.my-section-head{font-size:.8rem;color:var(--gold);letter-spacing:.15em;border-left:2px solid var(--gold);padding-left:.7rem;margin-bottom:.8rem;display:flex;align-items:center;justify-content:space-between}
-.my-section-head a{font-size:.65rem;color:var(--txd);text-decoration:none;cursor:pointer;transition:.2s}
-.my-section-head a:hover{color:var(--gold)}
-.my-empty{color:var(--txd);font-size:.75rem;text-align:center;padding:1.5rem;background:rgba(255,255,255,.02);border-radius:8px;border:1px dashed rgba(255,255,255,.06)}
-/* 旅マップ (47県グリッド) */
-.my-prefmap{display:flex;flex-wrap:wrap;gap:4px;justify-content:center;padding:.8rem;background:rgba(255,255,255,.02);border-radius:12px;border:1px solid rgba(255,255,255,.04)}
-.my-pref-cell{width:36px;height:36px;border-radius:6px;display:flex;align-items:center;justify-content:center;font-size:.55rem;font-weight:700;cursor:pointer;transition:.25s;border:1px solid rgba(255,255,255,.06);color:rgba(255,255,255,.3);background:rgba(255,255,255,.02);font-family:'Zen Old Mincho',serif}
-.my-pref-cell.visited{color:rgba(255,255,255,.9);border-color:rgba(201,168,76,.4)}
-.my-pref-cell.visited:hover{transform:scale(1.15);box-shadow:0 0 12px rgba(201,168,76,.3)}
-.my-tab-wrap{display:flex;gap:.3rem;margin-bottom:.8rem}
-.my-tab{padding:.3rem .8rem;border:1px solid rgba(255,255,255,.06);border-radius:15px;background:none;color:var(--txd);font-size:.7rem;cursor:pointer;transition:.2s;font-family:inherit}
-.my-tab.active{background:rgba(201,168,76,.12);border-color:var(--goldd);color:var(--gold)}
-.my-mypage-btn{display:flex;flex-direction:column;align-items:center;gap:.15rem;background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.08);border-radius:10px;padding:.4rem .9rem;cursor:pointer;transition:.3s;font-family:inherit;color:var(--txd);letter-spacing:.08em}
-.my-mypage-btn:hover{border-color:var(--goldd);background:rgba(201,168,76,.06);color:var(--gold)}
-.my-mypage-icon{font-size:1.3rem;line-height:1}
-.my-mypage-label{font-size:.55rem;letter-spacing:.1em}
+* { margin: 0; padding: 0; box-sizing: border-box; }
+html { scroll-behavior: smooth; }
 
-/* ── GLOBAL FLOATING BUTTONS ── */
-.global-fab{position:fixed;right:.8rem;bottom:4.5rem;z-index:150;display:flex;flex-direction:column;gap:.5rem}
-.fab-btn{width:48px;height:48px;border-radius:50%;border:1px solid rgba(201,168,76,.25);background:rgba(6,6,14,.92);backdrop-filter:blur(10px);display:flex;align-items:center;justify-content:center;font-size:1.2rem;cursor:pointer;transition:.3s;box-shadow:0 2px 12px rgba(0,0,0,.4)}
-.fab-btn:hover{border-color:var(--goldd);background:rgba(201,168,76,.12);transform:scale(1.1)}
-.fab-btn.fav-active{background:rgba(247,160,47,.2);border-color:rgba(247,160,47,.5)}
-.fab-tooltip{position:absolute;right:56px;background:rgba(6,6,14,.95);border:1px solid rgba(255,255,255,.08);border-radius:6px;padding:.3rem .6rem;font-size:.65rem;color:var(--txd);white-space:nowrap;pointer-events:none;opacity:0;transition:.2s}
-.fab-btn:hover .fab-tooltip{opacity:1}
-@media(min-width:641px)and(max-width:1024px){
-.grid{grid-template-columns:repeat(auto-fill,minmax(140px,1fr))}
+body {
+  font-family: var(--sans);
+  font-weight: 300;
+  color: var(--text);
+  background: var(--black);
+  line-height: 1.9;
+  letter-spacing: 0.02em;
 }
 
-/* ── INTRO OVERLAY ── */
-/* ── MAP IN HERO ── */
-.hero-map-wrap{
-  position:relative;
-  width:min(340px,70vw);
-  margin:1.5rem auto 0;
+/* Header */
+header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 100;
+  background: rgba(10, 10, 10, 0.95);
+  backdrop-filter: blur(20px);
+  border-bottom: 1px solid rgba(201, 162, 39, 0.15);
 }
-.hero-map-img{
-  width:100%;
-  filter:drop-shadow(0 0 18px rgba(201,168,76,.18)) brightness(0.85);
-  mix-blend-mode:lighten;
+
+.header-inner {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 16px 24px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
-.hero-kanji,.hero-sub,.hero-quote{opacity:1}
+
+.logo {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  text-decoration: none;
+  color: var(--gold);
+}
+
+.logo-crown {
+  font-size: 28px;
+}
+
+.logo-text {
+  display: flex;
+  flex-direction: column;
+}
+
+.logo-main {
+  font-family: var(--cinzel);
+  font-size: 18px;
+  font-weight: 600;
+  letter-spacing: 0.2em;
+  color: var(--gold);
+}
+
+.logo-sub {
+  font-size: 9px;
+  color: var(--text-muted);
+  letter-spacing: 0.3em;
+  font-weight: 300;
+}
+
+nav {
+  display: flex;
+  gap: 32px;
+}
+
+nav a {
+  font-size: 12px;
+  color: var(--text);
+  text-decoration: none;
+  letter-spacing: 0.15em;
+  transition: color 0.3s;
+  font-weight: 400;
+}
+
+nav a:hover {
+  color: var(--gold);
+}
+
+.nav-toggle {
+  display: none;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 8px;
+}
+
+.nav-toggle span {
+  display: block;
+  width: 22px;
+  height: 2px;
+  background: var(--gold);
+  margin: 5px 0;
+  transition: all 0.3s;
+}
+
+@media (max-width: 768px) {
+  .nav-toggle { display: block; }
+  nav {
+    position: fixed;
+    top: 0;
+    right: -100%;
+    width: 280px;
+    height: 100vh;
+    background: var(--black);
+    flex-direction: column;
+    padding: 100px 32px;
+    gap: 28px;
+    transition: right 0.3s;
+    border-left: 1px solid rgba(201, 162, 39, 0.15);
+  }
+  nav.open { right: 0; }
+  nav a { font-size: 14px; }
+}
+
+/* Hero */
+.hero {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 120px 24px 80px;
+  position: relative;
+  background:
+    radial-gradient(ellipse at center top, rgba(201, 162, 39, 0.08) 0%, transparent 50%),
+    var(--black);
+}
+
+.hero::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 600px;
+  height: 600px;
+  background: radial-gradient(circle, rgba(201, 162, 39, 0.03) 0%, transparent 70%);
+  pointer-events: none;
+}
+
+.hero-content {
+  position: relative;
+  z-index: 2;
+  max-width: 800px;
+}
+
+.hero-crown {
+  font-size: 64px;
+  margin-bottom: 32px;
+  animation: float 4s ease-in-out infinite;
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-10px); }
+}
+
+.hero-label {
+  font-family: var(--cinzel);
+  font-size: 12px;
+  color: var(--gold);
+  letter-spacing: 0.5em;
+  margin-bottom: 24px;
+  font-weight: 500;
+}
+
+.hero h1 {
+  font-family: var(--cinzel);
+  font-size: clamp(36px, 8vw, 72px);
+  font-weight: 700;
+  color: var(--white);
+  margin-bottom: 16px;
+  letter-spacing: 0.15em;
+  text-shadow: 0 0 60px rgba(201, 162, 39, 0.3);
+}
+
+.hero-catch {
+  font-family: var(--serif);
+  font-size: clamp(18px, 4vw, 26px);
+  color: var(--gold-light);
+  margin-bottom: 24px;
+  line-height: 2;
+  font-weight: 400;
+  letter-spacing: 0.1em;
+}
+
+.hero-sub {
+  font-size: 14px;
+  color: var(--text-muted);
+  margin-bottom: 48px;
+  line-height: 2;
+  max-width: 500px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.hero-cta {
+  display: flex;
+  gap: 20px;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 18px 48px;
+  border-radius: 0;
+  font-size: 13px;
+  font-weight: 500;
+  text-decoration: none;
+  letter-spacing: 0.15em;
+  transition: all 0.3s;
+  border: 1px solid transparent;
+}
+
+.btn-primary {
+  background: var(--gold);
+  color: var(--black);
+}
+
+.btn-primary:hover {
+  background: var(--gold-light);
+  box-shadow: 0 0 30px rgba(201, 162, 39, 0.4);
+}
+
+.btn-outline {
+  background: transparent;
+  color: var(--gold);
+  border-color: var(--gold);
+}
+
+.btn-outline:hover {
+  background: rgba(201, 162, 39, 0.1);
+}
+
+/* Pillars */
+.pillars {
+  padding: 120px 24px;
+  background: var(--black-light);
+}
+
+.section-inner {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.section-header {
+  text-align: center;
+  margin-bottom: 80px;
+}
+
+.section-label {
+  font-family: var(--cinzel);
+  font-size: 11px;
+  color: var(--gold);
+  letter-spacing: 0.4em;
+  margin-bottom: 16px;
+  font-weight: 500;
+}
+
+.section-title {
+  font-family: var(--serif);
+  font-size: clamp(24px, 5vw, 36px);
+  font-weight: 500;
+  color: var(--white);
+  letter-spacing: 0.1em;
+}
+
+.pillars-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 2px;
+  background: rgba(201, 162, 39, 0.1);
+}
+
+.pillar {
+  background: var(--black);
+  padding: 48px 32px;
+  text-align: center;
+  transition: all 0.4s;
+  cursor: pointer;
+  text-decoration: none;
+  display: block;
+}
+
+.pillar:hover {
+  background: var(--black-mid);
+  transform: translateY(-4px);
+}
+
+.pillar-icon {
+  font-size: 48px;
+  margin-bottom: 24px;
+}
+
+.pillar-num {
+  font-family: var(--cinzel);
+  font-size: 10px;
+  color: var(--gold);
+  letter-spacing: 0.3em;
+  margin-bottom: 16px;
+}
+
+.pillar h3 {
+  font-family: var(--serif);
+  font-size: 18px;
+  color: var(--white);
+  margin-bottom: 8px;
+  letter-spacing: 0.1em;
+  font-weight: 500;
+}
+
+.pillar-en {
+  font-family: var(--cinzel);
+  font-size: 10px;
+  color: var(--gold-dark);
+  letter-spacing: 0.2em;
+  margin-bottom: 16px;
+}
+
+.pillar p {
+  font-size: 13px;
+  color: var(--text-muted);
+  line-height: 1.8;
+}
+
+@media (max-width: 900px) {
+  .pillars-grid { grid-template-columns: repeat(2, 1fr); }
+}
+
+@media (max-width: 500px) {
+  .pillars-grid { grid-template-columns: 1fr; }
+}
+
+/* Category Section */
+.category {
+  padding: 100px 24px;
+  border-top: 1px solid rgba(201, 162, 39, 0.1);
+}
+
+.category:nth-child(even) {
+  background: var(--black-light);
+}
+
+.category-header {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  margin-bottom: 48px;
+}
+
+.category-icon {
+  font-size: 36px;
+}
+
+.category-title {
+  font-family: var(--serif);
+  font-size: 24px;
+  color: var(--white);
+  font-weight: 500;
+  letter-spacing: 0.08em;
+}
+
+.category-en {
+  font-family: var(--cinzel);
+  font-size: 11px;
+  color: var(--gold);
+  letter-spacing: 0.2em;
+  margin-top: 4px;
+}
+
+.category-count {
+  font-size: 12px;
+  color: var(--text-muted);
+  margin-left: auto;
+}
+
+.links-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 16px;
+}
+
+.link-card {
+  display: block;
+  background: var(--black-mid);
+  border: 1px solid rgba(201, 162, 39, 0.08);
+  padding: 20px 24px;
+  text-decoration: none;
+  transition: all 0.3s;
+}
+
+.link-card:hover {
+  border-color: var(--gold);
+  background: rgba(201, 162, 39, 0.05);
+  transform: translateX(4px);
+}
+
+.link-card h4 {
+  font-size: 14px;
+  color: var(--silver-light);
+  font-weight: 400;
+  margin-bottom: 6px;
+  letter-spacing: 0.05em;
+}
+
+.link-card p {
+  font-size: 12px;
+  color: var(--text-muted);
+}
+
+.link-card .arrow {
+  float: right;
+  color: var(--gold);
+  opacity: 0;
+  transition: opacity 0.3s;
+}
+
+.link-card:hover .arrow {
+  opacity: 1;
+}
+
+/* Philosophy */
+.philosophy {
+  padding: 120px 24px;
+  background:
+    radial-gradient(ellipse at center, rgba(201, 162, 39, 0.05) 0%, transparent 60%),
+    var(--black);
+  text-align: center;
+}
+
+.philosophy-text {
+  font-family: var(--serif);
+  font-size: clamp(16px, 3vw, 22px);
+  color: var(--text);
+  line-height: 2.4;
+  max-width: 600px;
+  margin: 0 auto 48px;
+  font-weight: 400;
+}
+
+.philosophy-text strong {
+  color: var(--gold-light);
+  font-weight: 500;
+}
+
+.philosophy-quote {
+  font-family: var(--serif);
+  font-size: clamp(20px, 4vw, 32px);
+  color: var(--white);
+  font-weight: 500;
+  letter-spacing: 0.1em;
+  line-height: 2;
+}
+
+/* CTA */
+.cta {
+  padding: 120px 24px;
+  background: var(--black-light);
+  text-align: center;
+  border-top: 1px solid rgba(201, 162, 39, 0.15);
+}
+
+.cta-crown {
+  font-size: 56px;
+  margin-bottom: 32px;
+}
+
+.cta-title {
+  font-family: var(--serif);
+  font-size: clamp(22px, 5vw, 36px);
+  color: var(--white);
+  margin-bottom: 16px;
+  font-weight: 500;
+  letter-spacing: 0.1em;
+}
+
+.cta-sub {
+  font-size: 14px;
+  color: var(--text-muted);
+  margin-bottom: 48px;
+}
+
+.cta-buttons {
+  display: flex;
+  gap: 20px;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+/* Footer */
+footer {
+  background: var(--black);
+  border-top: 1px solid rgba(201, 162, 39, 0.1);
+  padding: 60px 24px;
+}
+
+.footer-inner {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 24px;
+}
+
+.footer-logo {
+  font-family: var(--cinzel);
+  font-size: 16px;
+  color: var(--gold);
+  letter-spacing: 0.2em;
+}
+
+.footer-links {
+  display: flex;
+  gap: 24px;
+}
+
+.footer-links a {
+  font-size: 12px;
+  color: var(--text-muted);
+  text-decoration: none;
+  letter-spacing: 0.1em;
+  transition: color 0.3s;
+}
+
+.footer-links a:hover {
+  color: var(--gold);
+}
+
+.footer-copy {
+  width: 100%;
+  text-align: center;
+  margin-top: 40px;
+  padding-top: 24px;
+  border-top: 1px solid rgba(201, 162, 39, 0.05);
+  font-size: 10px;
+  color: var(--text-muted);
+  letter-spacing: 0.1em;
+}
+
+/* Scroll indicator */
+.scroll-indicator {
+  position: absolute;
+  bottom: 40px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  color: var(--text-muted);
+  font-size: 10px;
+  letter-spacing: 0.2em;
+  animation: bounce 2s infinite;
+}
+
+@keyframes bounce {
+  0%, 100% { transform: translateX(-50%) translateY(0); }
+  50% { transform: translateX(-50%) translateY(8px); }
+}
+
+.scroll-indicator::after {
+  content: '';
+  width: 1px;
+  height: 40px;
+  background: linear-gradient(to bottom, var(--gold), transparent);
+}
 </style>
 </head>
 <body>
 
-<!-- LANG -->
-<div class="lang-bar">
-<button class="lang-btn active" onclick="setLang('ja')">日本語</button>
-<button class="lang-btn" onclick="setLang('en')">EN</button>
-<button class="lang-btn" onclick="setLang('zh')">中文</button>
-<button class="lang-btn" onclick="setLang('ko')">한국</button>
-</div>
+<header>
+  <div class="header-inner">
+    <a href="#" class="logo">
+      <span class="logo-crown">👑</span>
+      <div class="logo-text">
+        <div class="logo-main">WORLD KING</div>
+        <div class="logo-sub">世界王プロジェクト</div>
+      </div>
+    </a>
+    <button class="nav-toggle" id="navToggle">
+      <span></span><span></span><span></span>
+    </button>
+    <nav id="nav">
+      <a href="#kingdom">KINGDOM</a>
+      <a href="#diagnosis">DIAGNOSIS</a>
+      <a href="#stories">STORIES</a>
+      <a href="#tools">TOOLS</a>
+      <a href="#contact">CONTACT</a>
+    </nav>
+  </div>
+</header>
 
-<!-- BACK -->
-<button class="back-btn" id="backBtn" onclick="goBack()">
-<svg viewBox="0 0 24 24"><polyline points="15 18 9 12 15 6"/></svg>
-<span data-i18n="back"></span>
-</button>
+<section class="hero">
+  <div class="hero-content">
+    <div class="hero-crown">👑</div>
+    <p class="hero-label">WORLD KING PROJECT</p>
+    <h1>WORLD KING</h1>
+    <p class="hero-catch">人は、誰でも<br>自分の世界の王になれる。</p>
+    <p class="hero-sub">
+      AI診断・物語・ツールが融合した<br>
+      あなただけの王国を創造するプラットフォーム
+    </p>
+    <div class="hero-cta">
+      <a href="#diagnosis" class="btn btn-primary">王になる</a>
+      <a href="#pillars" class="btn btn-outline">世界を見る</a>
+    </div>
+  </div>
+  <div class="scroll-indicator">SCROLL</div>
+</section>
 
-<!-- GLOBAL FLOATING BUTTONS -->
-<div class="global-fab" id="globalFab">
-  <button class="fab-btn" id="fabMypage" onclick="openMyPage()" title="マイページ">
-    📖<span class="fab-tooltip">マイページ</span>
-  </button>
-  <button class="fab-btn" id="fabFav" onclick="toggleCurrentFav()" title="お気に入り" style="display:none">
-    ♡<span class="fab-tooltip">お気に入り</span>
-  </button>
-</div>
+<section class="pillars" id="pillars">
+  <div class="section-inner">
+    <div class="section-header">
+      <p class="section-label">FOUR PILLARS</p>
+      <h2 class="section-title">4つの入口</h2>
+    </div>
+    <div class="pillars-grid">
+      <a href="#kingdom" class="pillar">
+        <div class="pillar-icon">🏰</div>
+        <div class="pillar-num">01</div>
+        <h3>王になる</h3>
+        <p class="pillar-en">KINGDOM</p>
+        <p>診断を受け、称号を得て<br>あなたの王国を築く</p>
+      </a>
+      <a href="#diagnosis" class="pillar">
+        <div class="pillar-icon">🔮</div>
+        <div class="pillar-num">02</div>
+        <h3>自分を知る</h3>
+        <p class="pillar-en">DIAGNOSIS</p>
+        <p>AI診断で本質を解き明かす<br>手相・性格・運命</p>
+      </a>
+      <a href="#stories" class="pillar">
+        <div class="pillar-icon">📖</div>
+        <div class="pillar-num">03</div>
+        <h3>世界を旅する</h3>
+        <p class="pillar-en">STORIES</p>
+        <p>AI生成小説の世界へ<br>無限の物語体験</p>
+      </a>
+      <a href="#tools" class="pillar">
+        <div class="pillar-icon">⚡</div>
+        <div class="pillar-num">04</div>
+        <h3>AIを使う</h3>
+        <p class="pillar-en">TOOLS</p>
+        <p>創造を加速する<br>AIツール群</p>
+      </a>
+    </div>
+  </div>
+</section>
 
-<!-- VIEW: HOME -->
-<div class="view active" id="v-home">
-<div class="hero">
-<div class="hero-kanji">Mysterious Japan</div>
-<div class="hero-sub">世界王 &nbsp;·&nbsp; World Kings</div>
-<div class="hero-quote" id="heroQuote"></div>
-<div class="hero-map-wrap">
-  <img class="hero-map-img" src="japan_map.png" alt="Japan Map">
-</div>
-</div>
-<div class="stats">
-<div class="stat"><b>47</b><span data-i18n="prefectures"></span></div>
-<div class="stat"><b>235</b><span data-i18n="stories"></span></div>
-<div class="stat"><b>94</b><span data-i18n="fairies"></span></div>
-<div class="stat"><b>5</b><span data-i18n="worldlines"></span></div>
-<button class="dice-btn" onclick="randomStory()" title="ランダムな物語へ">
-  <span class="dice-icon">🎲</span>
-  <span class="dice-label" data-i18n="diceLabel"></span>
-</button>
-<button class="my-mypage-btn" onclick="openMyPage()">
-  <span class="my-mypage-icon">📖</span>
-  <span class="my-mypage-label" data-i18n="mypage"></span>
-</button>
-</div>
-<div class="nav-mode">
-<button class="nav-mode-btn active" onclick="setMode('all')" data-i18n="modeAll"></button>
-<button class="nav-mode-btn" onclick="setMode('popular')" data-i18n="modePopular"></button>
-<button class="nav-mode-btn" onclick="setMode('region')" data-i18n="modeRegion"></button>
-<button class="nav-mode-btn" onclick="setMode('wl')" data-i18n="modeWL"></button>
-<a class="nav-mode-btn" href="map.html" style="text-decoration:none" data-i18n="modeMap"></a>
-</div>
+<section class="category" id="kingdom">
+  <div class="section-inner">
+    <div class="category-header">
+      <span class="category-icon">🏰</span>
+      <div>
+        <h2 class="category-title">王になる</h2>
+        <p class="category-en">KINGDOM</p>
+      </div>
+      <span class="category-count">3 services</span>
+    </div>
+    <div class="links-grid">
+      <a href="https://hideo-t.github.io/negaibi-tesou/" target="_blank" class="link-card">
+        <span class="arrow">→</span>
+        <h4>願い灯 世界王手相診断所</h4>
+        <p>AI手相診断で性格タイプを判定、王名・紋章を授与</p>
+      </a>
+      <a href="https://hideo-t.github.io/negaibi/" target="_blank" class="link-card">
+        <span class="arrow">→</span>
+        <h4>願い灯（オリジナル）</h4>
+        <p>願い灯プロジェクトの原点</p>
+      </a>
+      <a href="https://hideo-t.github.io/hibikiuranai/" target="_blank" class="link-card">
+        <span class="arrow">→</span>
+        <h4>響占い</h4>
+        <p>言霊診断システム</p>
+      </a>
+    </div>
+  </div>
+</section>
 
-<!-- ALL MODE -->
-<div id="allMode">
-<div class="filter-bar" id="filterBar"></div>
-<div class="search-wrap"><input type="text" class="search-input" id="searchInput" data-i18n-placeholder="searchPlaceholder"></div>
-<div class="grid" id="allGrid"></div>
-</div>
+<section class="category" id="diagnosis">
+  <div class="section-inner">
+    <div class="category-header">
+      <span class="category-icon">🔮</span>
+      <div>
+        <h2 class="category-title">自分を知る</h2>
+        <p class="category-en">DIAGNOSIS</p>
+      </div>
+      <span class="category-count">6 services</span>
+    </div>
+    <div class="links-grid">
+      <a href="https://hideo-t.github.io/shindan/" target="_blank" class="link-card">
+        <span class="arrow">→</span>
+        <h4>診断</h4>
+        <p>性格診断システム</p>
+      </a>
+      <a href="https://hideo-t.github.io/aidoctor/" target="_blank" class="link-card">
+        <span class="arrow">→</span>
+        <h4>AIドクター</h4>
+        <p>AI健康相談</p>
+      </a>
+      <a href="https://hideo-t.github.io/sakeun/" target="_blank" class="link-card">
+        <span class="arrow">→</span>
+        <h4>酒運</h4>
+        <p>お酒と運勢の診断</p>
+      </a>
+      <a href="https://hideo-t.github.io/berometer/" target="_blank" class="link-card">
+        <span class="arrow">→</span>
+        <h4>ビアロメーター</h4>
+        <p>ビール相性診断</p>
+      </a>
+      <a href="https://hideo-t.github.io/pet/" target="_blank" class="link-card">
+        <span class="arrow">→</span>
+        <h4>ペット診断</h4>
+        <p>ペットとの相性分析</p>
+      </a>
+      <a href="https://hideo-t.github.io/yasetai/" target="_blank" class="link-card">
+        <span class="arrow">→</span>
+        <h4>痩せたい</h4>
+        <p>ダイエット診断</p>
+      </a>
+    </div>
+  </div>
+</section>
 
-<!-- REGION MODE -->
-<div id="regionMode" style="display:none">
-<div class="grid region-grid" style="max-width:900px;margin:1rem auto;padding:.8rem 1rem" id="regionGrid"></div>
-</div>
+<section class="category" id="stories">
+  <div class="section-inner">
+    <div class="category-header">
+      <span class="category-icon">📖</span>
+      <div>
+        <h2 class="category-title">世界を旅する</h2>
+        <p class="category-en">AI GENERATED STORIES</p>
+      </div>
+      <span class="category-count">47 novels</span>
+    </div>
 
-<!-- WL MODE -->
-<div id="wlMode" style="display:none">
-<div class="grid wl-grid" style="max-width:800px;margin:1rem auto;padding:.8rem 1rem" id="wlGrid"></div>
-</div>
+    <h3 style="color: var(--gold); font-size: 14px; margin: 32px 0 16px; letter-spacing: 0.1em;">▼ ファンタジー・冒険</h3>
+    <div class="links-grid">
+      <a href="https://hideo-t.github.io/magical-school-journey/" target="_blank" class="link-card">
+        <span class="arrow">→</span>
+        <h4>魔法学校への旅</h4>
+        <p>魔法世界の冒険譚</p>
+      </a>
+      <a href="https://hideo-t.github.io/candy-kingdom-adventure/" target="_blank" class="link-card">
+        <span class="arrow">→</span>
+        <h4>お菓子の国大冒険</h4>
+        <p>甘い魔法と失われた伝説</p>
+      </a>
+      <a href="https://hideo-t.github.io/momotaro-epic-fantasy/" target="_blank" class="link-card">
+        <span class="arrow">→</span>
+        <h4>桃太郎: 桃の魔力と八つの英雄</h4>
+        <p>日本神話ファンタジー</p>
+      </a>
+      <a href="https://hideo-t.github.io/beauty-and-the-beast-fantasy/" target="_blank" class="link-card">
+        <span class="arrow">→</span>
+        <h4>美の誓約: 野獣との共鳴</h4>
+        <p>美女と野獣リメイク</p>
+      </a>
+      <a href="https://hideo-t.github.io/ancient-journey-adventure/" target="_blank" class="link-card">
+        <span class="arrow">→</span>
+        <h4>古代の秘められた扉</h4>
+        <p>未知なる旅</p>
+      </a>
+      <a href="https://hideo-t.github.io/abyss-voyage-deepsea/" target="_blank" class="link-card">
+        <span class="arrow">→</span>
+        <h4>深海への旅</h4>
+        <p>闇に潜む真実</p>
+      </a>
+    </div>
 
-<!-- POPULAR MODE -->
-<div id="popularMode" style="display:none">
-<div id="popularContent" style="max-width:860px;margin:0 auto;padding:1rem 1.2rem 3rem"></div>
-</div>
-</div>
+    <h3 style="color: var(--gold); font-size: 14px; margin: 32px 0 16px; letter-spacing: 0.1em;">▼ SF・未来</h3>
+    <div class="links-grid">
+      <a href="https://hideo-t.github.io/ai-terrestrial-conquest/" target="_blank" class="link-card">
+        <span class="arrow">→</span>
+        <h4>AIの夜明け: 地球征服の序章</h4>
+        <p>AI支配の未来</p>
+      </a>
+      <a href="https://hideo-t.github.io/child-sf-adventure/" target="_blank" class="link-card">
+        <span class="arrow">→</span>
+        <h4>銀河の子どもたち</h4>
+        <p>未知の惑星への冒険</p>
+      </a>
+      <a href="https://hideo-t.github.io/thousand-years-future-novel/" target="_blank" class="link-card">
+        <span class="arrow">→</span>
+        <h4>千年後の未来への旅</h4>
+        <p>時空の旅人たち</p>
+      </a>
+      <a href="https://hideo-t.github.io/computer-adventure-journey/" target="_blank" class="link-card">
+        <span class="arrow">→</span>
+        <h4>パソコン内部の冒険</h4>
+        <p>データの旅</p>
+      </a>
+      <a href="https://hideo-t.github.io/vacuum-tube-computer-story/" target="_blank" class="link-card">
+        <span class="arrow">→</span>
+        <h4>博士と巨大真空管コンピュータ</h4>
+        <p>レトロフューチャーSF</p>
+      </a>
+      <a href="https://hideo-t.github.io/robot-kids-adventure/" target="_blank" class="link-card">
+        <span class="arrow">→</span>
+        <h4>ヘンテコロボットと怠け少年の冒険</h4>
+        <p>ロボットコメディ</p>
+      </a>
+    </div>
 
-<!-- VIEW: REGION DETAIL -->
-<div class="view" id="v-region">
-<div class="breadcrumb" id="bcRegion"></div>
-<div class="section-title" id="stRegion"></div>
-<div class="grid" id="regionDetailGrid"></div>
-</div>
+    <h3 style="color: var(--gold); font-size: 14px; margin: 32px 0 16px; letter-spacing: 0.1em;">▼ 歴史・忍者</h3>
+    <div class="links-grid">
+      <a href="https://hideo-t.github.io/samurai-and-ninja-chronicles/" target="_blank" class="link-card">
+        <span class="arrow">→</span>
+        <h4>女忍者・千羽の戦国秘録</h4>
+        <p>戦国時代の女忍者</p>
+      </a>
+      <a href="https://hideo-t.github.io/ninja-snowmoon/" target="_blank" class="link-card">
+        <span class="arrow">→</span>
+        <h4>女忍者雪月</h4>
+        <p>戦乱の時代を生き抜く</p>
+      </a>
+      <a href="https://hideo-t.github.io/ninjas-of-sengoku/" target="_blank" class="link-card">
+        <span class="arrow">→</span>
+        <h4>忍びの影: 戦国時代の闇</h4>
+        <p>戦国忍者譚</p>
+      </a>
+      <a href="https://hideo-t.github.io/hidden-shadows/" target="_blank" class="link-card">
+        <span class="arrow">→</span>
+        <h4>忍者の陰に潜む光と影</h4>
+        <p>忍術と陰謀</p>
+      </a>
+      <a href="https://hideo-t.github.io/wind-forest-fire-mountain-ninja-story/" target="_blank" class="link-card">
+        <span class="arrow">→</span>
+        <h4>風林火山: 忍びの道</h4>
+        <p>武田信玄と忍者</p>
+      </a>
+    </div>
 
-<!-- VIEW: WL DETAIL -->
-<div class="view" id="v-wl">
-<div class="breadcrumb" id="bcWL"></div>
-<div class="section-title" id="stWL"></div>
-<div id="wlDetailContent"></div>
-</div>
+    <h3 style="color: var(--gold); font-size: 14px; margin: 32px 0 16px; letter-spacing: 0.1em;">▼ 反実仮想・思考実験</h3>
+    <div class="links-grid">
+      <a href="https://hideo-t.github.io/english-repo-name/" target="_blank" class="link-card">
+        <span class="arrow">→</span>
+        <h4>もし戦争がなければ民主主義はなかった</h4>
+        <p>歴史改変思考実験</p>
+      </a>
+      <a href="https://hideo-t.github.io/counterfactual-novel-ash-world/" target="_blank" class="link-card">
+        <span class="arrow">→</span>
+        <h4>灰のない世界</h4>
+        <p>反実仮想小説</p>
+      </a>
+      <a href="https://hideo-t.github.io/no-edison-world/" target="_blank" class="link-card">
+        <span class="arrow">→</span>
+        <h4>エジソンがいなければ</h4>
+        <p>電気のない世界</p>
+      </a>
+      <a href="https://hideo-t.github.io/fired-world/" target="_blank" class="link-card">
+        <span class="arrow">→</span>
+        <h4>火が消えた世界</h4>
+        <p>文明崩壊シミュレーション</p>
+      </a>
+      <a href="https://hideo-t.github.io/internet-and-america/" target="_blank" class="link-card">
+        <span class="arrow">→</span>
+        <h4>もしアメリカがなければインターネットはなかった</h4>
+        <p>技術史改変</p>
+      </a>
+      <a href="https://hideo-t.github.io/cafe-and-automobile/" target="_blank" class="link-card">
+        <span class="arrow">→</span>
+        <h4>もし自動車がなければカフェはなかった</h4>
+        <p>文化史改変</p>
+      </a>
+      <a href="https://hideo-t.github.io/soccer-and-war/" target="_blank" class="link-card">
+        <span class="arrow">→</span>
+        <h4>もし戦争がなければサッカーはなかった</h4>
+        <p>スポーツ史改変</p>
+      </a>
+    </div>
 
-<!-- VIEW: PREF DETAIL -->
-<div class="view" id="v-pref">
-<div class="breadcrumb" id="bcPref"></div>
-<div class="section-title" id="stPref"></div>
-<div class="grid wl-grid" style="max-width:900px;margin:1rem auto;padding:.8rem 1rem" id="prefDetailGrid"></div>
-</div>
+    <h3 style="color: var(--gold); font-size: 14px; margin: 32px 0 16px; letter-spacing: 0.1em;">▼ 沖縄・地域</h3>
+    <div class="links-grid">
+      <a href="https://hideo-t.github.io/okinawan-spirit-medium-mystery/" target="_blank" class="link-card">
+        <span class="arrow">→</span>
+        <h4>美ら霊媒師</h4>
+        <p>封印された島の秘密</p>
+      </a>
+      <a href="https://hideo-t.github.io/ryukyu-horror-world/" target="_blank" class="link-card">
+        <span class="arrow">→</span>
+        <h4>残光の琉球</h4>
+        <p>独立とは名ばかりの監獄</p>
+      </a>
+    </div>
 
-<!-- VIEW: ABOUT -->
-<div class="view" id="v-about">
-<div class="breadcrumb"><span onclick="showView('v-home')" style="cursor:pointer">TOP</span><span class="sep">›</span><span id="bcAbout">このサイトについて</span></div>
-<div style="max-width:700px;margin:0 auto;padding:1.5rem 1.2rem 4rem" id="aboutContent"></div>
-</div>
+    <h3 style="color: var(--gold); font-size: 14px; margin: 32px 0 16px; letter-spacing: 0.1em;">▼ 日常・青春</h3>
+    <div class="links-grid">
+      <a href="https://hideo-t.github.io/magichour-v005/" target="_blank" class="link-card">
+        <span class="arrow">→</span>
+        <h4>Magic Hour</h4>
+        <p>きっと思ったよりも素敵な日になる</p>
+      </a>
+      <a href="https://hideo-t.github.io/hidamari-shopping-street-story/" target="_blank" class="link-card">
+        <span class="arrow">→</span>
+        <h4>ひだまり商店街物語</h4>
+        <p>温かい人情ドラマ</p>
+      </a>
+      <a href="https://hideo-t.github.io/yui-19-years-of-life/" target="_blank" class="link-card">
+        <span class="arrow">→</span>
+        <h4>19歳の春：新しい始まり</h4>
+        <p>青春成長物語</p>
+      </a>
+      <a href="https://hideo-t.github.io/takahashi-hideo/" target="_blank" class="link-card">
+        <span class="arrow">→</span>
+        <h4>高橋秀夫</h4>
+        <p>名前が物語になる時</p>
+      </a>
+    </div>
 
-<!-- VIEW: MY PAGE -->
-<div class="view" id="v-mypage">
-<div class="breadcrumb"><span onclick="showView('v-home')" style="cursor:pointer">TOP</span><span class="sep">›</span><span id="bcMypage">マイページ</span></div>
-<div class="mypage-wrap" id="mypageContent"></div>
-</div>
+    <h3 style="color: var(--gold); font-size: 14px; margin: 32px 0 16px; letter-spacing: 0.1em;">▼ その他</h3>
+    <div class="links-grid">
+      <a href="https://hideo-t.github.io/only-earth-children/" target="_blank" class="link-card">
+        <span class="arrow">→</span>
+        <h4>唯一世界の子供たち</h4>
+        <p>哲学的SF</p>
+      </a>
+      <a href="https://hideo-t.github.io/cell-world-setting/" target="_blank" class="link-card">
+        <span class="arrow">→</span>
+        <h4>細胞の鼓動</h4>
+        <p>細胞レベルの戦い</p>
+      </a>
+      <a href="https://hideo-t.github.io/ale-and-rugy-pollen-war/" target="_blank" class="link-card">
+        <span class="arrow">→</span>
+        <h4>アレと、ルギー の 花粉症大作戦</h4>
+        <p>アレルギー擬人化コメディ</p>
+      </a>
+    </div>
+  </div>
+</section>
 
-<!-- FOOTER -->
-<div class="footer">
-<div class="footer-quote" id="footerQuote"></div>
-<div class="footer-meta">Mysterious Japan ── 世界王 World Kings<br>AI Generated Fantasy Novel Collection<br>© 2026 World Kings Project<br><br><a href="#" onclick="openAbout();return false" style="color:var(--goldd);font-size:.75rem;text-decoration:none;letter-spacing:.08em" id="aboutLink">このサイトについて</a></div>
-</div>
+<section class="category" id="tools">
+  <div class="section-inner">
+    <div class="category-header">
+      <span class="category-icon">⚡</span>
+      <div>
+        <h2 class="category-title">AIを使う</h2>
+        <p class="category-en">AI TOOLS</p>
+      </div>
+      <span class="category-count">12 tools</span>
+    </div>
+    <div class="links-grid">
+      <a href="https://hideo-t.github.io/arxiv-shoka/" target="_blank" class="link-card">
+        <span class="arrow">→</span>
+        <h4>秀夫のarXiv書架</h4>
+        <p>arXiv論文を日本語で読む</p>
+      </a>
+      <a href="https://hideo-t.github.io/site-builder/" target="_blank" class="link-card">
+        <span class="arrow">→</span>
+        <h4>サイトビルダー</h4>
+        <p>AIでWebサイトを自動生成</p>
+      </a>
+      <a href="https://hideo-t.github.io/NovelForge/" target="_blank" class="link-card">
+        <span class="arrow">→</span>
+        <h4>NovelForge</h4>
+        <p>AI小説生成エンジン</p>
+      </a>
+      <a href="https://hideo-t.github.io/Control-tower-for-multiple-AI/" target="_blank" class="link-card">
+        <span class="arrow">→</span>
+        <h4>複数AI制御塔</h4>
+        <p>マルチAIオーケストレーション</p>
+      </a>
+      <a href="https://hideo-t.github.io/PrivateClaudeConsole/" target="_blank" class="link-card">
+        <span class="arrow">→</span>
+        <h4>Private Claude Console</h4>
+        <p>プライベートLLMコンソール</p>
+      </a>
+      <a href="https://hideo-t.github.io/aidoc_commander/" target="_blank" class="link-card">
+        <span class="arrow">→</span>
+        <h4>AIドキュメントコマンダー</h4>
+        <p>ドキュメント自動生成</p>
+      </a>
+      <a href="https://hideo-t.github.io/contentengine/" target="_blank" class="link-card">
+        <span class="arrow">→</span>
+        <h4>コンテンツエンジン</h4>
+        <p>コンテンツ自動生成</p>
+      </a>
+      <a href="https://hideo-t.github.io/dasai-hunter/" target="_blank" class="link-card">
+        <span class="arrow">→</span>
+        <h4>ダサいハンター</h4>
+        <p>デザイン改善AI</p>
+      </a>
+      <a href="https://hideo-t.github.io/utamonogatari/" target="_blank" class="link-card">
+        <span class="arrow">→</span>
+        <h4>歌物語</h4>
+        <p>歌詞生成AI</p>
+      </a>
+      <a href="https://hideo-t.github.io/tonbochat/" target="_blank" class="link-card">
+        <span class="arrow">→</span>
+        <h4>トンボチャット</h4>
+        <p>AIチャットボット</p>
+      </a>
+      <a href="https://hideo-t.github.io/phoka/" target="_blank" class="link-card">
+        <span class="arrow">→</span>
+        <h4>Phoka</h4>
+        <p>画像解析ツール</p>
+      </a>
+      <a href="https://hideo-t.github.io/ndabai/" target="_blank" class="link-card">
+        <span class="arrow">→</span>
+        <h4>Ndabai</h4>
+        <p>AIアシスタント</p>
+      </a>
+    </div>
+  </div>
+</section>
+
+<section class="category" id="business">
+  <div class="section-inner">
+    <div class="category-header">
+      <span class="category-icon">🏢</span>
+      <div>
+        <h2 class="category-title">ビジネス</h2>
+        <p class="category-en">BUSINESS</p>
+      </div>
+      <span class="category-count">8 sites</span>
+    </div>
+    <div class="links-grid">
+      <a href="https://hideo-t.github.io/mitsuakira-pro/" target="_blank" class="link-card">
+        <span class="arrow">→</span>
+        <h4>三晶プロ</h4>
+        <p>企業サイト</p>
+      </a>
+      <a href="https://hideo-t.github.io/garage-aizu/" target="_blank" class="link-card">
+        <span class="arrow">→</span>
+        <h4>ガレージ会津</h4>
+        <p>月極ガレージレンタル</p>
+      </a>
+      <a href="https://hideo-t.github.io/okinawa-ai-studio/" target="_blank" class="link-card">
+        <span class="arrow">→</span>
+        <h4>沖縄AIスタジオ</h4>
+        <p>AI開発拠点</p>
+      </a>
+      <a href="https://hideo-t.github.io/privatellm.jp/" target="_blank" class="link-card">
+        <span class="arrow">→</span>
+        <h4>Private LLM</h4>
+        <p>プライベートLLMサービス</p>
+      </a>
+      <a href="https://hideo-t.github.io/parkhokinawa/" target="_blank" class="link-card">
+        <span class="arrow">→</span>
+        <h4>パークホ沖縄</h4>
+        <p>沖縄パークホームズ</p>
+      </a>
+      <a href="https://hideo-t.github.io/kodomosyokudo/" target="_blank" class="link-card">
+        <span class="arrow">→</span>
+        <h4>子ども食堂</h4>
+        <p>地域貢献プロジェクト</p>
+      </a>
+      <a href="https://hideo-t.github.io/portal/" target="_blank" class="link-card">
+        <span class="arrow">→</span>
+        <h4>ポータル</h4>
+        <p>総合ポータルサイト</p>
+      </a>
+      <a href="https://hideo-t.github.io/QAparkhome/" target="_blank" class="link-card">
+        <span class="arrow">→</span>
+        <h4>QA パークホーム</h4>
+        <p>品質管理</p>
+      </a>
+    </div>
+  </div>
+</section>
+
+<section class="philosophy">
+  <div class="section-inner">
+    <p class="section-label">PHILOSOPHY</p>
+    <p class="philosophy-text">
+      <strong>現実の外に、もう一つの人生を。</strong><br><br>
+      診断であなたを知り、<br>
+      物語であなたの世界を広げ、<br>
+      AIであなたの創造を加速する。<br><br>
+      すべては、<strong>あなたの王国</strong>のために。
+    </p>
+    <p class="philosophy-quote">「あなたの世界を、ここに。」</p>
+  </div>
+</section>
+
+<section class="cta" id="contact">
+  <div class="section-inner">
+    <div class="cta-crown">👑</div>
+    <h2 class="cta-title">王になる準備はできたか</h2>
+    <p class="cta-sub">今すぐ診断を受けて、あなたの王名を手に入れよう</p>
+    <div class="cta-buttons">
+      <a href="https://hideo-t.github.io/negaibi-tesou/" class="btn btn-primary">手相診断で王になる</a>
+      <a href="https://lin.ee/sG9BELl" target="_blank" class="btn btn-outline">LINEで相談</a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="footer-inner">
+    <div class="footer-logo">WORLD KING</div>
+    <div class="footer-links">
+      <a href="https://hideo-t.github.io/negaibi-tesou/">願い灯</a>
+      <a href="https://www.instagram.com/negaibi_sekaio" target="_blank">Instagram</a>
+      <a href="https://lin.ee/sG9BELl" target="_blank">LINE</a>
+    </div>
+    <p class="footer-copy">&copy; 2025-2026 WORLD KING PROJECT / 株式会社美高商事</p>
+  </div>
+</footer>
 
 <script>
-// ═══ DATA ═══
-const WLS=["封印線","商都線","静律線","変革線","境界線"];
-const WL_COLORS={"封印線":"#7b2ff7","商都線":"#f7a02f","静律線":"#2f7bf7","変革線":"#f72f2f","境界線":"#2ff77b"};
-const WL_CLASS={"封印線":"wl-seal","商都線":"wl-trade","静律線":"wl-zen","変革線":"wl-rev","境界線":"wl-bdr"};
-const WL_GRAD={"封印線":"linear-gradient(135deg,#1a0a3e,#2d1566,#1a0a3e)","商都線":"linear-gradient(135deg,#3e2a0a,#664b15,#3e2a0a)","静律線":"linear-gradient(135deg,#0a1a3e,#152d66,#0a1a3e)","変革線":"linear-gradient(135deg,#3e0a0a,#661515,#3e0a0a)","境界線":"linear-gradient(135deg,#0a3e1a,#156630,#0a3e1a)"};
+const navToggle = document.getElementById('navToggle');
+const nav = document.getElementById('nav');
 
-const REGIONS_ORDER=["hokkaido_tohoku","kanto","chubu","kinki","chugoku","shikoku","kyushu_okinawa"];
-const RD={
-hokkaido_tohoku:[
-{n:"北海道",k:"フロスティア・ゼロ",kg:"グレイシア・ゼロ",f:"フロストリン",s:"オーロリア",wl:{"封印線":"氷封絶域","商都線":"白銀回廊","静律線":"極光静寂","変革線":"開拓覚醒","境界線":"北辺幻境"}},
-{n:"青森",k:"アオモリア・レヴナント",kg:"アオモリア・レヴナント",f:"ネブラ",s:"ネブリナ",wl:{"封印線":"霊封鎮魂","商都線":"林檎経済","静律線":"恐山静域","変革線":"津軽革新","境界線":"海峡幻境"}},
-{n:"岩手",k:"ガイア・メモリア",kg:"テラ・メモリア",f:"ルーンティア",s:"イハトヴァ",wl:{"封印線":"金色封印","商都線":"南部鉄商","静律線":"遠野静話","変革線":"藤原変革","境界線":"三陸境界"}},
-{n:"宮城",k:"ルミナス・プロミス",kg:"ルクス・プロミス",f:"ルミエラ",s:"ツキヒカリ",wl:{"封印線":"瑞鳳封印","商都線":"仙台商都","静律線":"松島静律","変革線":"復興変革","境界線":"太平洋境界"}},
-{n:"秋田",k:"シルヴァ・レクイエム",kg:"ニヴェス・レクイエム",f:"ネージュリィ",s:"ナマハル",wl:{"封印線":"雪封鎮魂","商都線":"秋田商路","静律線":"角館静律","変革線":"民俗変革","境界線":"日本海境界"}},
-{n:"山形",k:"フルクティア・パティエ",kg:"フルクタス・パティエ",f:"フルッタ",s:"サクラン",wl:{"封印線":"出羽封印","商都線":"果実商都","静律線":"山寺静律","変革線":"芭蕉変革","境界線":"最上境界"}},
-{n:"福島",k:"リジェネシス・コア",kg:"フェニクス・コア",f:"リヴィア",s:"ヒバリナ",wl:{"封印線":"封印炉心","商都線":"会津商都","静律線":"磐梯静律","変革線":"再起変革","境界線":"浜通り境界"}}
-],kanto:[
-{n:"茨城",k:"フロンティア・スピリット",kg:"パイオニア・スピリット",f:"フロンティ",s:"トネリア",wl:{"封印線":"筑波封印","商都線":"研究商都","静律線":"偕楽静律","変革線":"開拓変革","境界線":"利根境界"}},
-{n:"栃木",k:"サクラム・ガーディア",kg:"サンクトス・ガーディア",f:"セラフィナ",s:"ニッコラ",wl:{"封印線":"日光封印","商都線":"栃木商都","静律線":"華厳静律","変革線":"足利変革","境界線":"那須境界"}},
-{n:"群馬",k:"テルマ・リベルタス",kg:"ヴェントス・リベルタス",f:"ヴェントラ",s:"オンセンナ",wl:{"封印線":"赤城封印","商都線":"温泉商都","静律線":"尾瀬静律","変革線":"製糸変革","境界線":"峠境界"}},
-{n:"埼玉",k:"アンブラ・ヴィジリア",kg:"シャドウ・ヴィジリア",f:"アンブラル",s:"カゲミナ",wl:{"封印線":"秩父封印","商都線":"小江戸商都","静律線":"氷川静律","変革線":"民権変革","境界線":"武蔵境界"}},
-{n:"千葉",k:"ポルタ・マリス",kg:"ゲートス・マリス",f:"ゲイリア",s:"ウミナリア",wl:{"封印線":"成田封印","商都線":"房総商都","静律線":"九十九静律","変革線":"開港変革","境界線":"太平洋門境界"}},
-{n:"東京",k:"アクセル・ネクサス",kg:"テンポス・ネクサス",f:"アークレア",s:"クロノアーク",wl:{"封印線":"江戸封印","商都線":"巨大商都","静律線":"明治静律","変革線":"首都変革","境界線":"多層境界"}},
-{n:"神奈川",k:"ブレンディア・ポート",kg:"ミクスタス・ポート",f:"ノクシア",s:"ミナトラ",wl:{"封印線":"鎌倉封印","商都線":"横浜商都","静律線":"箱根静律","変革線":"開港変革","境界線":"湘南境界"}}
-],chubu:[
-{n:"新潟",k:"アルバ・パティエンティア",kg:"ニヴァリス・パティエンティア",f:"アルバナ",s:"コシヒカリス",wl:{"封印線":"佐渡封印","商都線":"米穀商都","静律線":"弥彦静律","変革線":"上杉変革","境界線":"日本海境界"}},
-{n:"富山",k:"アクア・フィデリス",kg:"ピュリタス・フィデリス",f:"アクエリス",s:"タテヤミア",wl:{"封印線":"立山封印","商都線":"薬売商都","静律線":"黒部静律","変革線":"北前変革","境界線":"峡谷境界"}},
-{n:"石川",k:"オーラム・アルティス",kg:"アウリフェクス・アルティス",f:"アルティナ",s:"カナザリア",wl:{"封印線":"加賀封印","商都線":"金沢商都","静律線":"兼六静律","変革線":"工芸変革","境界線":"能登境界"}},
-{n:"福井",k:"ストラータ・テンポリス",kg:"ジオ・テンポリス",f:"ストラリス",s:"ジュラミア",wl:{"封印線":"永平封印","商都線":"眼鏡商都","静律線":"禅静律","変革線":"恐竜変革","境界線":"若狭境界"}},
-{n:"山梨",k:"クルメン・グロリア",kg:"アペクス・グロリア",f:"ルミナラ",s:"フジルミナ",wl:{"封印線":"富士封印","商都線":"甲斐商都","静律線":"忍野静律","変革線":"武田変革","境界線":"峠境界"}},
-{n:"長野",k:"アルティテュード・コンテンプラ",kg:"モンス・コンテンプラ",f:"セルフィア",s:"アルペナ",wl:{"封印線":"諏訪封印","商都線":"善光寺商都","静律線":"上高地静律","変革線":"川中島変革","境界線":"分水嶺境界"}},
-{n:"岐阜",k:"リーメス・コンコルディア",kg:"メディウス・コンコルディア",f:"バラント",s:"ギフリス",wl:{"封印線":"白川封印","商都線":"高山商都","静律線":"郡上静律","変革線":"関ヶ原変革","境界線":"飛騨境界"}},
-{n:"静岡",k:"エクイリブリウム",kg:"ハルモニア・エクイリブリウム",f:"エクイナ",s:"スルガミア",wl:{"封印線":"久能封印","商都線":"東海商都","静律線":"修善寺静律","変革線":"維新変革","境界線":"駿河境界"}},
-{n:"愛知",k:"マキナ・インペリウム",kg:"テクトン・インペリウム",f:"メカリス",s:"テクノリア",wl:{"封印線":"熱田封印","商都線":"名古屋商都","静律線":"犬山静律","変革線":"三英傑変革","境界線":"東西境界"}}
-],kinki:[
-{n:"三重",k:"サクラ・ドミニオン",kg:"ディヴィヌス・ドミニオン",f:"サンクティア",s:"イセリア",wl:{"封印線":"伊勢封印","商都線":"真珠商都","静律線":"熊野静律","変革線":"遷宮変革","境界線":"紀伊境界"}},
-{n:"滋賀",k:"ラクス・メモリア",kg:"リムナス・メモリア",f:"メモリアル",s:"ビワリア",wl:{"封印線":"比叡封印","商都線":"近江商都","静律線":"竹生静律","変革線":"信長変革","境界線":"湖東境界"}},
-{n:"京都",k:"キョウトリア・シール",kg:"キョウトリア・シール",f:"シレア",s:"カグラリス",wl:{"封印線":"王印封","商都線":"雅商圏","静律線":"禅静域","変革線":"維革","境界線":"都境"}},
-{n:"大阪",k:"リベルタス・カーニバル",kg:"ヒラリタス・カーニバル",f:"リベルタ",s:"ナニワラ",wl:{"封印線":"大坂封印","商都線":"天下商都","静律線":"四天静律","変革線":"維新変革","境界線":"水都境界"}},
-{n:"兵庫",k:"クルクス・ヴィアラム",kg:"ビフロンス・ヴィアラム",f:"クロッサ",s:"コウベリア",wl:{"封印線":"姫路封印","商都線":"神戸商都","静律線":"城崎静律","変革線":"源平変革","境界線":"瀬戸境界"}},
-{n:"奈良",k:"オリギネス・ペルペトゥア",kg:"プリムス・ペルペトゥア",f:"オリジェラ",s:"ヤマトナ",wl:{"封印線":"大仏封印","商都線":"古都商都","静律線":"春日静律","変革線":"遷都変革","境界線":"山辺境界"}},
-{n:"和歌山",k:"サクラ・ピルグリム",kg:"ヴィアトル・ピルグリム",f:"パセラ",s:"クマノア",wl:{"封印線":"高野封印","商都線":"紀州商都","静律線":"熊野静律","変革線":"空海変革","境界線":"紀伊境界"}}
-],chugoku:[
-{n:"鳥取",k:"デザートゥム・ソリタス",kg:"アレーナ・ソリタス",f:"デザリア",s:"サキュリア",wl:{"封印線":"砂丘封印","商都線":"因幡商都","静律線":"三朝静律","変革線":"砂丘変革","境界線":"日本海境界"}},
-{n:"島根",k:"ミスティカ・ファートゥム",kg:"デスティノ・ファートゥム",f:"ミスティラ",s:"イズモナ",wl:{"封印線":"出雲封印","商都線":"銀山商都","静律線":"松江静律","変革線":"神話変革","境界線":"隠岐境界"}},
-{n:"岡山",k:"クラリタス・ソル",kg:"セレヌス・ソル",f:"クリアナ",s:"ハレリア",wl:{"封印線":"吉備封印","商都線":"倉敷商都","静律線":"後楽静律","変革線":"桃太郎変革","境界線":"瀬戸境界"}},
-{n:"広島",k:"フェニクス・パシス",kg:"レナトゥス・パシス",f:"フェニア",s:"ミヤジマナ",wl:{"封印線":"原爆封印","商都線":"瀬戸商都","静律線":"厳島静律","変革線":"毛利変革","境界線":"島嶼境界"}},
-{n:"山口",k:"マレア・ムタティオ",kg:"フルクトス・ムタティオ",f:"リヴァナ",s:"チョウリュウナ",wl:{"封印線":"秋芳封印","商都線":"下関商都","静律線":"萩静律","変革線":"維新変革","境界線":"海峡境界"}}
-],shikoku:[
-{n:"徳島",k:"ヴォルテクス・フェスタ",kg:"トルビオ・フェスタ",f:"ヴォルテラ",s:"アワナミ",wl:{"封印線":"鳴門封印","商都線":"藍商都","静律線":"祖谷静律","変革線":"阿波変革","境界線":"海峡境界"}},
-{n:"香川",k:"ミニマ・エッセンティア",kg:"コンパクトス・エッセンティア",f:"ミニエル",s:"ウドニア",wl:{"封印線":"金刀比羅封印","商都線":"讃岐商都","静律線":"栗林静律","変革線":"芸術変革","境界線":"瀬戸境界"}},
-{n:"愛媛",k:"リリカ・テルマ",kg:"ポエタ・テルマ",f:"リリシア",s:"ミカナリア",wl:{"封印線":"道後封印","商都線":"柑橘商都","静律線":"内子静律","変革線":"子規変革","境界線":"瀬戸境界"}},
-{n:"高知",k:"リベルタス・オケアヌス",kg:"マリヌス・オケアヌス",f:"フリダ",s:"カツオラ",wl:{"封印線":"桂浜封印","商都線":"土佐商都","静律線":"四万十静律","変革線":"龍馬変革","境界線":"太平洋境界"}}
-],kyushu_okinawa:[
-{n:"福岡",k:"ポルタ・アンビティオ",kg:"ヤヌス・アンビティオ",f:"ゲートリア",s:"ハカタリア",wl:{"封印線":"太宰府封印","商都線":"博多商都","静律線":"志賀静律","変革線":"元寇変革","境界線":"玄界境界"}},
-{n:"佐賀",k:"テスタ・イグニス",kg:"フォルナクス・イグニス",f:"アンベラ",s:"アリタナ",wl:{"封印線":"吉野ヶ里封印","商都線":"有田商都","静律線":"嬉野静律","変革線":"焼物変革","境界線":"玄界境界"}},
-{n:"長崎",k:"オラティオ・クルクス",kg:"クルシス・クルクス",f:"クロナ",s:"デジマリア",wl:{"封印線":"浦上封印","商都線":"出島商都","静律線":"平和静律","変革線":"開国変革","境界線":"東シナ境界"}},
-{n:"熊本",k:"イグニス・フォルティス",kg:"ヴォルカヌス・フォルティス",f:"ヴァルニア",s:"アソリア",wl:{"封印線":"阿蘇封印","商都線":"肥後商都","静律線":"水前寺静律","変革線":"加藤変革","境界線":"火山境界"}},
-{n:"大分",k:"テルマ・サピエンティア",kg:"バルネウス・サピエンティア",f:"ミスティア",s:"ユフリア",wl:{"封印線":"宇佐封印","商都線":"別府商都","静律線":"由布静律","変革線":"南蛮変革","境界線":"豊後境界"}},
-{n:"宮崎",k:"ソラリス・ミトス",kg:"ヘリオス・ミトス",f:"ソリア",s:"タカチホナ",wl:{"封印線":"高千穂封印","商都線":"日向商都","静律線":"青島静律","変革線":"天孫変革","境界線":"太平洋境界"}},
-{n:"鹿児島",k:"レベリオ・シネレス",kg:"インスルゲンス・シネレス",f:"リボルナ",s:"サクラジマナ",wl:{"封印線":"桜島封印","商都線":"薩摩商都","静律線":"霧島静律","変革線":"西郷変革","境界線":"南海境界"}},
-{n:"沖縄",k:"リュウキュリア・エコー",kg:"リュウキュリア・エコー",f:"エコラ",s:"ウタキナ",wl:{"封印線":"首里封印","商都線":"国際通商都","静律線":"斎場静律","変革線":"琉球変革","境界線":"珊瑚境界"}}
-]};
-const PN={北海道:{en:"Hokkaido",zh:"北海道",ko:"홋카이도"},青森:{en:"Aomori",zh:"青森",ko:"아오모리"},岩手:{en:"Iwate",zh:"岩手",ko:"이와테"},宮城:{en:"Miyagi",zh:"宫城",ko:"미야기"},秋田:{en:"Akita",zh:"秋田",ko:"아키타"},山形:{en:"Yamagata",zh:"山形",ko:"야마가타"},福島:{en:"Fukushima",zh:"福岛",ko:"후쿠시마"},茨城:{en:"Ibaraki",zh:"茨城",ko:"이바라키"},栃木:{en:"Tochigi",zh:"栃木",ko:"도치기"},群馬:{en:"Gunma",zh:"群马",ko:"군마"},埼玉:{en:"Saitama",zh:"埼玉",ko:"사이타마"},千葉:{en:"Chiba",zh:"千叶",ko:"치바"},東京:{en:"Tokyo",zh:"东京",ko:"도쿄"},神奈川:{en:"Kanagawa",zh:"神奈川",ko:"가나가와"},新潟:{en:"Niigata",zh:"新潟",ko:"니가타"},富山:{en:"Toyama",zh:"富山",ko:"도야마"},石川:{en:"Ishikawa",zh:"石川",ko:"이시카와"},福井:{en:"Fukui",zh:"福井",ko:"후쿠이"},山梨:{en:"Yamanashi",zh:"山梨",ko:"야마나시"},長野:{en:"Nagano",zh:"长野",ko:"나가노"},岐阜:{en:"Gifu",zh:"岐阜",ko:"기후"},静岡:{en:"Shizuoka",zh:"静冈",ko:"시즈오카"},愛知:{en:"Aichi",zh:"爱知",ko:"아이치"},三重:{en:"Mie",zh:"三重",ko:"미에"},滋賀:{en:"Shiga",zh:"滋贺",ko:"시가"},京都:{en:"Kyoto",zh:"京都",ko:"교토"},大阪:{en:"Osaka",zh:"大阪",ko:"오사카"},兵庫:{en:"Hyogo",zh:"兵库",ko:"효고"},奈良:{en:"Nara",zh:"奈良",ko:"나라"},和歌山:{en:"Wakayama",zh:"和歌山",ko:"와카야마"},鳥取:{en:"Tottori",zh:"鸟取",ko:"돗토리"},島根:{en:"Shimane",zh:"岛根",ko:"시마네"},岡山:{en:"Okayama",zh:"冈山",ko:"오카야마"},広島:{en:"Hiroshima",zh:"广岛",ko:"히로시마"},山口:{en:"Yamaguchi",zh:"山口",ko:"야마구치"},徳島:{en:"Tokushima",zh:"德岛",ko:"도쿠시마"},香川:{en:"Kagawa",zh:"香川",ko:"가가와"},愛媛:{en:"Ehime",zh:"爱媛",ko:"에히메"},高知:{en:"Kochi",zh:"高知",ko:"고치"},福岡:{en:"Fukuoka",zh:"福冈",ko:"후쿠오카"},佐賀:{en:"Saga",zh:"佐贺",ko:"사가"},長崎:{en:"Nagasaki",zh:"长崎",ko:"나가사키"},熊本:{en:"Kumamoto",zh:"熊本",ko:"구마모토"},大分:{en:"Oita",zh:"大分",ko:"오이타"},宮崎:{en:"Miyazaki",zh:"宫崎",ko:"미야자키"},鹿児島:{en:"Kagoshima",zh:"鹿儿岛",ko:"가고시마"},沖縄:{en:"Okinawa",zh:"冲绳",ko:"오키나와"}};
-
-// ═══ i18n ═══
-const I18N={
-ja:{heroQuote:"この国は、見えない王たちに守られている。<br>47の都道府県、235の世界線。あなたの町にも、王がいる。",footerQuote:"あなたの町にも、王がいる。",prefectures:"都道府県",stories:"物語",fairies:"妖精",worldlines:"世界線",back:"戻る",diceLabel:"日本を旅する",mypage:"マイページ",modeAll:"すべて",modePopular:"人気順",modeRegion:"ブロック別",modeWL:"世界線別",modeMap:"日本地図",searchPlaceholder:"都道府県名で検索...",all:"すべて",stories_count:"話",mp_progress:"読書進捗",mp_ranking:"マイランキング",mp_ranking_sub:"よく読んだ県 TOP10",mp_map:"旅マップ",mp_favpref:"お気に入り県",mp_favstory:"お気に入り物語",mp_hist:"最近読んだ物語",mp_read:"既読",mp_unread:"未読",mp_visited:"訪問県",mp_fav:"お気に入り",mp_pct:"達成率",mp_empty_favpref:"県詳細の ♡ ボタンで追加できます。",mp_empty_favstory:"物語カードの ☆ ボタンで追加できます。",mp_empty_hist:"読んだ物語がここに記録されます。",mp_reset:"すべてのデータをリセット",mp_reset_hist:"リセット",mp_del_all:"全削除",regions:{hokkaido_tohoku:"北海道・東北",kanto:"関東",chubu:"中部",kinki:"近畿",chugoku:"中国",shikoku:"四国",kyushu_okinawa:"九州・沖縄"},wlNames:{封印線:"封印線",商都線:"商都線",静律線:"静律線",変革線:"変革線",境界線:"境界線"}},
-en:{heroQuote:"This land is guarded by invisible kings.<br>47 prefectures, 235 world lines. There is a king in your town, too.",footerQuote:"There is a king in your town, too.",prefectures:"Prefectures",stories:"Stories",fairies:"Fairies",worldlines:"World Lines",back:"Back",diceLabel:"Explore Japan",mypage:"My Page",modeAll:"All",modePopular:"Popular",modeRegion:"By Region",modeWL:"By World Line",modeMap:"Japan Map",searchPlaceholder:"Search prefectures...",all:"All",stories_count:"stories",mp_progress:"Reading Progress",mp_ranking:"My Ranking",mp_ranking_sub:"Most Read Prefectures TOP10",mp_map:"Travel Map",mp_favpref:"Favourite Prefectures",mp_favstory:"Favourite Stories",mp_hist:"Recently Read",mp_read:"Read",mp_unread:"Unread",mp_visited:"Visited",mp_fav:"Favourites",mp_pct:"Progress",mp_empty_favpref:"Tap ♡ on a prefecture page to add.",mp_empty_favstory:"Tap ☆ on a story card to add.",mp_empty_hist:"Stories you read will appear here.",mp_reset:"Reset All Data",mp_reset_hist:"Clear",mp_del_all:"Delete All",regions:{hokkaido_tohoku:"Hokkaido & Tohoku",kanto:"Kanto",chubu:"Chubu",kinki:"Kansai",chugoku:"Chugoku",shikoku:"Shikoku",kyushu_okinawa:"Kyushu & Okinawa"},wlNames:{封印線:"Seal Line",商都線:"Trade Line",静律線:"Zen Line",変革線:"Revolution Line",境界線:"Border Line"}},
-zh:{heroQuote:"这个国家，被看不见的王守护着。<br>47个都道府县，235条世界线。你的城市里也有一位王。",footerQuote:"你的城市里，也有一位王。",prefectures:"都道府县",stories:"故事",fairies:"精灵",worldlines:"世界线",back:"返回",diceLabel:"漫游日本",mypage:"我的主页",modeAll:"全部",modePopular:"热门",modeRegion:"按地区",modeWL:"按世界线",modeMap:"日本地图",searchPlaceholder:"搜索都道府县...",all:"全部",stories_count:"篇",mp_progress:"阅读进度",mp_ranking:"我的排行",mp_ranking_sub:"阅读最多的县 TOP10",mp_map:"旅行地图",mp_favpref:"收藏的县",mp_favstory:"收藏的故事",mp_hist:"最近阅读",mp_read:"已读",mp_unread:"未读",mp_visited:"访问县",mp_fav:"收藏",mp_pct:"完成率",mp_empty_favpref:"在县详情页点击 ♡ 添加。",mp_empty_favstory:"在故事卡片点击 ☆ 添加。",mp_empty_hist:"您阅读的故事将显示在这里。",mp_reset:"重置所有数据",mp_reset_hist:"清空",mp_del_all:"全部删除",regions:{hokkaido_tohoku:"北海道・东北",kanto:"关东",chubu:"中部",kinki:"近畿",chugoku:"中国地方",shikoku:"四国",kyushu_okinawa:"九州・冲绳"},wlNames:{封印線:"封印线",商都線:"商都线",静律線:"静律线",変革線:"变革线",境界線:"境界线"}},
-ko:{heroQuote:"이 나라는 보이지 않는 왕들에 의해 지켜지고 있다.<br>47개 도도부현, 235개의 세계선. 당신의 마을에도 왕이 있다.",footerQuote:"당신의 마을에도 왕이 있다.",prefectures:"도도부현",stories:"이야기",fairies:"요정",worldlines:"세계선",back:"뒤로",diceLabel:"일본 여행",mypage:"마이페이지",modeAll:"전체",modePopular:"인기순",modeRegion:"지역별",modeWL:"세계선별",modeMap:"일본지도",searchPlaceholder:"도도부현 검색...",all:"전체",stories_count:"편",mp_progress:"독서 진행",mp_ranking:"나의 랭킹",mp_ranking_sub:"많이 읽은 현 TOP10",mp_map:"여행 지도",mp_favpref:"즐겨찾기 현",mp_favstory:"즐겨찾기 이야기",mp_hist:"최근 읽은 이야기",mp_read:"읽음",mp_unread:"미읽음",mp_visited:"방문 현",mp_fav:"즐겨찾기",mp_pct:"달성률",mp_empty_favpref:"현 상세 페이지의 ♡ 버튼으로 추가하세요.",mp_empty_favstory:"이야기 카드의 ☆ 버튼으로 추가하세요.",mp_empty_hist:"읽은 이야기가 여기에 기록됩니다.",mp_reset:"모든 데이터 초기화",mp_reset_hist:"초기화",mp_del_all:"전체 삭제",regions:{hokkaido_tohoku:"홋카이도・도호쿠",kanto:"간토",chubu:"주부",kinki:"긴키",chugoku:"주고쿠",shikoku:"시코쿠",kyushu_okinawa:"규슈・오키나와"},wlNames:{封印線:"봉인선",商都線:"상도선",静律線:"정률선",変革線:"변혁선",境界線:"경계선"}}
-};
-
-let CL='ja',mode='all',filterWL='',filterRegion='';
-const history_stack=[];
-
-function t(k){return I18N[CL]?.[k]||I18N.ja[k]||k}
-function rn(rk){return I18N[CL].regions[rk]||rk}
-function wn(wk){return I18N[CL].wlNames[wk]||wk}
-function psub(n){return CL!=='ja'&&PN[n]?PN[n][CL]||'':''}
-function imgPath(pref,wl,ch){const c=String(ch).padStart(2,'0');return encodeURI(`worldkings_output/${pref}_${wl}/thumbs/chapter_${c}.webp`)}
-function imgFB1(pref,wl,ch){const c=String(ch).padStart(2,'0');return encodeURI(`worldkings_output/${pref}_${wl}/images/chapter_${c}.webp`)}
-function imgFB2(pref,wl,ch){const c=String(ch).padStart(2,'0');return encodeURI(`worldkings_output/${pref}_${wl}/images/chapter_${c}.png`)}
-
-// All prefectures flat
-function allPrefs(){const a=[];for(const rk of REGIONS_ORDER){for(const p of RD[rk]){a.push({...p,region:rk})}}return a}
-
-function setLang(l){CL=l;document.querySelectorAll('.lang-btn').forEach(b=>b.classList.remove('active'));document.querySelector(`.lang-btn[onclick="setLang('${l}')"]`).classList.add('active');document.documentElement.lang=l==='zh'?'zh-CN':l;applyI18n();refresh()}
-
-function applyI18n(){
-document.getElementById('heroQuote').innerHTML=t('heroQuote');
-document.getElementById('footerQuote').textContent=t('footerQuote');
-document.querySelectorAll('[data-i18n]').forEach(e=>{e.textContent=t(e.dataset.i18n)});
-document.querySelectorAll('[data-i18n-placeholder]').forEach(e=>{e.placeholder=t(e.dataset.i18nPlaceholder)});
-}
-
-// ═══ VIEWS ═══
-let _currentFabPref=null,_currentFabWL=null;
-
-function showView(id){
-document.querySelectorAll('.view').forEach(v=>v.classList.remove('active'));
-document.getElementById(id).classList.add('active');
-document.getElementById('backBtn').classList.toggle('show',id!=='v-home');
-window.scrollTo({top:0,behavior:'smooth'});
-// ♡ fab: show only on pref detail
-const fabFav=document.getElementById('fabFav');
-if(id==='v-pref'&&_currentFabPref){
-  fabFav.style.display='flex';updateFavFab();
-}else{
-  fabFav.style.display='none';
-  _currentFabPref=null;_currentFabWL=null;
-}
-}
-
-function updateFavFab(){
-  const btn=document.getElementById('fabFav');
-  if(!btn||!_currentFabPref)return;
-  const isFav=MP.isPrefFav(_currentFabPref);
-  btn.textContent=isFav?'♥':'♡';
-  btn.classList.toggle('fav-active',isFav);
-  const tip=btn.querySelector('.fab-tooltip');
-  if(tip)tip.textContent=isFav?'お気に入り済み':'お気に入りに追加';
-}
-
-function toggleCurrentFav(){
-  if(!_currentFabPref)return;
-  MP.togglePrefFav(_currentFabPref);
-  updateFavFab();
-}
-
-function goBack(){
-if(history_stack.length>0){const fn=history_stack.pop();fn()}
-else showView('v-home');
-}
-
-// ═══ RANDOM STORY ═══
-function randomStory(){
-const prefs=allPrefs();
-const p=prefs[Math.floor(Math.random()*prefs.length)];
-const wls=Object.keys(p.wl);
-const wl=wls[Math.floor(Math.random()*wls.length)];
-const url=encodeURI(`worldkings_output/${p.n}_${wl}/index.html`)+(CL!=='ja'?'?lang='+CL:'');
-window.open(url,'_blank');
-}
-
-
-// ═══ MY PAGE DATA (localStorage) ═══
-const MP={
-  key:'wk_my_',
-  get reads(){
-    const raw=JSON.parse(localStorage.getItem(this.key+'reads')||'{}');
-    // 旧形式(pref_wl)を新形式(pref|wl)に変換して返す
-    const out={};
-    for(const[k,v]of Object.entries(raw)){
-      const nk=k.includes('|')?k:k.replace(/^(.+?)_(.+)$/,(m,p,w)=>p+'|'+w);
-      out[nk]=(out[nk]||0)+v;
-    }
-    return out;
-  },
-  get favs(){
-    const raw=JSON.parse(localStorage.getItem(this.key+'favs')||'[]');
-    return raw.map(k=>k.includes('|')?k:k.replace(/^(.+?)_(.+)$/,(m,p,w)=>p+'|'+w));
-  },
-  get prefFavs(){return JSON.parse(localStorage.getItem(this.key+'prefavs')||'[]')},
-  get hist(){return JSON.parse(localStorage.getItem(this.key+'hist')||'[]')},
-  markRead(pref,wl){const d=JSON.parse(localStorage.getItem(this.key+'reads')||'{}');const k=pref+'|'+wl;d[k]=(d[k]||0)+1;localStorage.setItem(this.key+'reads',JSON.stringify(d))},
-  toggleFav(pref,wl){const raw=JSON.parse(localStorage.getItem(this.key+'favs')||'[]');const f=raw.map(k=>k.includes('|')?k:k.replace(/^(.+?)_(.+)$/,(m,p,w)=>p+'|'+w));const k=pref+'|'+wl,i=f.indexOf(k);if(i>=0)f.splice(i,1);else f.unshift(k);localStorage.setItem(this.key+'favs',JSON.stringify(f));return i<0},
-  togglePrefFav(pref){const f=this.prefFavs,i=f.indexOf(pref);if(i>=0)f.splice(i,1);else f.unshift(pref);localStorage.setItem(this.key+'prefavs',JSON.stringify(f));return i<0},
-  addHist(pref,wl){const h=this.hist,k=pref+'|'+wl+'|'+Date.now();h.unshift(k);localStorage.setItem(this.key+'hist',JSON.stringify(h.slice(0,100)))},
-  isRead(pref,wl){return !!(this.reads[pref+'|'+wl])},
-  isFav(pref,wl){return this.favs.includes(pref+'|'+wl)},
-  isPrefFav(pref){return this.prefFavs.includes(pref)},
-  get readCount(){return Object.keys(this.reads).length},
-  get prefVisited(){return [...new Set(Object.keys(this.reads).map(k=>k.split('|')[0]))]},
-};
-
-// ═══ CARD HTML ═══
-function storyCard(pref,wl,wlName,showPref=true){
-const _rch=(Math.floor(Math.random()*5)+1);
-const img=imgPath(pref,wl,_rch);
-const fb1=imgFB1(pref,wl,_rch);
-const fb2=imgFB2(pref,wl,_rch);
-const sub=psub(pref);
-const isRead=MP.isRead(pref,wl);
-const isFav=MP.isFav(pref,wl);
-const key=`${pref}||${wl}`;
-return `<div class="card" onclick="openStory('${pref}','${wl}')">
-<img class="card-img" src="${img}" data-fb1="${fb1}" data-fb2="${fb2}" onerror="if(this.dataset.fb1){var s=this.dataset.fb1;this.dataset.fb1='';this.src=s}else if(this.dataset.fb2){var s=this.dataset.fb2;this.dataset.fb2='';this.src=s}else{this.style.display='none';this.nextElementSibling.style.display='flex'}" loading="lazy">
-<div class="card-fallback" style="display:none;background:${WL_GRAD[wl]}">${pref.charAt(0)}</div>
-<div class="card-badges">
-  ${isRead?`<div class="card-read-badge" title="既読">✓</div>`:''}
-  <button class="card-fav-btn${isFav?' active':''}" onclick="event.stopPropagation();toggleFavBtn(this,'${pref}','${wl}')" title="お気に入り">${isFav?'★':'☆'}</button>
-</div>
-<div class="card-overlay">
-${showPref?`<div class="card-pref">${pref}</div>${sub?`<div class="card-pref-sub">${sub}</div>`:''}`:``}
-<div class="card-wl"><span class="dot" style="background:${WL_COLORS[wl]}"></span>${wn(wl)}${wlName?` · ${wlName}`:''}</div>
-${showPref?'':`<div class="card-pref" style="font-size:.9rem;margin-top:.15rem">${pref}</div>${sub?`<div class="card-pref-sub">${sub}</div>`:''}`}
-</div></div>`;
-}
-
-function openStory(pref,wl){
-  MP.markRead(pref,wl);
-  MP.addHist(pref,wl);
-  window.open(encodeURI(`worldkings_output/${pref}_${wl}/index.html`)+(CL!=='ja'?'?lang='+CL:''),'_blank');
-}
-
-function toggleFavBtn(btn,pref,wl){
-  const added=MP.toggleFav(pref,wl);
-  btn.textContent=added?'★':'☆';
-  btn.classList.toggle('active',added);
-  // 読み済みバッジを兄として追加／更新
-  const badges=btn.parentElement;
-  const old=badges.querySelector('.card-read-badge');
-  if(MP.isRead(pref,wl)&&!old){
-    badges.insertAdjacentHTML('afterbegin','<div class="card-read-badge" title="既読">✓</div>');
-  }
-}
-
-// ═══ MY PAGE VIEW ═══
-function openMyPage(){
-  history_stack.push(()=>showView('v-home'));
-  showView('v-mypage');
-  renderMyPage();
-}
-
-function renderMyPage(){
-  const reads=MP.reads;
-  const favs=MP.favs;
-  const hist=MP.hist;
-  const readCount=MP.readCount;
-  const visitedPrefs=MP.prefVisited;
-  const totalStories=235;
-  const pct=Math.round(readCount/totalStories*100);
-
-  // WL progress（| 区切りで正規化済みのreadsを使用）
-  const wlCounts={};
-  WLS.forEach(w=>{wlCounts[w]=Object.keys(reads).filter(k=>k.endsWith('|'+w)).length});
-
-  // Prefecture color map (visited → warm)
-  const allP=allPrefs();
-  const prefCells=allP.map(p=>{
-    const cnt=WLS.filter(w=>MP.isRead(p.n,w)).length;
-    const bg=cnt===5?'rgba(201,168,76,.7)':cnt>0?`rgba(201,168,76,${.1+cnt*.12})`:'rgba(255,255,255,.03)';
-    const border=cnt>0?'rgba(201,168,76,.4)':'rgba(255,255,255,.06)';
-    return `<div class="my-pref-cell${cnt>0?' visited':''}" style="background:${bg};border-color:${border}" title="${p.n}（${cnt}/5）" onclick="openPrefFromMyPage('${p.n}')">${p.n.charAt(0)}<br><span style="font-size:.4rem;opacity:.6">${cnt}/5</span></div>`;
-  }).join('');
-
-  // Fav cards (individual stories)
-  let favHtml='';
-  if(favs.length===0){
-    favHtml=`<div class="my-empty">${t('mp_empty_favstory')}</div>`;
-  } else {
-    favHtml=`<div class="grid" style="padding:0">`;
-    for(const k of favs.slice(0,20)){
-      const idx=k.indexOf('|');
-      if(idx<0)continue;
-      const pref=k.slice(0,idx),wl=k.slice(idx+1);
-      if(pref&&wl)favHtml+=storyCard(pref,wl,'');
-    }
-    favHtml+='</div>';
-  }
-
-  // Pref favs (♡ FABで追加した県単位お気に入り)
-  const prefFavs=MP.prefFavs;
-  let prefFavHtml='';
-  if(prefFavs.length===0){
-    prefFavHtml=`<div class="my-empty">${t('mp_empty_favpref')}</div>`;
-  } else {
-    prefFavHtml=`<div style="display:flex;flex-wrap:wrap;gap:.5rem;padding:.3rem 0">`;
-    for(const pref of prefFavs){
-      prefFavHtml+=`<button onclick="openPrefFromMyPage('${pref}')" style="background:rgba(201,168,76,.1);border:1px solid rgba(201,168,76,.3);border-radius:20px;padding:.35rem .9rem;color:var(--gold);font-size:.8rem;cursor:pointer;font-family:inherit;transition:.2s" onmouseover="this.style.background='rgba(201,168,76,.2)'" onmouseout="this.style.background='rgba(201,168,76,.1)'">${pref}</button>`;
-    }
-    prefFavHtml+='</div>';
-  }
-
-  // History list
-  let histHtml='';
-  if(hist.length===0){
-    histHtml=`<div class="my-empty">${t('mp_empty_hist')}</div>`;
-  } else {
-    histHtml=`<div style="display:flex;flex-direction:column;gap:.4rem">`;
-    const seen=new Set();
-    for(const h of hist.slice(0,30)){
-      // 旧形式(pref__wl__ts)と新形式(pref|wl|ts)の両方に対応
-      let pref,wl,ts;
-      if(h.includes('|')){
-        const parts=h.split('|');
-        pref=parts[0];wl=parts[1];ts=+parts[2];
-      } else {
-        const parts=h.split('__');
-        pref=parts[0];wl=parts[1];ts=+parts[2];
-      }
-      // 不正データをスキップ
-      if(!pref||!wl||!WL_COLORS[wl])continue;
-      const uk=pref+'|'+wl;
-      if(seen.has(uk))continue;seen.add(uk);
-      const date=ts?new Date(ts).toLocaleDateString('ja-JP',{month:'short',day:'numeric',hour:'2-digit',minute:'2-digit'}):'';
-      histHtml+=`<div style="display:flex;align-items:center;gap:.7rem;padding:.5rem .7rem;background:rgba(255,255,255,.02);border-radius:8px;cursor:pointer;border:1px solid rgba(255,255,255,.04)" onclick="openStory('${pref}','${wl}')">
-        <span style="width:8px;height:8px;border-radius:50%;background:${WL_COLORS[wl]};flex-shrink:0"></span>
-        <span style="font-family:'Zen Old Mincho',serif;color:var(--txb);font-size:.85rem">${pref}</span>
-        <span style="font-size:.65rem;color:var(--txd)">${wn(wl)}</span>
-        <span style="margin-left:auto;font-size:.6rem;color:var(--txd)">${date}</span>
-      </div>`;
-    }
-    histHtml+='</div>';
-  }
-
-  // WL progress bars
-  const wlBars=WLS.map(w=>`
-    <div style="display:flex;align-items:center;gap:.6rem;margin-bottom:.5rem">
-      <span style="width:6px;height:6px;border-radius:50%;background:${WL_COLORS[w]};flex-shrink:0"></span>
-      <span style="font-size:.7rem;color:var(--txd);width:4em">${wn(w)}</span>
-      <div style="flex:1;height:5px;background:rgba(255,255,255,.06);border-radius:3px;overflow:hidden">
-        <div style="height:100%;width:${Math.round(wlCounts[w]/47*100)}%;background:${WL_COLORS[w]};border-radius:3px;transition:width .6s"></div>
-      </div>
-      <span style="font-size:.65rem;color:var(--goldd);min-width:3em;text-align:right">${wlCounts[w]}/47</span>
-    </div>`).join('');
-
-  // My Ranking: 有効なキー(pref|wl形式)のみ集計
-  const prefReadMap={};
-  for(const[k,cnt]of Object.entries(reads)){
-    if(!k.includes('|'))continue; // ゴミキーを除外
-    const pref=k.split('|')[0];
-    // 県として有効か確認（allPrefsに含まれるか）
-    if(!pref||pref.includes('_'))continue;
-    prefReadMap[pref]=(prefReadMap[pref]||0)+cnt;
-  }
-  const rankingList=Object.entries(prefReadMap).sort((a,b)=>b[1]-a[1]).slice(0,10);
-  const maxCnt=rankingList[0]?.[1]||1;
-  const medalEmoji=['🥇','🥈','🥉'];
-  const timesLabel=CL==='en'?'times':CL==='zh'?'次':CL==='ko'?'회':'回';
-  let rankHtml='';
-  if(rankingList.length===0){
-    rankHtml=`<div class="my-empty">${t('mp_empty_hist')}</div>`;
-  } else {
-    rankHtml=rankingList.map(([pref,cnt],i)=>`
-    <div style="display:flex;align-items:center;gap:.7rem;padding:.45rem .5rem;cursor:pointer;border-radius:7px;transition:.2s" onclick="openPrefFromMyPage('${pref}')" onmouseover="this.style.background='rgba(255,255,255,.03)'" onmouseout="this.style.background='none'">
-      <span style="width:1.6em;text-align:center;font-size:${i<3?'.95':'0.8'}rem">${i<3?medalEmoji[i]:`${i+1}`}</span>
-      <span style="font-family:'Zen Old Mincho',serif;color:var(--txb);font-size:.9rem;min-width:3em">${pref}</span>
-      <div style="flex:1;height:5px;background:rgba(255,255,255,.05);border-radius:3px;overflow:hidden">
-        <div style="height:100%;width:${Math.round(cnt/maxCnt*100)}%;background:linear-gradient(90deg,var(--goldd),var(--gold));border-radius:3px"></div>
-      </div>
-      <span style="font-size:.7rem;color:var(--goldd);min-width:3.5em;text-align:right">${cnt} ${timesLabel}</span>
-    </div>`).join('');
-  }
-
-  const visitedLabel=CL==='en'?'visited':CL==='zh'?'已访问':CL==='ko'?'방문':' 県';
-  const unvisitedLabel=CL==='en'?'Unvisited':CL==='zh'?'未访问':CL==='ko'?'미방문':'未訪問';
-  const visitedGradLabel=CL==='en'?'Visited (faint→dark = 1→5)':CL==='zh'?'已访问（浅→深 = 1→5话）':CL==='ko'?'방문（옅음→진함 = 1→5）':'訪問済み（薄→濃 = 1→5話）';
-  const completedLabel=CL==='en'?'All Complete':CL==='zh'?'全部完读':CL==='ko'?'전화 완독':'全話完読';
-
-  document.getElementById('mypageContent').innerHTML=`
-<div class="my-hero">
-  <div class="my-hero-icon">📖</div>
-  <div class="my-hero-name">${t('mypage')}</div>
-  <div class="my-stats">
-    <div class="my-stat"><b>${readCount}</b><span>${t('mp_read')}</span></div>
-    <div class="my-stat"><b>${totalStories-readCount}</b><span>${t('mp_unread')}</span></div>
-    <div class="my-stat"><b>${visitedPrefs.length}</b><span>${t('mp_visited')}</span></div>
-    <div class="my-stat"><b>${favs.length}</b><span>${t('mp_fav')}</span></div>
-    <div class="my-stat"><b>${pct}%</b><span>${t('mp_pct')}</span></div>
-  </div>
-</div>
-
-<div class="my-section">
-  <div class="my-section-head">📊 ${t('mp_progress')} <span style="font-size:.7rem;color:var(--txd)">${readCount} / ${totalStories} ${t('stories_count')}</span></div>
-  <div class="my-progress-bar"><div class="my-progress-fill" style="width:${pct}%"></div></div>
-  <div style="margin-top:1rem">${wlBars}</div>
-</div>
-
-<div class="my-section">
-  <div class="my-section-head">🏆 ${t('mp_ranking')} <span style="font-size:.7rem;color:var(--txd)">${t('mp_ranking_sub')}</span></div>
-  ${rankHtml}
-</div>
-
-<div class="my-section">
-  <div class="my-section-head">🗾 ${t('mp_map')} <span style="font-size:.7rem;color:var(--txd)">${visitedPrefs.length} / 47 ${t('mp_visited')}</span></div>
-  <div class="my-prefmap">${prefCells}</div>
-  <div style="display:flex;gap:1rem;justify-content:center;margin-top:.7rem;font-size:.6rem;color:var(--txd);flex-wrap:wrap">
-    <span>⬜ ${unvisitedLabel}</span>
-    <span style="color:rgba(201,168,76,.5)">■ ${visitedGradLabel}</span>
-    <span style="color:var(--gold)">■ ${completedLabel}</span>
-  </div>
-</div>
-
-<div class="my-section">
-  <div class="my-section-head">♥ ${t('mp_favpref')}
-    ${prefFavs.length>0?`<a onclick="if(confirm('${t('mp_del_all')}？')){localStorage.removeItem('wk_my_prefavs');renderMyPage()}">${t('mp_del_all')}</a>`:''}
-  </div>
-  ${prefFavHtml}
-</div>
-
-<div class="my-section">
-  <div class="my-section-head">⭐ ${t('mp_favstory')}
-    ${favs.length>0?`<a onclick="if(confirm('${t('mp_del_all')}？')){localStorage.setItem('wk_my_favs','[]');renderMyPage()}">${t('mp_del_all')}</a>`:''}
-  </div>
-  ${favHtml}
-</div>
-
-<div class="my-section">
-  <div class="my-section-head">🕒 ${t('mp_hist')}
-    ${hist.length>0?`<a onclick="if(confirm('${t('mp_reset_hist')}？')){localStorage.setItem('wk_my_hist','[]');renderMyPage()}">${t('mp_reset_hist')}</a>`:''}
-  </div>
-  ${histHtml}
-</div>
-
-<div class="my-section" style="border-top:1px solid rgba(255,255,255,.05);padding-top:1.5rem;margin-top:2rem">
-  <button onclick="if(confirm('${t('mp_reset')}？')){['reads','favs','hist','prefavs'].forEach(k=>localStorage.removeItem('wk_my_'+k));renderMyPage()}" style="background:none;border:1px solid rgba(255,80,80,.3);color:rgba(255,120,120,.7);border-radius:6px;padding:.4rem 1rem;cursor:pointer;font-size:.7rem;font-family:inherit">🗑 ${t('mp_reset')}</button>
-</div>
-`;
-}
-
-function openPrefFromMyPage(name){
-  const allP=allPrefs();
-  const p=allP.find(x=>x.n===name);if(!p)return;
-  history_stack.push(()=>openMyPage());
-  _currentFabPref=name;_currentFabWL=null;
-  document.getElementById('bcPref').innerHTML=`<span onclick="showView('v-home')">TOP</span><span class="sep">›</span><span onclick="openMyPage()" style="cursor:pointer">マイページ</span><span class="sep">›</span>${name}`;
-  let h='';for(const wl of WLS)h+=storyCard(name,wl,p.wl[wl]);
-  document.getElementById('stPref').innerHTML=`<h2>${name}</h2>`;
-  document.getElementById('prefDetailGrid').innerHTML=h;
-  showView('v-pref');
-}
-
-
-// ═══ MODE: ALL ═══
-function renderAll(){
-document.getElementById('allMode').style.display='';
-document.getElementById('popularMode').style.display='none';
-document.getElementById('regionMode').style.display='none';
-document.getElementById('wlMode').style.display='none';
-// filter bar
-let fb=`<button class="filter-chip active" onclick="setFilter('')" data-i18n="all">${t('all')}</button>`;
-for(const rk of REGIONS_ORDER)fb+=`<button class="filter-chip" data-region="${rk}" onclick="setFilter('region','${rk}')">${rn(rk)}</button>`;
-fb+=`<span style="width:1px;height:20px;background:rgba(255,255,255,.06);margin:0 .3rem"></span>`;
-for(const w of WLS)fb+=`<button class="filter-chip" data-wl="${w}" onclick="setFilter('wl','${w}')"><span style="display:inline-block;width:6px;height:6px;border-radius:50%;background:${WL_COLORS[w]};margin-right:3px"></span>${wn(w)}</button>`;
-document.getElementById('filterBar').innerHTML=fb;
-renderAllGrid();
-}
-
-function setFilter(type,val){
-filterWL=type==='wl'?val:'';filterRegion=type==='region'?val:'';
-document.querySelectorAll('.filter-chip').forEach(c=>{
-c.classList.remove('active');
-if(!type&&!c.dataset.wl&&!c.dataset.region)c.classList.add('active');
-if(type==='wl'&&c.dataset.wl===val)c.classList.add('active');
-if(type==='region'&&c.dataset.region===val)c.classList.add('active');
+navToggle.addEventListener('click', () => {
+  navToggle.classList.toggle('active');
+  nav.classList.toggle('open');
 });
-renderAllGrid();
-}
 
-function renderAllGrid(){
-const prefs=allPrefs();let h='';
-const q=(document.getElementById('searchInput').value||'').trim().toLowerCase();
-for(const p of prefs){
-if(filterRegion&&p.region!==filterRegion)continue;
-if(q&&!p.n.includes(q)&&!(psub(p.n).toLowerCase().includes(q)))continue;
-for(const[wl,wlName]of Object.entries(p.wl)){
-if(filterWL&&wl!==filterWL)continue;
-h+=storyCard(p.n,wl,wlName);
-}}
-document.getElementById('allGrid').innerHTML=h||`<div style="grid-column:1/-1;text-align:center;color:var(--txd);padding:3rem">No results</div>`;
-}
-
-// ═══ MODE: REGION ═══
-function renderRegions(){
-document.getElementById('allMode').style.display='none';
-document.getElementById('popularMode').style.display='none';
-document.getElementById('regionMode').style.display='';
-document.getElementById('wlMode').style.display='none';
-const counts={};for(const rk of REGIONS_ORDER)counts[rk]=RD[rk].length;
-let h='';for(const rk of REGIONS_ORDER){
-const gradients=["linear-gradient(135deg,#0d0d2b,#1a1040)","linear-gradient(135deg,#0d1a2b,#102040)","linear-gradient(135deg,#0d2b1a,#104020)","linear-gradient(135deg,#2b0d1a,#401020)","linear-gradient(135deg,#1a1a0d,#2a2810)","linear-gradient(135deg,#0d1a1a,#102a2a)","linear-gradient(135deg,#1a0d2b,#201040)"];
-const i=REGIONS_ORDER.indexOf(rk);
-h+=`<div class="rcard" style="background:${gradients[i]}" onclick="openRegion('${rk}')">
-<div class="rcard-name">${rn(rk)}</div>
-<div class="rcard-count">${counts[rk]} ${t('prefectures')} · ${counts[rk]*5} ${t('stories_count')}</div></div>`;
-}
-document.getElementById('regionGrid').innerHTML=h;
-}
-
-function openRegion(rk){
-history_stack.push(()=>{showView('v-home');setMode('region')});
-showView('v-region');
-document.getElementById('bcRegion').innerHTML=`<span onclick="showView('v-home')">TOP</span><span class="sep">›</span><span>${rn(rk)}</span>`;
-document.getElementById('stRegion').innerHTML=`<h2>${rn(rk)}</h2><span class="badge">${RD[rk].length} ${t('prefectures')}</span>`;
-let h='';for(const p of RD[rk]){
-for(const[wl]of Object.entries(p.wl)){
-h+=storyCard(p.n,wl,p.wl[wl]);
-}}
-document.getElementById('regionDetailGrid').innerHTML=h;
-}
-
-// ═══ MODE: WORLD LINE ═══
-function renderWLs(){
-document.getElementById('allMode').style.display='none';
-document.getElementById('popularMode').style.display='none';
-document.getElementById('regionMode').style.display='none';
-document.getElementById('wlMode').style.display='';
-let h='';for(const w of WLS){
-h+=`<div class="wlcard" style="background:${WL_GRAD[w]};border-color:${WL_COLORS[w]}33" onclick="openWL('${w}')">
-<div class="wlcard-name" style="color:${WL_COLORS[w]}">${w}</div>
-<div class="wlcard-en" style="color:${WL_COLORS[w]}88">${wn(w)}</div>
-<div class="wlcard-count">47 ${t('stories_count')}</div></div>`;
-}
-document.getElementById('wlGrid').innerHTML=h;
-}
-
-function openWL(wl){
-history_stack.push(()=>{showView('v-home');setMode('wl')});
-showView('v-wl');
-document.getElementById('bcWL').innerHTML=`<span onclick="showView('v-home')">TOP</span><span class="sep">›</span><span style="color:${WL_COLORS[wl]}">${wn(wl)}</span>`;
-document.getElementById('stWL').innerHTML=`<h2 style="color:${WL_COLORS[wl]}">${wn(wl)} ── ${wl}</h2><span class="badge">47 ${t('stories_count')}</span>`;
-let h='';for(const rk of REGIONS_ORDER){
-h+=`<div class="section-title"><h2 style="font-size:1rem">${rn(rk)}</h2></div>`;
-h+=`<div class="grid" style="max-width:1200px;margin:0 auto">`;
-for(const p of RD[rk]){h+=storyCard(p.n,wl,p.wl[wl])}
-h+=`</div>`;
-}
-document.getElementById('wlDetailContent').innerHTML=h;
-}
-
-// ═══ MODE SWITCH ═══
-function setMode(m){
-mode=m;
-document.querySelectorAll('.nav-mode-btn').forEach((b,i)=>{
-b.classList.toggle('active',['all','popular','region','wl'][i]===m);
+nav.querySelectorAll('a').forEach(link => {
+  link.addEventListener('click', () => {
+    navToggle.classList.remove('active');
+    nav.classList.remove('open');
+  });
 });
-document.getElementById('allMode').style.display='none';
-document.getElementById('popularMode').style.display='none';
-document.getElementById('regionMode').style.display='none';
-document.getElementById('wlMode').style.display='none';
-if(m==='all')renderAll();
-else if(m==='popular')renderPopular();
-else if(m==='region')renderRegions();
-else renderWLs();
-}
 
-// ═══ OPEN PREF ═══
-function openPref(pref){
-history_stack.push(()=>{showView('v-home');setMode('popular')});
-_currentFabPref=pref;_currentFabWL=null;
-showView('v-pref');
-const sub=psub(pref);
-document.getElementById('bcPref').innerHTML=`<span onclick="showView('v-home')">TOP</span><span class="sep">›</span><span onclick="setMode('popular');showView('v-home')" style="cursor:pointer">人気順</span><span class="sep">›</span><span>${pref}</span>`;
-document.getElementById('stPref').innerHTML=`<h2>${pref}${sub?` <small style="font-size:.6em;color:var(--txd)">${sub}</small>`:''}</h2><span class="badge">5 世界線</span>`;
-let h='';
-for(const rk of REGIONS_ORDER){
-  const pr=RD[rk].find(p=>p.n===pref);
-  if(pr){for(const[wl,wlName]of Object.entries(pr.wl)){h+=storyCard(pref,wl,wlName,false)}}
-}
-document.getElementById('prefDetailGrid').innerHTML=h||`<div style="color:var(--txd);padding:2rem">Not found</div>`;
-}
+// Smooth reveal on scroll
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      entry.target.style.opacity = '1';
+      entry.target.style.transform = 'translateY(0)';
+    }
+  });
+}, { threshold: 0.1 });
 
-// ═══ MODE: POPULAR ═══
-function renderPopular(){
-document.getElementById('popularMode').style.display='';
-const rankSuffix={ja:'位',en:'',zh:'位',ko:'위'};
-const readLabel={
-  ja:n=>`${n}の物語を読む →`,
-  en:n=>`Read ${n} stories →`,
-  zh:n=>`阅读${n}的故事 →`,
-  ko:n=>`${n} 이야기 읽기 →`,
-};
-const POPULAR_DATA={
-ja:[
-{title:'国内旅行者に人気の都道府県ランキング (2026年)',subtitle:'国内旅行先として根強い人気を誇るエリアです。',items:[
-  {rank:1,pref:'北海道',spot:'北海道',desc:'雄大な自然とグルメ（海鮮・ジンギスカン）が最大の魅力です。'},
-  {rank:2,pref:'沖縄',spot:'沖縄県',desc:'那覇・首里、石垣島、宮古島など、ビーチリゾートとしての需要が非常に高いです。'},
-  {rank:3,pref:'京都',spot:'京都府',desc:'四季折々の寺社仏閣巡りが定番です。'},
-  {rank:4,pref:'東京',spot:'東京都',desc:'最新の商業施設やエンターテインメントが集結しています。'},
-]},
-{title:'訪日外国人に人気の観光スポット (2025-2026年)',subtitle:'インバウンド客には、日本特有の歴史や文化を感じられる場所が支持されています。',items:[
-  {rank:1,pref:'京都',spot:'伏見稲荷大社（京都）',desc:'千本鳥居の幻想的な風景が圧倒的人気です。'},
-  {rank:2,pref:'広島',spot:'広島平和記念資料館（広島）',desc:'歴史的意義の深さから、多くの外国人が訪れます。'},
-  {rank:3,pref:'奈良',spot:'東大寺（奈良）',desc:'大仏の迫力と奈良公園の鹿とのふれあいが好評です。'},
-  {rank:4,pref:'京都',spot:'金閣寺（京都）',desc:'豪華絢爛な建築が「日本らしさ」の象徴として人気です。'},
-  {rank:5,pref:'東京',spot:'浅草寺（東京）',desc:'東京観光の起点として、雷門や仲見世通りが親しまれています。'},
-]},
-{title:'【季節・テーマ別】今行くべき注目スポット',subtitle:'2026年3月現在、見頃を迎える春の観光地や絶景スポットです。',items:[
-  {rank:'🌸',pref:'神奈川',spot:'三溪園（神奈川）',desc:'古建築と桜が調和する横浜の名庭園。3/27からライトアップ開催。'},
-  {rank:'🌸',pref:'岡山',spot:'津山城・鶴山公園（岡山）',desc:'日本さくら名所100選。石垣と桜の対比が見事な城跡。'},
-  {rank:'🌸',pref:'愛知',spot:'岡崎公園（愛知）',desc:'東海地方随一の夜桜と岡崎城の共演が楽しめます。'},
-  {rank:'🗻',pref:'岐阜',spot:'白川郷（岐阜）',desc:'世界遺産の合掌造り集落。'},
-  {rank:'🗻',pref:'宮崎',spot:'高千穂峡（宮崎）',desc:'神秘的な断崖と滝が続く名勝。'},
-  {rank:'🗻',pref:'山口',spot:'角島大橋（山口）',desc:'エメラルドグリーンの海を渡る絶景の橋。'},
-]},
-],
-en:[
-{title:'Most Popular Prefectures for Domestic Travelers (2026)',subtitle:'These destinations attract consistent domestic tourism year-round.',items:[
-  {rank:1,pref:'北海道',spot:'Hokkaido',desc:'Vast nature and gourmet food (seafood, Genghis Khan BBQ) make it irresistible.'},
-  {rank:2,pref:'沖縄',spot:'Okinawa',desc:'Naha, Ishigaki, Miyako — demand for beach resort stays remains extremely high.'},
-  {rank:3,pref:'京都',spot:'Kyoto',desc:'Seasonal temple and shrine visits are a perennial classic.'},
-  {rank:4,pref:'東京',spot:'Tokyo',desc:'The latest commercial facilities and entertainment are all concentrated here.'},
-]},
-{title:'Top Spots for International Visitors (2025-2026)',subtitle:'Overseas travelers are drawn to places with deep Japanese history and culture.',items:[
-  {rank:1,pref:'京都',spot:'Fushimi Inari Taisha (Kyoto)',desc:'The otherworldly tunnel of thousands of torii gates is overwhelmingly popular.'},
-  {rank:2,pref:'広島',spot:'Hiroshima Peace Memorial Museum',desc:'Its profound historical significance draws visitors from around the world.'},
-  {rank:3,pref:'奈良',spot:'Todai-ji Temple (Nara)',desc:'The giant Buddha and deer encounters in Nara Park are highly appreciated.'},
-  {rank:4,pref:'京都',spot:'Kinkaku-ji (Kyoto)',desc:'The lavish golden architecture symbolizes "Japan" for many visitors.'},
-  {rank:5,pref:'東京',spot:'Senso-ji Temple (Tokyo)',desc:'The Thunder Gate and Nakamise shopping street are beloved starting points.'},
-]},
-{title:'Seasonal & Thematic Highlights — Where to Go Now',subtitle:'Spring scenery and breathtaking landscapes at their peak as of March 2026.',items:[
-  {rank:'🌸',pref:'神奈川',spot:'Sankeien Garden (Kanagawa)',desc:'Historic architecture and cherry blossoms in harmony. Light-up event from Mar 27.'},
-  {rank:'🌸',pref:'岡山',spot:'Tsuyama Castle / Kakuzan Park (Okayama)',desc:'One of Japan\'s top 100 cherry blossom sites — stone walls meet sakura.'},
-  {rank:'🌸',pref:'愛知',spot:'Okazaki Park (Aichi)',desc:'The finest night cherry blossoms in Tokai, framed by Okazaki Castle.'},
-  {rank:'🗻',pref:'岐阜',spot:'Shirakawa-go (Gifu)',desc:'A World Heritage gassho-zukuri thatched farmhouse village.'},
-  {rank:'🗻',pref:'宮崎',spot:'Takachiho Gorge (Miyazaki)',desc:'Mystical cliffs and waterfalls stretching through a sacred landscape.'},
-  {rank:'🗻',pref:'山口',spot:'Tsunoshima Bridge (Yamaguchi)',desc:'A scenic bridge crossing an emerald-green sea.'},
-]},
-],
-zh:[
-{title:'国内旅行者最受欢迎的都道府县排行榜（2026年）',subtitle:'这些地区在国内旅游目的地中长期保持超高人气。',items:[
-  {rank:1,pref:'北海道',spot:'北海道',desc:'壮阔的大自然与美食（海鲜·成吉思汗烤肉）是最大魅力。'},
-  {rank:2,pref:'沖縄',spot:'冲绳县',desc:'那霸·首里城、石垣岛、宫古岛等，作为海滨度假地的需求极高。'},
-  {rank:3,pref:'京都',spot:'京都府',desc:'四季各异的寺社参拜是定番行程。'},
-  {rank:4,pref:'東京',spot:'东京都',desc:'汇聚了最新的商业设施与娱乐资源。'},
-]},
-{title:'访日外国人最受欢迎的观光景点（2025-2026年）',subtitle:'海外游客特别钟情于能感受日本历史与文化的场所。',items:[
-  {rank:1,pref:'京都',spot:'伏见稻荷大社（京都）',desc:'千本鸟居的梦幻风景拥有压倒性的人气。'},
-  {rank:2,pref:'広島',spot:'广岛和平纪念资料馆',desc:'深刻的历史意义吸引了大量外国游客前往。'},
-  {rank:3,pref:'奈良',spot:'东大寺（奈良）',desc:'大佛的震撼与奈良公园的鹿互动广受好评。'},
-  {rank:4,pref:'京都',spot:'金阁寺（京都）',desc:'金碧辉煌的建筑作为"日本象征"深受欢迎。'},
-  {rank:5,pref:'東京',spot:'浅草寺（东京）',desc:'雷门与仲见世商店街是东京观光的必游起点。'},
-]},
-{title:'【季节·主题别】现在必去的热门景点',subtitle:'2026年3月，正值春季赏花与绝景最佳时期。',items:[
-  {rank:'🌸',pref:'神奈川',spot:'三溪园（神奈川）',desc:'古建筑与樱花相融的横滨名园。3/27起举办夜间灯光秀。'},
-  {rank:'🌸',pref:'岡山',spot:'津山城·鹤山公园（冈山）',desc:'日本百大赏樱名所，石垣与樱花的对比令人叹为观止。'},
-  {rank:'🌸',pref:'愛知',spot:'冈崎公园（爱知）',desc:'东海地区最美的夜樱与冈崎城的绝妙搭配。'},
-  {rank:'🗻',pref:'岐阜',spot:'白川乡（岐阜）',desc:'世界遗产合掌造村落。'},
-  {rank:'🗻',pref:'宮崎',spot:'高千穗峡（宫崎）',desc:'神秘的断崖与瀑布绵延不绝的名胜之地。'},
-  {rank:'🗻',pref:'山口',spot:'角岛大桥（山口）',desc:'横跨翡翠绿海面的壮观大桥。'},
-]},
-],
-ko:[
-{title:'국내 여행자에게 인기 있는 도도부현 순위 (2026년)',subtitle:'국내 여행지로 꾸준히 높은 인기를 자랑하는 지역입니다.',items:[
-  {rank:1,pref:'北海道',spot:'홋카이도',desc:'웅장한 자연과 먹거리(해산물·징기스칸)가 가장 큰 매력입니다.'},
-  {rank:2,pref:'沖縄',spot:'오키나와현',desc:'나하·슈리, 이시가키섬, 미야코섬 등 비치 리조트 수요가 매우 높습니다.'},
-  {rank:3,pref:'京都',spot:'교토부',desc:'사계절 사원·신사 탐방이 정석 코스입니다.'},
-  {rank:4,pref:'東京',spot:'도쿄도',desc:'최신 상업시설과 엔터테인먼트가 집결해 있습니다.'},
-]},
-{title:'방일 외국인에게 인기 있는 관광 명소 (2025-2026년)',subtitle:'인바운드 관광객에게는 일본 특유의 역사와 문화를 느낄 수 있는 곳이 지지받고 있습니다.',items:[
-  {rank:1,pref:'京都',spot:'후시미이나리 신사 (교토)',desc:'수천 개의 도리이가 이어지는 환상적인 풍경이 압도적 인기입니다.'},
-  {rank:2,pref:'広島',spot:'히로시마 평화기념자료관',desc:'깊은 역사적 의미로 인해 많은 외국인이 방문합니다.'},
-  {rank:3,pref:'奈良',spot:'도다이지 (나라)',desc:'대불의 압도감과 나라 공원의 사슴과의 만남이 호평받습니다.'},
-  {rank:4,pref:'京都',spot:'킨카쿠지 (교토)',desc:'화려한 금각 건축물이 "일본다움"의 상징으로 인기입니다.'},
-  {rank:5,pref:'東京',spot:'센소지 (도쿄)',desc:'가미나리몬과 나카미세 거리는 도쿄 관광의 출발점입니다.'},
-]},
-{title:'【계절·테마별】지금 꼭 가야 할 주목 명소',subtitle:'2026년 3월 현재 봄꽃 명소와 절경 스폿이 절정을 맞이하고 있습니다.',items:[
-  {rank:'🌸',pref:'神奈川',spot:'산케이엔 정원 (가나가와)',desc:'고건축과 벚꽃이 어우러지는 요코하마 명원. 3/27부터 야간 조명 행사.'},
-  {rank:'🌸',pref:'岡山',spot:'쓰야마성·가쿠잔 공원 (오카야마)',desc:'일본 벚꽃 명소 100선. 석벽과 벚꽃의 대비가 멋진 성터.'},
-  {rank:'🌸',pref:'愛知',spot:'오카자키 공원 (아이치)',desc:'도카이 지방 최고의 야간 벚꽃과 오카자키성의 조화.'},
-  {rank:'🗻',pref:'岐阜',spot:'시라카와고 (기후)',desc:'세계유산 갓쇼즈쿠리 마을.'},
-  {rank:'🗻',pref:'宮崎',spot:'다카치호 협곡 (미야자키)',desc:'신비로운 절벽과 폭포가 이어지는 명승지.'},
-  {rank:'🗻',pref:'山口',spot:'쓰노시마 대교 (야마구치)',desc:'에메랄드빛 바다를 가로지르는 절경의 다리.'},
-]},
-],
-};
-const secs=POPULAR_DATA[CL]||POPULAR_DATA.ja;
-const rs=rankSuffix[CL]||'位';
-const rl=readLabel[CL]||readLabel.ja;
-let h='';
-for(const sec of secs){
-h+=`<div class="pop-section"><div class="pop-section-title">${sec.title}</div><div class="pop-section-subtitle">${sec.subtitle}</div>`;
-for(const item of sec.items){
-const rc=typeof item.rank==='number'?['','r1','r2','r3'][item.rank]||'':'';
-const rankStr=typeof item.rank==='number'?item.rank+rs:item.rank;
-const rwl=WLS[Math.floor(Math.random()*WLS.length)];
-const rch=String(Math.floor(Math.random()*5)+1).padStart(2,'0');
-const rthumb=encodeURI(`worldkings_output/${item.pref}_${rwl}/thumbs/chapter_${rch}.webp`);
-const rfb=encodeURI(`worldkings_output/${item.pref}_${rwl}/images/chapter_${rch}.webp`);
-h+=`<div class="pop-item" onclick="openPref('${item.pref}')">
-<img class="pop-thumb" src="${rthumb}" onerror="this.src='${rfb}';this.onerror=function(){this.style.background='${WL_GRAD[rwl]}';this.style.opacity='.5'}" loading="lazy">
-<div class="pop-rank ${rc}">${rankStr}</div>
-<div class="pop-info"><div class="pop-name">${item.spot}<span class="pop-tag">${rl(item.pref)}</span></div><div class="pop-desc">${item.desc}</div></div>
-</div>`;
-}
-h+=`</div><div class="pop-divider"></div>`;
-}
-document.getElementById('popularContent').innerHTML=h;
-}
-
-function refresh(){
-if(document.getElementById('v-home').classList.contains('active'))setMode(mode);
-}
-
-// ═══ ABOUT ═══
-function openAbout(){
-history_stack.push(()=>showView('v-home'));
-showView('v-about');
-const ABOUT={
-ja:{
-  title:'このサイトについて',
-  sections:[
-    {head:'🌐 Mysterious Japan とは？',
-     body:'「Mysterious Japan ── 世界王」は、日本47都道府県それぞれを舞台にした、AIが生成したファンタジー小説コレクションです。各都道府県に5つの「世界線」を設定し、合計235話の短編物語と、AIが生成したビジュアルアートを公開しています。'},
-    {head:'📖 物語の読み方',
-     body:'トップページのカードをクリックすると、その物語のページへ移動します。各物語ページには本文・AIアート・ホテル検索ウィジェットが含まれます。ナビの「ブロック別」「世界線別」「人気順」からも探せます。'},
-    {head:'🤖 AIについて',
-     body:'テキストはDeepSeek、画像はFLUX.1を使って生成しています。物語の内容はフィクションであり、実在の人物・団体・地名の実態とは無関係です。地名・歴史・文化は創作のベースとして参照していますが、正確性を保証するものではありません。'},
-    {head:'🏨 ホテルリンクについて',
-     body:'各物語ページ下部の「この地の宿を探す」ウィジェットは、楽天トラベル・Booking.com・Agodaへの外部リンクです。実際の宿泊予約は各サービスの規約に従います。当サイトはアフィリエイト参加者です。'},
-    {head:'⚠️ ご利用上の注意',
-     body:'本サイトの物語・画像はAI生成コンテンツです。教育・研究目的での参照は自由ですが、無断での商用転載・二次配布はご遠慮ください。内容に関するお問い合わせはGitHubのIssuesまでどうぞ。'},
-  ]},
-en:{
-  title:'About This Site',
-  sections:[
-    {head:'🌐 What is Mysterious Japan?',
-     body:'"Mysterious Japan ── World Kings" is an AI-generated fantasy novel collection set across all 47 Japanese prefectures. Each prefecture features 5 "world lines," creating a total of 235 short stories accompanied by AI-generated visual art.'},
-    {head:'📖 How to Read',
-     body:'Click any card on the top page to open that story. Each story page contains the full text, AI artwork, and a hotel search widget. You can also browse by Region, World Line, or Popular rankings.'},
-    {head:'🤖 About the AI',
-     body:'Text is generated by DeepSeek; images by FLUX.1. All stories are fictional and have no connection to real individuals, organizations, or the actual state of the locations named. Place names, history, and culture are used as creative inspiration only.'},
-    {head:'🏨 Hotel Links',
-     body:'The "Find a Place to Stay" widget at the bottom of each story links to Rakuten Travel, Booking.com, and Agoda. Actual bookings are subject to each service\'s terms. This site participates in affiliate programs.'},
-    {head:'⚠️ Disclaimer',
-     body:'All stories and images are AI-generated content. Feel free to reference them for educational or research purposes, but please do not reproduce or redistribute commercially without permission. For inquiries, please open an Issue on GitHub.'},
-  ]},
-zh:{
-  title:'关于本网站',
-  sections:[
-    {head:'🌐 Mysterious Japan 是什么？',
-     body:'"Mysterious Japan ── 世界王"是一个以日本47个都道府县为舞台的AI生成奇幻小说合集。每个都道府县设有5条"世界线"，共计235篇短篇故事，并附有AI生成的视觉艺术作品。'},
-    {head:'📖 如何阅读',
-     body:'点击首页的卡片即可进入对应故事页面。每个故事页面包含正文、AI艺术图及酒店搜索组件。您也可以通过"按地区""按世界线""热门"等导航进行浏览。'},
-    {head:'🤖 关于AI',
-     body:'文本由DeepSeek生成，图像由FLUX.1生成。所有故事均为虚构内容，与真实人物、团体及地名的实际情况无关。地名、历史和文化仅作为创作素材参考，不保证其准确性。'},
-    {head:'🏨 酒店链接说明',
-     body:'每篇故事页面下方的"寻找住宿"组件链接至乐天旅游、Booking.com及Agoda。实际预订请遵守各平台服务条款。本站参与联盟营销计划。'},
-    {head:'⚠️ 免责声明',
-     body:'本站所有故事及图像均为AI生成内容。欢迎用于教育或研究目的，但未经许可请勿进行商业转载或二次分发。如有疑问，请在GitHub上提交Issue。'},
-  ]},
-ko:{
-  title:'이 사이트에 대하여',
-  sections:[
-    {head:'🌐 Mysterious Japan이란?',
-     body:'"Mysterious Japan ── 세계왕"은 일본 47개 도도부현을 배경으로 한 AI 생성 판타지 소설 컬렉션입니다. 각 도도부현마다 5개의 "세계선"을 설정하여 총 235편의 단편 이야기와 AI 생성 비주얼 아트를 공개하고 있습니다.'},
-    {head:'📖 읽는 방법',
-     body:'상단 페이지의 카드를 클릭하면 해당 이야기 페이지로 이동합니다. 각 이야기 페이지에는 본문, AI 아트, 호텔 검색 위젯이 포함되어 있습니다. "지역별", "세계선별", "인기순" 메뉴에서도 탐색할 수 있습니다.'},
-    {head:'🤖 AI에 대하여',
-     body:'텍스트는 DeepSeek, 이미지는 FLUX.1로 생성했습니다. 모든 이야기는 픽션이며, 실재하는 인물·단체·지명의 실제 상황과는 무관합니다. 지명·역사·문화는 창작의 소재로만 참고했으며, 정확성을 보장하지 않습니다.'},
-    {head:'🏨 호텔 링크에 대하여',
-     body:'각 이야기 페이지 하단의 "이 지역에서 숙소 찾기" 위젯은 라쿠텐 트래블, Booking.com, Agoda로의 외부 링크입니다. 실제 예약은 각 서비스의 이용약관을 따릅니다. 본 사이트는 제휴 프로그램에 참여하고 있습니다.'},
-    {head:'⚠️ 이용 시 주의사항',
-     body:'본 사이트의 이야기와 이미지는 AI 생성 콘텐츠입니다. 교육·연구 목적의 참조는 자유이나, 무단 상업적 전재·재배포는 삼가 주세요. 문의사항은 GitHub Issues를 이용해 주세요.'},
-  ]},
-};
-const ab=ABOUT[CL]||ABOUT.ja;
-document.getElementById('bcAbout').textContent=ab.title;
-document.getElementById('aboutContent').innerHTML=`
-<h1 style="font-size:1.3rem;color:var(--gold);margin-bottom:2rem;letter-spacing:.1em">${ab.title}</h1>
-${ab.sections.map(s=>`
-<div style="margin-bottom:2rem">
-  <h2 style="font-size:.95rem;color:var(--tx);margin-bottom:.6rem;letter-spacing:.05em">${s.head}</h2>
-  <p style="font-size:.82rem;color:var(--txd);line-height:1.9;border-left:2px solid rgba(201,168,76,.2);padding-left:1rem">${s.body}</p>
-</div>`).join('')}
-<div style="margin-top:3rem;padding-top:1.5rem;border-top:1px solid rgba(255,255,255,.05);font-size:.7rem;color:var(--goldd);letter-spacing:.08em;text-align:center">
-  Mysterious Japan ── 世界王 World Kings<br>© 2026 World Kings Project · AI Generated · GitHub Pages
-</div>`;
-}
-
-// Search
-document.getElementById('searchInput').addEventListener('input',()=>{if(mode==='all')renderAllGrid()});
-
-// Init
-applyI18n();renderAll();
-const bl=(navigator.language||'').substring(0,2);
-if(['en','zh','ko'].includes(bl))setLang(bl);
-// 詳細ページの 📖 ボタンから戻ったときにマイページを開く
-if(sessionStorage.getItem('wk_open_mypage')==='1'){
-  sessionStorage.removeItem('wk_open_mypage');
-  openMyPage();
-}
+document.querySelectorAll('.category, .pillar').forEach(el => {
+  el.style.opacity = '0';
+  el.style.transform = 'translateY(20px)';
+  el.style.transition = 'opacity 0.6s, transform 0.6s';
+  observer.observe(el);
+});
 </script>
 </body>
 </html>
