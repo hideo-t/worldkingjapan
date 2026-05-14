@@ -17,6 +17,7 @@
   --black-light: #141414;
   --black-mid: #1a1a1a;
   --gold: #d4af37;
+  --gold-rgb: 212, 175, 55;
   --gold-light: #f0d060;
   --gold-dark: #c9a227;
   --silver: #d0d0d0;
@@ -50,7 +51,7 @@ header {
   z-index: 100;
   background: rgba(10, 10, 10, 0.95);
   backdrop-filter: blur(20px);
-  border-bottom: 1px solid rgba(201, 162, 39, 0.15);
+  border-bottom: 1px solid rgba(var(--gold-rgb), 0.15);
 }
 
 .header-inner {
@@ -145,7 +146,7 @@ nav a:hover {
     padding: 100px 32px;
     gap: 28px;
     transition: right 0.3s;
-    border-left: 1px solid rgba(201, 162, 39, 0.15);
+    border-left: 1px solid rgba(var(--gold-rgb), 0.15);
   }
   nav.open { right: 0; }
   nav a { font-size: 14px; }
@@ -198,7 +199,7 @@ nav a:hover {
   color: var(--white);
   margin-bottom: 16px;
   letter-spacing: 0.15em;
-  text-shadow: 0 0 60px rgba(201, 162, 39, 0.3);
+  text-shadow: 0 0 60px rgba(var(--gold-rgb), 0.3);
 }
 
 .hero-catch {
@@ -249,7 +250,7 @@ nav a:hover {
 
 .btn-primary:hover {
   background: var(--gold-light);
-  box-shadow: 0 0 30px rgba(201, 162, 39, 0.4);
+  box-shadow: 0 0 30px rgba(var(--gold-rgb), 0.4);
 }
 
 .btn-outline {
@@ -259,14 +260,14 @@ nav a:hover {
 }
 
 .btn-outline:hover {
-  background: rgba(201, 162, 39, 0.1);
+  background: rgba(var(--gold-rgb), 0.1);
 }
 
 /* Stats */
 .stats {
   background: var(--black-light);
   padding: 60px 24px;
-  border-bottom: 1px solid rgba(201, 162, 39, 0.1);
+  border-bottom: 1px solid rgba(var(--gold-rgb), 0.1);
 }
 
 .stats-inner {
@@ -301,9 +302,9 @@ nav a:hover {
 /* Featured Banner */
 .featured {
   padding: 60px 24px;
-  background: linear-gradient(135deg, rgba(212, 175, 55, 0.15) 0%, rgba(10, 10, 10, 0.95) 50%, rgba(212, 175, 55, 0.1) 100%);
-  border-top: 1px solid rgba(212, 175, 55, 0.3);
-  border-bottom: 1px solid rgba(212, 175, 55, 0.3);
+  background: linear-gradient(135deg, rgba(var(--gold-rgb), 0.15) 0%, rgba(10, 10, 10, 0.95) 50%, rgba(var(--gold-rgb), 0.1) 100%);
+  border-top: 1px solid rgba(var(--gold-rgb), 0.3);
+  border-bottom: 1px solid rgba(var(--gold-rgb), 0.3);
 }
 
 .featured-inner {
@@ -366,7 +367,7 @@ nav a:hover {
 .featured-cta:hover {
   background: var(--gold);
   color: var(--black);
-  box-shadow: 0 0 30px rgba(212, 175, 55, 0.4);
+  box-shadow: 0 0 30px rgba(var(--gold-rgb), 0.4);
 }
 
 .featured-cta .arrow {
@@ -425,7 +426,7 @@ nav a:hover {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   gap: 2px;
-  background: rgba(201, 162, 39, 0.1);
+  background: rgba(var(--gold-rgb), 0.1);
 }
 
 .pillar {
@@ -490,7 +491,7 @@ nav a:hover {
 /* Category Section */
 .category {
   padding: 100px 24px;
-  border-top: 1px solid rgba(201, 162, 39, 0.1);
+  border-top: 1px solid rgba(var(--gold-rgb), 0.1);
 }
 
 .category:nth-child(even) {
@@ -529,7 +530,7 @@ nav a:hover {
   font-size: 12px;
   color: var(--silver);
   margin-left: auto;
-  background: rgba(212, 175, 55, 0.15);
+  background: rgba(var(--gold-rgb), 0.15);
   padding: 6px 16px;
   border-radius: 20px;
 }
@@ -552,7 +553,7 @@ nav a:hover {
 .link-card {
   display: block;
   background: var(--black-mid);
-  border: 1px solid rgba(201, 162, 39, 0.08);
+  border: 1px solid rgba(var(--gold-rgb), 0.08);
   padding: 16px 20px;
   text-decoration: none;
   transition: all 0.3s;
@@ -560,7 +561,7 @@ nav a:hover {
 
 .link-card:hover {
   border-color: var(--gold);
-  background: rgba(201, 162, 39, 0.05);
+  background: rgba(var(--gold-rgb), 0.05);
   transform: translateX(4px);
 }
 
@@ -593,7 +594,7 @@ nav a:hover {
 .philosophy {
   padding: 120px 24px;
   background:
-    radial-gradient(ellipse at center, rgba(201, 162, 39, 0.05) 0%, transparent 60%),
+    radial-gradient(ellipse at center, rgba(var(--gold-rgb), 0.05) 0%, transparent 60%),
     var(--black);
   text-align: center;
 }
@@ -627,7 +628,7 @@ nav a:hover {
   padding: 120px 24px;
   background: var(--black-light);
   text-align: center;
-  border-top: 1px solid rgba(201, 162, 39, 0.15);
+  border-top: 1px solid rgba(var(--gold-rgb), 0.15);
 }
 
 .cta-crown {
@@ -660,7 +661,7 @@ nav a:hover {
 /* Footer */
 footer {
   background: var(--black);
-  border-top: 1px solid rgba(201, 162, 39, 0.1);
+  border-top: 1px solid rgba(var(--gold-rgb), 0.1);
   padding: 60px 24px;
 }
 
@@ -703,7 +704,7 @@ footer {
   text-align: center;
   margin-top: 40px;
   padding-top: 24px;
-  border-top: 1px solid rgba(201, 162, 39, 0.05);
+  border-top: 1px solid rgba(var(--gold-rgb), 0.05);
   font-size: 10px;
   color: var(--silver);
   letter-spacing: 0.1em;
