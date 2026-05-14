@@ -431,6 +431,7 @@ nav a:hover {
 
 .pillar {
   background: var(--black-light);
+  color: var(--silver-light);
   padding: 48px 32px;
   text-align: center;
   transition: all 0.4s;
@@ -442,6 +443,33 @@ nav a:hover {
 .pillar:hover {
   background: var(--black-mid);
   transform: translateY(-4px);
+}
+
+/* Override browser default visited-link color on card anchors */
+.link-card,
+.link-card:link,
+.link-card:visited,
+.link-card:hover,
+.pillar,
+.pillar:link,
+.pillar:visited {
+  color: var(--silver-light);
+}
+.link-card h4,
+.link-card:visited h4,
+.pillar h3,
+.pillar:visited h3 {
+  color: var(--white);
+}
+.link-card p,
+.link-card:visited p,
+.pillar p,
+.pillar:visited p {
+  color: var(--silver-light);
+}
+.link-card .arrow,
+.link-card:visited .arrow {
+  color: var(--gold);
 }
 
 .pillar-icon {
@@ -553,6 +581,7 @@ nav a:hover {
 .link-card {
   display: block;
   background: var(--black-mid);
+  color: var(--silver-light);
   border: 1px solid rgba(var(--gold-rgb), 0.08);
   padding: 16px 20px;
   text-decoration: none;
